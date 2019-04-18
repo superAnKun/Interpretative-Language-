@@ -1,0 +1,45 @@
+grammar ExprCppTree;
+
+options {
+    language = C;
+    output = AST;
+    ASTLabelType=pANTLR3_BASE_TREE;
+}
+
+@header {
+        #include <assert.h>
+}
+
+fragment ALPHABET: ('A'..'Z'|'a'..'z'|'_');
+fragment DIGIT: ('0'..'9');
+
+//ID: ALPHABET+ DIGIT* ALPHABET*;
+//NUM: ('+'|'-')? DIGIT+;
+NUM: ('0' .. '9')+;
+ID: ('A'..'Z'|'a'..'z')+ ('0'..'9')* ('A'..'Z'|'a'..'z');
+
+//prog: stat+;
+
+prog: ID ASSIGN expr
+    | expr
+    ;
+
+mulAndDivExpr: atom ((MUL | DIV)^ atom)*
+                ;
+//divExpr: atom (DIV^ atom)*;
+
+atom: NUM
+   | ID
+   ;
+
+expr: mulAndDivExpr ((ADD | SUB)^ mulAndDivExpr)*;
+
+DIV: '/';
+MUL: '*';
+ADD: '+';
+SUB: '-';
+POW: '^';
+MOD: '%';
+ASSIGN: '=';
+
+WS : (' '|'\t')+ {$channel = HIDDEN;};

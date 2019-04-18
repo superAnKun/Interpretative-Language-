@@ -1,0 +1,98 @@
+grammar ExprCppTree;
+ 
+options {
+    language = C;
+    output = AST;
+    ASTLabelType=pANTLR3_BASE_TREE;
+}
+ 
+@header {
+    #include <assert.h>
+}
+
+// The suffix '^' means make it a root.
+// The suffix '!' means ignore it.
+
+PLUS: '+';
+MINUS: '-';
+TIMES: '*';
+DIV: '/';
+DOT: ',';
+ASSIGN: '=';
+
+
+DEF: 'd''e''f';
+IF: 'i''f';
+ELSE: 'e''l''s''e';
+
+
+GT: '>';
+GEQ: '>''=';
+LS: '<';
+LEQ: '<''=';
+NOT: '!';
+OR: '|''|';
+AND: '&''&';
+BITOR: '|';
+BITAND: '&';
+
+PRINT: 'p''r''i''n''t';
+FOR: 'f''o''r';
+WHILE: 'w''h''i''l''e';
+BREAK: 'b''r''e''a''k';
+CONTINUE: 'c''o''n''t''i''n''u''e';
+
+defExpr: DEF ID (DOT ID)* -> ^(DEF ID+);
+atom: INT
+    | ID
+    | '('! conditionExpr')'!
+    ;
+
+notExpr: NOT atom -> ^(NOT atom);
+expr: recursiveExpr (DOT^ conditionExpr)*
+    | notExpr
+    ;
+conditionExpr: expr ((GT | GEQ | LS | LEQ | OR | AND | BITOR | BITAND)^ expr)*;
+
+recursiveExpr: multOrDivExpr ((PLUS^ | MINUS^) multOrDivExpr)*
+            | ID ASSIGN conditionExpr -> ^(ASSIGN ID conditionExpr)
+            ;
+multOrDivExpr: atom ((TIMES^ | DIV^) atom)*;
+//-------------------------------------------------------------------------------------
+
+elseExpr: ELSE stmt -> stmt;
+ifExpr: IF '(' conditionExpr ')' stmt elseExpr? -> ^(IF conditionExpr stmt elseExpr);
+printExpr: PRINT expr (DOT expr)* -> ^(PRINT expr+);
+for1: ID ASSIGN conditionExpr -> ^(ASSIGN ID conditionExpr);
+forExpr: FOR '(' for1 ';' conditionExpr ';' expr ')' stmt -> ^(FOR for1 conditionExpr expr stmt);
+whileExpr: WHILE '(' conditionExpr ')' stmt -> ^(WHILE conditionExpr stmt);
+//arrayDef: ID ASSIGN '['! (arrayElem DOT)* arrayElem? ']'! -> ^(ARRAY ID ASSIGN arrayElem*);
+
+
+stmt: conditionExpr ';' -> conditionExpr  // tree rewrite syntax
+    | defExpr ';' -> defExpr
+    | ifExpr
+    | forExpr
+    | whileExpr
+    | block
+    | BREAK';' -> BREAK
+    | CONTINUE ';' -> CONTINUE
+    | printExpr';' -> printExpr
+    ;
+
+block: '{' blockCode '}' -> ^(BLOCK blockCode?);
+blockCode: stmt*;
+
+prog
+    : (block {pANTLR3_STRING s = $block.tree->toStringTree($block.tree);
+             assert(s->chars);
+             printf(" tree \%s\n", s->chars);
+            }
+        )+
+    ;
+ID: ('a'..'z'|'A'..'Z')+;
+INT: '~'? '0'..'9'+ ;
+BLOCK: '{}';
+ARRAY: '[]';
+WS : (' '| '\t' | '\r' | '\n')+ {$channel = HIDDEN;};
+

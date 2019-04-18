@@ -1,0 +1,64 @@
+grammar ExprCppTree;
+ 
+options {
+    language = C;
+    output = AST;
+    ASTLabelType=pANTLR3_BASE_TREE;
+}
+ 
+@header {
+    #include <assert.h>
+}
+ 
+
+// The suffix '^' means make it a root. //^ 把一个表达式提升为根
+// The suffix '!' means ignore it.
+
+expr: (multExpr | divExpr) ((PLUS^ | MINUS^) (multExpr | divExpr))*  //定义一个表达式（此处是乘法表达式）
+    ;
+
+PLUS: '+';
+MINUS: '-';
+
+multExpr
+    : atom (TIMES^ atom)*
+    ;
+
+divExpr
+   : atom (DIV^ atom)*
+	;
+
+TIMES: '*';
+DIV: '/';
+/*
+1.增加除法
+2.增加变量赋值
+3.增加作用域
+*/
+
+atom: INT
+    | ID   //变量
+    | '('! expr ')'!  //或者是表达式
+    ;
+ 
+stmt: expr NEWLINE -> expr  // tree rewrite syntax  //NEWLINE这个表达式重定向位无
+    | ID ASSIGN expr NEWLINE -> ^(ASSIGN ID expr) // tree notation  变量赋值
+    | NEWLINE ->   // ignore
+    ;
+ 
+ASSIGN: '=';
+/**
+以下一段代码用来打印抽象语法树
+  */
+prog
+    : (stmt {pANTLR3_STRING s = $stmt.tree->toStringTree($stmt.tree);
+             assert(s->chars);
+             printf(" tree \%s\n", s->chars);
+            }
+        )+
+    ;
+
+ID: ('a'..'z'|'A'..'Z')+ ;
+INT: '~'? '0'..'9'+ ;
+NEWLINE: '\r'? '\n' ;
+WS : (' '|'\t')+ {$channel = HIDDEN;};
