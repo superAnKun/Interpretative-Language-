@@ -18,30 +18,35 @@ DIV: '/';
 DOT: ',';
 ASSIGN: '=';
 
-DEF: 'd''e''f';
-IF: 'i''f';
-ELSE: 'e''l''s''e';
+DEF: 'def';
+IF: 'if';
+ELSE: 'else';
 
 GT: '>';
-GEQ: '>''=';
+GEQ: '>=';
 LS: '<';
-LEQ: '<''=';
-EQ: '=''=';
+LEQ: '<=';
+EQ: '==';
 NOT: '!';
-OR: '|''|';
-AND: '&''&';
+OR: '||';
+AND: '&&';
 BITOR: '|';
 BITAND: '&';
 
-PRINT: 'p''r''i''n''t';
-FOR: 'f''o''r';
-WHILE: 'w''h''i''l''e';
-BREAK: 'b''r''e''a''k';
-CONTINUE: 'c''o''n''t''i''n''u''e';
+PRINT: 'print';
+FOR: 'for';
+WHILE: 'while';
+SWITCH: 'switch';
+CASE: 'case';
+DEFAULT: 'default';
+BREAK: 'break';
+CONTINUE: 'continue';
 
 expr: multExpr ((PLUS^ | MINUS^) multExpr)*
     | ID ASSIGN expr -> ^(ASSIGN ID expr)
+    | STRING
     ;
+
 multExpr
     : atom ((TIMES | DIV)^ atom)*
     ;
@@ -51,6 +56,14 @@ conditionExpr:
             expr ((GT | GEQ | LS | LEQ | OR | AND | EQ)^ expr)*
             ;
 
+ifExpr: IF '(' conditionExpr ')' stmt (ELSE stmt)? -> ^(IF conditionExpr stmt+);
+forExpr: FOR '(' expr ';' conditionExpr ';' expr ')' stmt -> ^(FOR expr conditionExpr expr stmt);
+whileExpr: WHILE '(' conditionExpr ')' stmt -> ^(WHILE conditionExpr stmt);
+caseExpr:CASE expr':' stmt* -> ^(CASE expr stmt*);
+defaultExpr: (DEFAULT':' stmt+) -> ^(DEFAULT stmt+);
+switchExpr: SWITCH '(' expr ')' '{' caseExpr+ defaultExpr? '}' -> ^(SWITCH expr caseExpr+ defaultExpr?);
+
+
 atom: INT
     | ID
     | '('! expr ')'!
@@ -59,6 +72,13 @@ atom: INT
 stmt: conditionExpr';'!  // tree rewrite syntax
     | block
     | defExpr';'!
+    | PRINT '(' conditionExpr ')'';' -> ^(PRINT conditionExpr)
+    | ifExpr
+    | forExpr
+    | whileExpr
+    | switchExpr
+    | BREAK';'!
+    | CONTINUE';'!
     ;
 
 block: '{' stmt* '}' -> ^(BLOCK stmt*);
@@ -73,5 +93,6 @@ prog
 
 ID: ('a'..'z'|'A'..'Z')+ ;
 INT: '~'? '0'..'9'+ ('.' '0'..'9'+)?;
+STRING: '\'' .* '\'';
 BLOCK:'{}';
 WS : (' ' | '\t' | '\n' | '\r')+ {$channel = HIDDEN;};

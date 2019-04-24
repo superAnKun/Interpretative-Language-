@@ -87,3 +87,78 @@ shared_ptr<DFANode> BranchExprConverter::convert(pANTLR3_BASE_TREE tree) {
     }
     return nullptr;
 }
+
+//SwitchExpr
+bool SwitchExprConverter::test(pANTLR3_COMMON_TOKEN tok) {
+    switch(tok->type) {
+        case SWITCH:
+        return true;
+    }
+    return false;
+}
+
+shared_ptr<DFANode> SwitchExprConverter::convert(pANTLR3_BASE_TREE tree) {
+    pANTLR3_COMMON_TOKEN tok = tree->getToken(tree);
+    switch (tok->type) {
+        case SWITCH: {
+            shared_ptr<DFANode> expr_tok = make_shared<DFANode>((pANTLR3_BASE_TREE)tree->getChild(tree, 0));
+            v_node.push_back(expr_tok);
+            int k = tree->getChildCount(tree);
+            if (k < 2) return expr_tok;
+            for (int i = 1; i < k - 1; i++) {
+                shared_ptr<DFANode> tok = make_shared<DFANode>((pANTLR3_BASE_TREE)tree->getChild(tree, i));
+                v_node.push_back(tok);
+                expr_tok->addEdge(Type::CASEL, tok);
+                tok->addEdge(Type::BREAKL, nullptr);
+            }
+            pANTLR3_BASE_TREE temp_tree = (pANTLR3_BASE_TREE)tree->getChild(tree, k - 1);
+            if (temp_tree->getToken(temp_tree)->type == DEFAULT) {
+                shared_ptr<DFANode> tok = make_shared<DFANode>((pANTLR3_BASE_TREE)tree->getChild(tree, k - 1));
+                v_node.push_back(tok);
+                expr_tok->addEdge(Type::DEFAULTL, tok);
+                tok->addEdge(Type::BREAKL, nullptr);
+            } else {
+                shared_ptr<DFANode> tok = make_shared<DFANode>((pANTLR3_BASE_TREE)tree->getChild(tree, k - 1));
+                v_node.push_back(tok);
+                expr_tok->addEdge(Type::CASEL, tok);
+                tok->addEdge(Type::BREAKL, nullptr);
+            }
+            v_node.push_back(nullptr);
+            expr_tok->addEdge(Type::OK, nullptr);
+            expr_tok->reverse();
+            for (int i = 1; i < k; i++) {
+                v_node[i]->addEdge(Type::OK, v_node[i + 1]);
+            }
+            return expr_tok;
+        }
+        case CASE: {
+            int k = tree->getChildCount(tree);
+            if (k < 2) return nullptr;
+            for (int i = 1; i < k; i++) {
+                shared_ptr<DFANode> case_tok = make_shared<DFANode>((pANTLR3_BASE_TREE)tree->getChild(tree, i));
+                v_node.push_back(case_tok);
+                case_tok->addEdge(Type::BREAKL, nullptr);
+            }
+            v_node.push_back(nullptr);
+            for (int i = 1; i < k; i++) {
+                v_node[i - 1]->addEdge(Type::OK, v_node[i]);
+            }
+            return v_node[0];
+        }
+        case DEFAULT: {
+            int k = tree->getChildCount(tree);
+            if (k < 1) return nullptr;
+            for (int i = 0; i < k; i++) {
+                shared_ptr<DFANode> case_tok = make_shared<DFANode>((pANTLR3_BASE_TREE)tree->getChild(tree, i));
+                v_node.push_back(case_tok);
+                case_tok->addEdge(Type::BREAKL, nullptr);
+            }
+            v_node.push_back(nullptr);
+            for (int i = 0; i < k; i++) {
+                v_node[i]->addEdge(Type::OK, v_node[i + 1]);
+            }
+            return v_node[0];
+        }
+    }
+    return nullptr;
+}

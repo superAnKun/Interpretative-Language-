@@ -11,7 +11,9 @@ enum class Type {
     CONTINUEL,
     IN,
     OUT,
-    OK
+    OK,
+    CASEL,
+    DEFAULTL
 };
 
 struct Status {

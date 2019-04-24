@@ -1,6 +1,5 @@
 #include "../include/master_chain.h"
 #include "../include/dfa.h"
-//#include "../include/ArbitraryType.h"
 #include "../include/TypeVisitor.h"
 MasterChain* MasterChain::master = nullptr;
 
@@ -41,6 +40,7 @@ bool ExprFactory::test(pANTLR3_COMMON_TOKEN token) {
     switch(token->type) {
     case INT:
     case ID:
+    case STRING:
     case PLUS:
     case MINUS:
     case TIMES:
@@ -71,6 +71,12 @@ Status ExprFactory::ExprCalculate::getResult(ExprTreeEvaluator* eval, pANTLR3_BA
     case ID: {
         return {Type::OK, eval->getValue(tree)};
     }
+    case STRING: {
+        const char* s = getText(tree);
+        string temp(s);
+        shared_ptr<String> p = make_shared<String>(string(temp.begin() + 1, temp.end() - 1));
+        return {Type::OK, p};
+    }
     case PLUS: {
         AddVisitor add(eval->run(getChild(tree, 1)).value);
         shared_ptr<Object> p = eval->run(getChild(tree, 0)).value->accept(&add);
@@ -80,15 +86,16 @@ Status ExprFactory::ExprCalculate::getResult(ExprTreeEvaluator* eval, pANTLR3_BA
         SubVisitor sub(eval->run(getChild(tree, 1)).value);
         shared_ptr<Object> p = eval->run(getChild(tree, 0)).value->accept(&sub);
         return {Type::OK, p};
-        //return {Type::OK, eval->run(getChild(tree,0)).value - eval->run(getChild(tree,1)).value};
     }
-    case TIMES:{
-        return {Type::OK, nullptr};
-        //return {Type::OK, eval->run(getChild(tree,0)).value * eval->run(getChild(tree,1)).value};
+    case TIMES: {
+        TimeVisitor time(eval->run(getChild(tree, 1)).value);
+        shared_ptr<Object> p = eval->run(getChild(tree, 0)).value->accept(&time);
+        return {Type::OK, p};
     }
     case DIV: {
-        return {Type::OK, nullptr};
-    //    return {Type::OK, eval->run(getChild(tree, 0)).value / eval->run(getChild(tree, 1)).value};
+        DivVisitor div(eval->run(getChild(tree, 1)).value);
+        shared_ptr<Object> p = eval->run(getChild(tree, 0)).value->accept(&div);
+        return {Type::OK, p};
     }
     case ASSIGN: {
         string var(getText(getChild(tree,0)));
@@ -98,7 +105,7 @@ Status ExprFactory::ExprCalculate::getResult(ExprTreeEvaluator* eval, pANTLR3_BA
     }
     default:
         cout << "Unhandled token: #" << tok->type << '\n';
-        return {Type::OK, nullptr};
+        return {Type::OK, make_shared<Number>("")};
     }
 }
 
@@ -130,33 +137,29 @@ Status ConditionExprFactory::ConditionExprCalculate::getResult(ExprTreeEvaluator
     pANTLR3_COMMON_TOKEN tok = tree->getToken(tree);
     switch (tok->type) {
     case GT:{
-    //    int left = eval->run(getChild(tree, 0)).value;
-    //    int right = eval->run(getChild(tree, 1)).value;
-        return {Type::OK, nullptr};
+        GTVisitor visitor(eval->run(getChild(tree, 1)).value);
+        shared_ptr<Object> p = eval->run(getChild(tree, 0)).value->accept(&visitor);
+        return {Type::OK, p};
     }
     case GEQ:{
-     //   int left = eval->run(getChild(tree, 0)).value;
-     //   int right = eval->run(getChild(tree, 1)).value;
-     //   return {Type::OK, left >= right};
-        return {Type::OK, nullptr};
+        GEQVisitor visitor(eval->run(getChild(tree, 1)).value);
+        shared_ptr<Object> p = eval->run(getChild(tree, 0)).value->accept(&visitor);
+        return {Type::OK, p};
     }
     case LS:{
-    //    int left = eval->run(getChild(tree, 0)).value;
-    //    int right = eval->run(getChild(tree, 1)).value;
-    //    return {Type::OK, left < right};
-        return {Type::OK, nullptr};
+        LSVisitor visitor(eval->run(getChild(tree, 1)).value);
+        shared_ptr<Object> p = eval->run(getChild(tree, 0)).value->accept(&visitor);
+        return {Type::OK, p};
     }
     case LEQ:{
-     //`   int left = eval->run(getChild(tree, 0)).value;
-     //`   int right = eval->run(getChild(tree, 1)).value;
-     //`   return {Type::OK, left <= right};
-        return {Type::OK, nullptr};
+        LEQVisitor visitor(eval->run(getChild(tree, 1)).value);
+        shared_ptr<Object> p = eval->run(getChild(tree, 0)).value->accept(&visitor);
+        return {Type::OK, p};
     }
     case EQ: {
-       // int left = eval->run(getChild(tree, 0)).value;
-       // int right = eval->run(getChild(tree, 1)).value;
-       // return {Type::OK, left == right};
-        return {Type::OK, nullptr};
+        EQVisitor visitor(eval->run(getChild(tree, 1)).value);
+        shared_ptr<Object> p = eval->run(getChild(tree, 0)).value->accept(&visitor);
+        return {Type::OK, p};
     }
     case OR:{       
       //  int left = eval->run(getChild(tree, 0)).value;
@@ -224,19 +227,21 @@ Status BranchExprFactory::BranchExprCalculate::getResult(ExprTreeEvaluator* eval
              return {Type::OK, nullptr};
          }
          case IF:{
-             if (eval->run(getChild(tree, 0)).value) {
+             if (!eval->run(getChild(tree, 0)).value->isZero()) {
                  return eval->run(getChild(tree, 1));
              } else if (tree->getChildCount(tree) == 3) {
                  return eval->run(getChild(tree, 2));
              }
-             return {Type::OK, nullptr};
+             return {Type::OK, make_shared<Object>()};
          }
          case PRINT:{
              int k = tree->getChildCount(tree);
+             shared_ptr<Object> p;
              for (int i = 0; i < k; i++) {
-                 cout << eval->run(getChild(tree, i)).value << endl;
+                 p = eval->run(getChild(tree, i)).value;
+                 cout << p->output() << endl;
              }
-             return {Type::OK, nullptr};
+             return {Type::OK, p};
          }
          default:
              cout << "Unhandled token: #" << token->type << '\n';
@@ -249,6 +254,9 @@ bool LoopExprFactory::test(pANTLR3_COMMON_TOKEN token) {
     switch (token->type) {
     case FOR:
     case WHILE:
+    case CASE:
+    case DEFAULT:
+    case SWITCH:
     case BREAK:
     case CONTINUE:
         return true;
@@ -274,9 +282,8 @@ Status LoopExprFactory::LoopExprCalculate::getResult(ExprTreeEvaluator* eval, pA
         LoopConverter c;
         shared_ptr<DFANode> p = c.convert(tree);
         while (p) p = p->forward(&e);
-
         //不管是正常循环结束还是通过break结束循环 都是正常的跳出循环 对外层dfa会产生相同的影响
-        return {Type::OK, e.getStatus().value};
+        return {Type::OK, make_shared<Object>()};
     }
     case WHILE: {
         int k = tree->getChildCount(tree);
@@ -285,7 +292,26 @@ Status LoopExprFactory::LoopExprCalculate::getResult(ExprTreeEvaluator* eval, pA
         LoopConverter c;
         shared_ptr<DFANode> p = c.convert(tree);
         while (p) p = p->forward(&e);
-        return {Type::OK, e.getStatus().value};
+        return {Type::OK, make_shared<Object>()};
+    }
+    case SWITCH: {
+        ExprTreeEvaluator e(eval);
+        SwitchExprConverter c;
+        shared_ptr<DFANode> p = c.convert(tree);
+        while (p) p = p->forward(&e);
+        return {Type::OK, make_shared<Object>()};
+    }
+    case CASE: {
+        SwitchExprConverter c;
+        shared_ptr<DFANode> p = c.convert(tree);
+        while (p) p = p->forward(eval);
+        return eval->getStatus();
+    }
+    case DEFAULT: {
+        SwitchExprConverter c;
+        shared_ptr<DFANode> p = c.convert(tree);
+        while (p) p = p->forward(eval);
+        return eval->getStatus();
     }
     case BREAK:
         return {Type::BREAKL, nullptr};

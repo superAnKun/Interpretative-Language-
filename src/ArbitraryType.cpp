@@ -1,5 +1,6 @@
 #include "../include/ArbitraryType.h"
 #include <iostream>
+#include <cstdio>
 using namespace std;
 #define PERSISION 100
 void complement_flip(vector<unsigned char>& num) {
@@ -30,10 +31,13 @@ void right_move(vector<unsigned char>& num, int n) {
 } 
 
 Object::Object() {
-    this->s.append("undefined!");
 }
 
 Object::~Object() {}
+
+int Object::isZero() {
+    return this->s.length();
+}
 
 Number::Number(string s) : num(PERSISION, 0), pos(0) {
     bool flag = false;
@@ -105,7 +109,7 @@ void Number::mul(vector<unsigned char>& ret, vector<unsigned char>& v1, vector<u
             ret[j + i] += v1[i] * v2[j];
         }
         for (int j = 0; j < PERSISION - 1; j++) {
-            ret[j] += ret[j] / 10;
+            ret[j + 1] += ret[j] / 10;
             ret[j] %= 10;
         }
         ret[PERSISION - 1] %= 10;
@@ -158,33 +162,64 @@ shared_ptr<Object> Number::operator* (Object* obj) {
     Number* ptr = dynamic_cast<Number*>(obj);
     if (ptr == nullptr) return nullptr;
     shared_ptr<Number> p = make_shared<Number>("");
-    p->pos = this->pos * ptr->pos;
+    p->pos = this->pos + ptr->pos;
     mul(p->num, this->num, ptr->num);
     adjust(p);
     return p;
 }
 
 
-shared_ptr<Object> Number::operator> (Object* obj) {
+bool Number::operator> (Object* obj) {
     Number* ptr = dynamic_cast<Number*>(obj);
-    if (ptr == nullptr) return nullptr;
-    shared_ptr<Number> p = this->operator-(ptr);
-    if (p->isZero()) return p;
+    if (ptr == nullptr) return 0;
+    shared_ptr<Object> ret = this->operator-(ptr);
+    Number* p = dynamic_cast<Number*>(ret.get());
+    if (p->isZero()) return 0;
     if (p->num[PERSISION - 1] == 0) {
-        return make_shared<Number>("1");
+        return 1;
     }
-    return make_shared<Number>("0");
+    return 0;
 }
 
+bool Number::operator== (Object* obj) {
+    Number* ptr = dynamic_cast<Number*>(obj);
+    if (ptr == nullptr) return 0;
+    if (ptr->isZero() && this->isZero()) return true;
+    for (int i = 0; i < PERSISION; i++) {
+        if (ptr->num[i] == this->num[i]) continue;
+        return false;
+    }
+    return true;
+}
+
+bool Number::operator>= (Object* obj) {
+    return this->operator> (obj) || this->operator==(obj);
+}
+
+bool Number::operator< (Object* obj) {
+    Number* ptr = dynamic_cast<Number*>(obj);
+    if (ptr == nullptr) return 0;
+    return ptr->operator>= (this);
+}
+
+bool Number::operator<= (Object* obj) {
+    return this->operator<(obj) || this->operator==(obj);
+}
 
 shared_ptr<Object> Number::operator/ (Object* obj) {
     Number* ptr = dynamic_cast<Number*>(obj);
     if (ptr == nullptr) return nullptr;
-    vector<unsigned char> num1 = this->num;
-    vector<unsigned char> num2 = ptr->num;
-    
+    shared_ptr<Number> p2 = make_shared<Number>(ptr->output());
+    shared_ptr<Number> p1 = make_shared<Number>(this->output());
+    int cnt = 0;
+    while (p1->operator>=(p2.get())) {
+        p1 = make_shared<Number>(p1->operator-(p2.get())->output());
+        cnt++;
+    }
+    char buf[20];
+    sprintf(buf, "%d", cnt);
+    return make_shared<Number>(buf);
 }
-
 
 int Number::isZero() {
     for (int i = 0; i < PERSISION - 1; i++) {
@@ -192,4 +227,29 @@ int Number::isZero() {
         return false;
     }
     return true;
+}
+
+String::String(string s) : s(s){
+}
+
+string String::output() {
+    return this->s;
+}
+
+shared_ptr<Object> String::accept(Object::IVisitor* visitor) {
+    return visitor->Visit(this);
+}
+
+int String::isZero() {
+    return s.length();
+}
+
+shared_ptr<Object> String::operator+(Object* obj) {
+    return make_shared<String>(this->s + obj->output());
+}
+
+bool String::operator==(Object* obj) {
+    String* s = dynamic_cast<String*>(obj);
+    if (s == nullptr) return 0;
+    return this->s == s->output();
 }

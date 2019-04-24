@@ -26,4 +26,10 @@ public:
     shared_ptr<DFANode> convert(pANTLR3_BASE_TREE tree);
 };
 
+class SwitchExprConverter : public Converter {
+public:
+    bool test(pANTLR3_COMMON_TOKEN tok);
+    shared_ptr<DFANode> convert(pANTLR3_BASE_TREE);
+};
+
 #endif
