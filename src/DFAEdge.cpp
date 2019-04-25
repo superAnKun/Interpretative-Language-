@@ -50,9 +50,9 @@ bool Edge::check(Status status, ExprTreeEvaluator* eval) {
         case Type::OK:
             return this->type == status.type;
         case Type::YES:
-            return status.value != nullptr && !status.value->isZero();
-        case Type::NO: 
-            return status.value == nullptr || status.value->isZero();
+            return status.value != nullptr && status.value->isZero();
+        case Type::NO:
+            return status.value == nullptr || !status.value->isZero();
         case Type::CASEL: {
             pANTLR3_BASE_TREE tree = this->node.lock()->getTree();
             tree = (pANTLR3_BASE_TREE)tree->getChild(tree, 0);

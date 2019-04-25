@@ -1,125 +1,257 @@
 #include "../include/TypeVisitor.h"
+
+/**
+ *
+ * AddVisitor
+ *
+ */
 AddVisitor::AddVisitor(shared_ptr<Object> obj) {
     this->obj = obj;
 }
 
-shared_ptr<Object> AddVisitor::Visit(Number* p) {
-    return p->operator+(this->obj.get());
+AddVisitor::AddVisitor() {
+}
+
+shared_ptr<Object> AddVisitor::Visit(Integer* p) {
+    AddVisitor visitor;
+    return this->obj->accept(&visitor, p);
 }
 
 shared_ptr<Object> AddVisitor::Visit(String* s) {
-    return s->operator+(this->obj.get());
+    AddVisitor visitor;
+    return this->obj->accept(&visitor, s);
 }
 
-//--------------------------------------------------
-SubVisitor::SubVisitor(shared_ptr<Object> obj) {
-    this->obj = obj;
+shared_ptr<Object> AddVisitor::Visit(Integer* p1, Integer* p2) {
+    return p1->operator+(p2);
 }
 
-shared_ptr<Object> SubVisitor::Visit(Number* p) {
-    return p->operator-(this->obj.get());
+shared_ptr<Object> AddVisitor::Visit(String* s1, String* s2) {
+    return s1->operator+(s2);
 }
 
-shared_ptr<Object> SubVisitor::Visit(String* s) {
-    return nullptr;
+shared_ptr<Object> AddVisitor::Visit(String* s, Integer* p) {
+    return s->operator+(p);
 }
 
-//----------------------------------------------------
+/**
+ *
+ * SubVisitor
+ *
+ */
+
+SubVisitor::SubVisitor(shared_ptr<Object> p) {
+    this->obj = p;
+}
+
+SubVisitor::SubVisitor() {
+}
+
+shared_ptr<Object> SubVisitor::Visit(Integer* p) {
+    SubVisitor visitor;
+    return this->obj->accept(&visitor, p);
+}
+
+shared_ptr<Object> SubVisitor::Visit(Integer* p1, Integer* p2) {
+    return p1->operator-(p2);
+}
+
+/**
+ *
+ * TimeVisitor
+ *
+ */
 
 TimeVisitor::TimeVisitor(shared_ptr<Object> obj) {
     this->obj = obj;
 }
 
-shared_ptr<Object> TimeVisitor::Visit(Number* p) {
-    return p->operator*(this->obj.get());
+TimeVisitor::TimeVisitor() {
 }
 
-shared_ptr<Object> TimeVisitor::Visit(String* s) {
-    return nullptr;
+shared_ptr<Object> TimeVisitor::Visit(Integer* p) {
+    TimeVisitor visitor;
+    return this->obj->accept(&visitor, p);
 }
 
-//---------------------------------------------------
+shared_ptr<Object> TimeVisitor::Visit(Integer* p1, Integer* p2) {
+    return p1->operator* (p2);
+}
+
+
+/**
+ *
+ * DivVisitor
+ *
+ */
+
 DivVisitor::DivVisitor(shared_ptr<Object> obj) {
     this->obj = obj;
 }
 
-shared_ptr<Object> DivVisitor::Visit(Number* p) {
-    return p->operator/(this->obj.get());
+DivVisitor::DivVisitor() {
 }
 
-
-shared_ptr<Object> DivVisitor::Visit(String* s) {
-    return nullptr;
+shared_ptr<Object> DivVisitor::Visit(Integer* p) {
+    DivVisitor visitor;
+    return this->obj->accept(&visitor, p);
 }
 
-//---------------------------------------------------
+shared_ptr<Object> DivVisitor::Visit(Integer* p1, Integer* p2) {
+    return p1->operator/ (p2);
+}
+
+/**
+ *
+ * GTVisitor
+ *
+ */
+
 GTVisitor::GTVisitor(shared_ptr<Object> obj) {
     this->obj = obj;
 }
 
-shared_ptr<Object> GTVisitor::Visit(Number* p) {
-    if (p->operator>(this->obj.get())) return make_shared<Number>("1");
-    return make_shared<Number>("0");
+GTVisitor::GTVisitor() {
 }
 
-shared_ptr<Object> GTVisitor::Visit(String* s) {
-    return nullptr;
+shared_ptr<Object> GTVisitor::Visit(String* p) {
+    GTVisitor visitor;
+    return this->obj->accept(&visitor, p);
 }
 
-//---------------------------------------------------
+shared_ptr<Object> GTVisitor::Visit(Integer* p) {
+    GTVisitor visitor;
+    return this->obj->accept(&visitor, p);
+}
+
+shared_ptr<Object> GTVisitor::Visit(Integer* p1, Integer* p2) {
+    return make_shared<Integer>(p1->operator> (p2));
+}
+
+shared_ptr<Object> GTVisitor::Visit(String* p1, String* p2) {
+    return make_shared<Integer>(p1->operator> (p2));
+}
+
+/**
+ *
+ * GEQVisitor
+ *
+ */
+
 GEQVisitor::GEQVisitor(shared_ptr<Object> obj) {
     this->obj = obj;
 }
 
-shared_ptr<Object> GEQVisitor::Visit(Number* p) {
-    if (p->operator>=(this->obj.get())) return make_shared<Number>("1");
-    return make_shared<Number>("0");
+GEQVisitor::GEQVisitor() {
 }
 
 shared_ptr<Object> GEQVisitor::Visit(String* s) {
-    return nullptr;
+    GEQVisitor visitor;
+    return this->obj->accept(&visitor, s);
 }
-//-------------------------------------------------------
+
+shared_ptr<Object> GEQVisitor::Visit(Integer* p) {
+    GEQVisitor visitor;
+    return this->obj->accept(&visitor, p);
+}
+
+shared_ptr<Object> GEQVisitor::Visit(Integer* p1, Integer* p2) {
+    return make_shared<Integer>(p1->operator>= (p2));
+}
+
+shared_ptr<Object> GEQVisitor::Visit(String* p1, String* p2) {
+    return make_shared<Integer>(p1->operator>= (p2));
+}
+
+/**
+ *
+ * EQVisitor
+ *
+ */
 
 EQVisitor::EQVisitor(shared_ptr<Object> obj) {
     this->obj = obj;
 }
 
-shared_ptr<Object> EQVisitor::Visit(Number* p) {
-    if (p->operator==(this->obj.get())) return make_shared<Number>("1");
-    return make_shared<Number>("0");
+EQVisitor::EQVisitor() {
 }
 
-shared_ptr<Object> EQVisitor::Visit(String* s) {
-    if (s->operator==(this->obj.get())) return make_shared<Number>("1");
-    return make_shared<Number>("0");
+shared_ptr<Object> EQVisitor::Visit(Integer* p) {
+    EQVisitor visitor;
+    return this->obj->accept(&visitor, p);
 }
-//-------------------------------------------------------
+
+shared_ptr<Object> EQVisitor::Visit(String* p) {
+    EQVisitor visitor;
+    return this->obj->accept(&visitor, p);
+}
+
+shared_ptr<Object> EQVisitor::Visit(Integer* p1, Integer* p2) {
+    return make_shared<Integer>(p1->operator==(p2));
+}
+
+shared_ptr<Object> EQVisitor::Visit(String* p1, String* p2) {
+    return make_shared<Integer>(p1->operator==(p2));
+}
+
+/**
+ *
+ * LSVisitor
+ *
+ */
 
 LSVisitor::LSVisitor(shared_ptr<Object> obj) {
     this->obj = obj;
 }
 
-shared_ptr<Object> LSVisitor::Visit(Number* p) {
-    if (p->operator< (this->obj.get())) return make_shared<Number>("1");
-    return make_shared<Number>("0");
+LSVisitor::LSVisitor() {
 }
 
-shared_ptr<Object> LSVisitor::Visit(String* s) {
-    return nullptr;
+shared_ptr<Object> LSVisitor::Visit(String* p) {
+    LSVisitor visitor;
+    return this->obj->accept(&visitor, p);
 }
 
-//------------------------------------------------------
+shared_ptr<Object> LSVisitor::Visit(Integer* p) {
+    LSVisitor visitor;
+    return this->obj->accept(&visitor, p);
+}
+
+shared_ptr<Object> LSVisitor::Visit(Integer* p1, Integer* p2) {
+    return make_shared<Integer>(p1->operator<(p2));
+}
+
+shared_ptr<Object> LSVisitor::Visit(String* p1, String* p2) {
+    return make_shared<Integer>(p1->operator<(p2));
+}
+
+/**
+ *
+ * LEQVisitor 
+ *
+ */
+
 LEQVisitor::LEQVisitor(shared_ptr<Object> obj) {
     this->obj = obj;
 }
 
-shared_ptr<Object> LEQVisitor::Visit(Number* p) {
-    if (p->operator<= (this->obj.get())) return make_shared<Number>("1");
-    return make_shared<Number>("0");
+LEQVisitor::LEQVisitor() {
 }
 
-shared_ptr<Object> LEQVisitor::Visit(String* s) {
-    return nullptr;
+shared_ptr<Object> LEQVisitor::Visit(String* p) {
+    LEQVisitor visitor;
+    return this->obj->accept(&visitor, p);
 }
 
+shared_ptr<Object> LEQVisitor::Visit(Integer* p) {
+    LEQVisitor visitor;
+    return this->obj->accept(&visitor, p);
+}
+
+shared_ptr<Object> LEQVisitor::Visit(Integer* p1, Integer* p2) {
+    return make_shared<Integer>(p1->operator<= (p2));
+}
+
+shared_ptr<Object> LEQVisitor::Visit(String* p1, String* p2) {
+    return make_shared<Integer>(p1->operator<= (p2));
+}

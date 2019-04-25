@@ -4,8 +4,8 @@
 #include <vector>
 #include <string>
 using namespace std;
-class Number;
 class String;
+class Integer;
 class Object {
 public:
     Object();
@@ -13,13 +13,13 @@ public:
     virtual string output();
     class IVisitor {
     public:
-//        virtual shared_ptr<Object> Visit(Number*) = 0;
-        virtual shared_ptr<Object> Visit(Object*) = 0;
-        virtual shared_ptr<Object> Visit(String*) = 0;
-        virtual shared_ptr<Object> Visit(Integer*) = 0;
+        virtual shared_ptr<Object> Visit(Object*);
+        virtual shared_ptr<Object> Visit(String*);
+        virtual shared_ptr<Object> Visit(Integer*);
 
-        virtual shared_ptr<Object> Visit(Integer*, Integer*) = 0;
-        virtual shared_ptr<Object> Visit(String*, Integer*) = 0;
+        virtual shared_ptr<Object> Visit(Integer*, Integer*);
+        virtual shared_ptr<Object> Visit(String*, String*);
+        virtual shared_ptr<Object> Visit(String*, Integer*);
     };
     virtual shared_ptr<Object> accept(IVisitor*);
     virtual shared_ptr<Object> accept(IVisitor*, Object*);
@@ -30,55 +30,47 @@ private:
     string s;
 };
 
-/*
-class Number : public Object {
-public:
-    Number(string s);
-    virtual string output();
-    virtual shared_ptr<Object> accept(Object::IVisitor*);
-    virtual bool operator> (Object* obj);
-    virtual bool operator>= (Object* obj);
-    virtual bool operator== (Object* obj);
-    virtual bool operator< (Object* obj);
-    virtual bool operator<= (Object* obj);
-    virtual shared_ptr<Object> operator+ (Object* obj);
-    virtual shared_ptr<Object> operator- (Object* obj);
-    virtual shared_ptr<Object> operator* (Object* obj);
-    virtual shared_ptr<Object> operator/ (Object* obj);
-    int isZero();
-private:
-    void add(vector<unsigned char>&, vector<unsigned char>&, vector<unsigned char>&);
-    void mul(vector<unsigned char>&, vector<unsigned char>&, vector<unsigned char>&);
-    void adjust(shared_ptr<Number>& p);
-    vector<unsigned char> num;
-    int pos;
-};
-*/
+
 
 class Integer : public Object {
 public:
-    Integer(string s);
+    Integer(string);
+    Integer(int);
     virtual string output();
     virtual shared_ptr<Object> accept(Object::IVisitor*);
+    virtual shared_ptr<Object> accept(Object::IVisitor*, Integer*); //Integer OP Integer
+    virtual shared_ptr<Object> accept(Object::IVisitor*, String*);  //String OP Integer
     bool operator> (Integer*);
     bool operator>= (Integer*);
     bool operator< (Integer*);
     bool operator<= (Integer*);
+    bool operator== (Integer*);
     shared_ptr<Object> operator+ (Integer*);
     shared_ptr<Object> operator- (Integer*);
     shared_ptr<Object> operator* (Integer*);
     shared_ptr<Object> operator/ (Integer*);
+    virtual int isZero();
 private:
     int value;
 };
 
+
 class String : public Object {
 public:
     String(string s);
+    String(double);
+    String(int);
     virtual string output();
-    virtual shared_ptr<Object> operator+(Object* obj);
-    virtual bool operator==(Object* obj);
     virtual shared_ptr<Object> accept(Object::IVisitor*);
+    virtual shared_ptr<Object> accept(Object::IVisitor*, String*);  //String OP Integer
+
+    bool operator> (String*);
+    bool operator>= (String*);
+    bool operator< (String*);
+    bool operator<= (String*);
+    bool operator== (String*);
+    shared_ptr<Object> operator+ (Integer*);
+    shared_ptr<Object> operator+ (String*);
     virtual int isZero();
 private:
     string s;

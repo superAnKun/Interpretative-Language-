@@ -65,7 +65,7 @@ Status ExprFactory::ExprCalculate::getResult(ExprTreeEvaluator* eval, pANTLR3_BA
     switch(tok->type) {
     case INT: {
         const char* s = getText(tree);
-        shared_ptr<Number> p = make_shared<Number>(s);
+        shared_ptr<Integer> p = make_shared<Integer>(s);
         return {Type::OK, p};
     }
     case ID: {
@@ -105,7 +105,7 @@ Status ExprFactory::ExprCalculate::getResult(ExprTreeEvaluator* eval, pANTLR3_BA
     }
     default:
         cout << "Unhandled token: #" << tok->type << '\n';
-        return {Type::OK, make_shared<Number>("")};
+        return {Type::OK, make_shared<Object>()};
     }
 }
 
@@ -281,7 +281,9 @@ Status LoopExprFactory::LoopExprCalculate::getResult(ExprTreeEvaluator* eval, pA
         ExprTreeEvaluator e(eval);
         LoopConverter c;
         shared_ptr<DFANode> p = c.convert(tree);
-        while (p) p = p->forward(&e);
+        while (p) {
+            p = p->forward(&e);
+        }
         //不管是正常循环结束还是通过break结束循环 都是正常的跳出循环 对外层dfa会产生相同的影响
         return {Type::OK, make_shared<Object>()};
     }

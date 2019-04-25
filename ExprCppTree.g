@@ -44,7 +44,6 @@ CONTINUE: 'continue';
 
 expr: multExpr ((PLUS^ | MINUS^) multExpr)*
     | ID ASSIGN expr -> ^(ASSIGN ID expr)
-    | STRING
     ;
 
 multExpr
@@ -66,6 +65,7 @@ switchExpr: SWITCH '(' expr ')' '{' caseExpr+ defaultExpr? '}' -> ^(SWITCH expr 
 
 atom: INT
     | ID
+    | STRING
     | '('! expr ')'!
     ;
 
@@ -92,7 +92,8 @@ prog
     ;
 
 ID: ('a'..'z'|'A'..'Z')+ ;
-INT: '~'? '0'..'9'+ ('.' '0'..'9'+)?;
+//INT: '-'? '0'..'9'+ ('.' '0'..'9'+)?;
+INT: '-'? '0'..'9'+;
 STRING: '\'' .* '\'';
 BLOCK:'{}';
 WS : (' ' | '\t' | '\n' | '\r')+ {$channel = HIDDEN;};
