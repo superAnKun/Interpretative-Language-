@@ -103,6 +103,28 @@ shared_ptr<Object> DivVisitor::Visit(Integer* p1, Integer* p2) {
 
 /**
  *
+ * ModVisitor
+ *
+ */
+
+ModVisitor::ModVisitor(shared_ptr<Object> obj) {
+    this->obj = obj;
+}
+
+ModVisitor::ModVisitor() {
+}
+
+shared_ptr<Object> ModVisitor::Visit(Integer* p) {
+    ModVisitor visitor;
+    return this->obj->accept(&visitor, p);
+}
+
+shared_ptr<Object> ModVisitor::Visit(Integer* p1, Integer* p2) {
+    return p1->operator% (p2);
+}
+
+/**
+ *
  * GTVisitor
  *
  */
@@ -196,6 +218,37 @@ shared_ptr<Object> EQVisitor::Visit(String* p1, String* p2) {
 
 /**
  *
+ * NEQVisitor
+ *
+ */
+
+NEQVisitor::NEQVisitor(shared_ptr<Object> obj) {
+    this->obj = obj;
+}
+
+NEQVisitor::NEQVisitor() {
+}
+
+shared_ptr<Object> NEQVisitor::Visit(Integer* p) {
+    NEQVisitor visitor;
+    return this->obj->accept(&visitor, p);
+}
+
+shared_ptr<Object> NEQVisitor::Visit(String* p) {
+    NEQVisitor visitor;
+    return this->obj->accept(&visitor, p);
+}
+
+shared_ptr<Object> NEQVisitor::Visit(Integer* p1, Integer* p2) {
+    return make_shared<Integer>(p1->operator!=(p2));
+}
+
+shared_ptr<Object> NEQVisitor::Visit(String* p1, String* p2) {
+    return make_shared<Integer>(p1->operator!=(p2));
+}
+
+/**
+ *
  * LSVisitor
  *
  */
@@ -254,4 +307,31 @@ shared_ptr<Object> LEQVisitor::Visit(Integer* p1, Integer* p2) {
 
 shared_ptr<Object> LEQVisitor::Visit(String* p1, String* p2) {
     return make_shared<Integer>(p1->operator<= (p2));
+}
+
+
+/**
+ *
+ * ArrayElementVisitor
+ *
+ */
+
+ArrayElementVisitor::ArrayElementVisitor(int n) : n(n), obj(nullptr){
+}
+
+ArrayElementVisitor::ArrayElementVisitor(int n, shared_ptr<Object> obj) {
+    this->obj = obj;
+    this->n = n;
+}
+
+ArrayElementVisitor::ArrayElementVisitor() : n(-1), obj(nullptr) {
+}
+
+shared_ptr<Object>& ArrayElementVisitor::Visit(Array* obj) {
+    if (this->obj != nullptr) {
+        shared_ptr<Object>& p = obj->operator[](this->n);
+        p = this->obj;
+        return this->obj;
+    }
+    return obj->operator[](this->n);
 }

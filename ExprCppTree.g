@@ -15,6 +15,7 @@ PLUS: '+';
 MINUS: '-';
 TIMES: '*';
 DIV: '/';
+MOD: '%';
 DOT: ',';
 ASSIGN: '=';
 
@@ -27,6 +28,7 @@ GEQ: '>=';
 LS: '<';
 LEQ: '<=';
 EQ: '==';
+NEQ: '!=';
 NOT: '!';
 OR: '||';
 AND: '&&';
@@ -43,30 +45,43 @@ BREAK: 'break';
 CONTINUE: 'continue';
 
 expr: multExpr ((PLUS^ | MINUS^) multExpr)*
-    | ID ASSIGN expr -> ^(ASSIGN ID expr)
+    | assignExpr
     ;
 
 multExpr
-    : atom ((TIMES | DIV)^ atom)*
+    : atom ((TIMES | DIV | MOD)^ atom)*
     ;
 
-defExpr: DEF expr (DOT expr)* -> ^(DEF expr+);
+//midExpr: LMID (expr DOT)* expr RMID -> ^(MID expr+);
+
+midExpr: '[' (expr (DOT expr)*)? ']' -> ^(MID expr*)
+        | expr
+        ;
+arrayElem: ID '[' INT ']' -> ^(ARRELEM ID INT);
+arrayElemAssign: arrayElem ASSIGN expr -> ^(ARRELEMASSIGN arrayElem expr);
+defExpr: DEF expr (DOT expr)* -> ^(DEF expr+)
+        ;
+assignExpr: ID ASSIGN midExpr -> ^(ASSIGN ID midExpr)
+        | arrayElemAssign
+        ;
+
 conditionExpr: 
-            expr ((GT | GEQ | LS | LEQ | OR | AND | EQ)^ expr)*
+            expr ((GT | GEQ | LS | LEQ | OR | AND | EQ | NEQ)^ expr)*
             ;
 
-ifExpr: IF '(' conditionExpr ')' stmt (ELSE stmt)? -> ^(IF conditionExpr stmt+);
+ifExpr: IF '(' conditionExpr ')' block (ELSE stmt)? -> ^(IF conditionExpr block stmt?);
+
 forExpr: FOR '(' expr ';' conditionExpr ';' expr ')' stmt -> ^(FOR expr conditionExpr expr stmt);
 whileExpr: WHILE '(' conditionExpr ')' stmt -> ^(WHILE conditionExpr stmt);
-caseExpr:CASE expr':' stmt* -> ^(CASE expr stmt*);
+caseExpr: CASE expr':' stmt* -> ^(CASE expr stmt*);
 defaultExpr: (DEFAULT':' stmt+) -> ^(DEFAULT stmt+);
 switchExpr: SWITCH '(' expr ')' '{' caseExpr+ defaultExpr? '}' -> ^(SWITCH expr caseExpr+ defaultExpr?);
-
 
 atom: INT
     | ID
     | STRING
     | '('! expr ')'!
+    | arrayElem
     ;
 
 stmt: conditionExpr';'!  // tree rewrite syntax
@@ -94,6 +109,9 @@ prog
 ID: ('a'..'z'|'A'..'Z')+ ;
 //INT: '-'? '0'..'9'+ ('.' '0'..'9'+)?;
 INT: '-'? '0'..'9'+;
-STRING: '\'' .* '\'';
+STRING: '\"' .* '\"';
 BLOCK:'{}';
+MID: '[]';
+ARRELEM: 'elem[]';
+ARRELEMASSIGN: 'elelm[]assign';
 WS : (' ' | '\t' | '\n' | '\r')+ {$channel = HIDDEN;};

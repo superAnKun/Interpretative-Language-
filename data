@@ -1,9 +1,8 @@
-a = 1;
 
-for (a = -10; a < 0; a = a + 1) {
-    print (a);    
-}
-a;
 
-s = 'hello world ' + 1234;
+def arr[100];
+
+arr[1] = 123;
+arr[2] = "hello world";
+print (arr);
 

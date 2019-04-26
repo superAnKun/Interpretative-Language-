@@ -54,6 +54,11 @@ shared_ptr<Object> Object::IVisitor::Visit(Integer* obj) {
     return nullptr;
 }
 
+shared_ptr<Object>& Object::IVisitor::Visit(Array* obj) {
+    shared_ptr<Object> ret = make_shared<Object>();
+    return ret;
+}
+
 shared_ptr<Object> Object::IVisitor::Visit(Integer* p1, Integer* p2) {
     return nullptr;
 }
@@ -116,6 +121,10 @@ bool Integer::operator== (Integer* obj) {
     return this->value == obj->value;
 }
 
+bool Integer::operator!= (Integer* obj) {
+    return this->value != obj->value;
+}
+
 shared_ptr<Object> Integer::operator+ (Integer* obj) {
     int value = this->value + obj->value;
     return make_shared<Integer>(value);
@@ -133,6 +142,11 @@ shared_ptr<Object> Integer::operator* (Integer* obj) {
 
 shared_ptr<Object> Integer::operator/ (Integer* obj) {
     int value = this->value / obj->value;
+    return make_shared<Integer>(value);
+}
+
+shared_ptr<Object> Integer::operator% (Integer* obj) {
+    int value = this->value % obj->value;
     return make_shared<Integer>(value);
 }
 
@@ -194,6 +208,10 @@ bool String::operator== (String* s) {
     return this->s == s->s;
 }
 
+bool String::operator!= (String* s) {
+    return this->s != s->s;
+}
+
 shared_ptr<Object> String::operator+ (Integer* p) {
     string s = this->s + p->output();
     return make_shared<String>(s);
@@ -207,3 +225,41 @@ shared_ptr<Object> String::operator+ (String* p) {
 int String::isZero() {
     return s.length();
 }
+
+/**
+ *
+ * Array
+ *
+ */
+
+Array::Array(int n) : v(n) {
+    for (int i = 0; i < v.size(); i++) {
+        v[i] = make_shared<Object>();
+    }
+}
+
+Array::Array() {
+}
+
+string Array::output() {
+    string s;
+    s += "[ ";
+    for (int i = 0; i < this->v.size(); i++) {
+        s += this->v[i]->output();
+    }
+    s += " ]";
+    return s;
+}
+
+shared_ptr<Object> Array::accept(Object::IVisitor* visitor) {
+    return visitor->Visit(this);
+}
+
+shared_ptr<Object>& Array::operator[](int idx) {
+    return this->v[idx];
+}
+
+int Array::isZero() {
+    return this->v.size();
+}
+

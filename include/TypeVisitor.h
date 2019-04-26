@@ -49,6 +49,17 @@ private:
     shared_ptr<Object> obj;
 };
 
+class ModVisitor : public Object::IVisitor {
+public:
+    ModVisitor(shared_ptr<Object>);
+    ModVisitor();
+    virtual shared_ptr<Object> Visit(Integer*);
+
+    virtual shared_ptr<Object> Visit(Integer*, Integer*);
+private:
+    shared_ptr<Object> obj;
+};
+
 class GTVisitor : public Object::IVisitor {
 public:
     GTVisitor(shared_ptr<Object>);
@@ -88,6 +99,19 @@ private:
     shared_ptr<Object> obj;
 };
 
+class NEQVisitor : public Object::IVisitor {
+public:
+    NEQVisitor(shared_ptr<Object>);
+    NEQVisitor();
+    virtual shared_ptr<Object> Visit(String*);
+    virtual shared_ptr<Object> Visit(Integer*);
+
+    virtual shared_ptr<Object> Visit(Integer*, Integer*);
+    virtual shared_ptr<Object> Visit(String*, String*);
+private:
+    shared_ptr<Object> obj;
+};
+
 class LSVisitor : public Object::IVisitor {
 public:
     LSVisitor(shared_ptr<Object>);
@@ -111,6 +135,17 @@ public:
     virtual shared_ptr<Object> Visit(Integer*, Integer*);
     virtual shared_ptr<Object> Visit(String*, String*);
 private:
+    shared_ptr<Object> obj;
+};
+
+class ArrayElementVisitor : public Object::IVisitor {
+public:
+    ArrayElementVisitor(int n);
+    ArrayElementVisitor(int n, shared_ptr<Object>);
+    ArrayElementVisitor();
+    virtual shared_ptr<Object>& Visit(Array*);
+private:
+    int n;
     shared_ptr<Object> obj;
 };
 

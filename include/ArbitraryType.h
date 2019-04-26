@@ -6,6 +6,8 @@
 using namespace std;
 class String;
 class Integer;
+class Array;
+
 class Object {
 public:
     Object();
@@ -16,12 +18,14 @@ public:
         virtual shared_ptr<Object> Visit(Object*);
         virtual shared_ptr<Object> Visit(String*);
         virtual shared_ptr<Object> Visit(Integer*);
+        virtual shared_ptr<Object>& Visit(Array*);
 
         virtual shared_ptr<Object> Visit(Integer*, Integer*);
         virtual shared_ptr<Object> Visit(String*, String*);
         virtual shared_ptr<Object> Visit(String*, Integer*);
     };
     virtual shared_ptr<Object> accept(IVisitor*);
+    //virtual shared_ptr<Object>& accept(IVisitor*);
     virtual shared_ptr<Object> accept(IVisitor*, Object*);
     virtual shared_ptr<Object> accept(IVisitor*, Integer*);
     virtual shared_ptr<Object> accept(IVisitor*, String*);
@@ -45,10 +49,12 @@ public:
     bool operator< (Integer*);
     bool operator<= (Integer*);
     bool operator== (Integer*);
+    bool operator!= (Integer*);
     shared_ptr<Object> operator+ (Integer*);
     shared_ptr<Object> operator- (Integer*);
     shared_ptr<Object> operator* (Integer*);
     shared_ptr<Object> operator/ (Integer*);
+    shared_ptr<Object> operator% (Integer*);
     virtual int isZero();
 private:
     int value;
@@ -69,11 +75,24 @@ public:
     bool operator< (String*);
     bool operator<= (String*);
     bool operator== (String*);
+    bool operator!= (String*);
     shared_ptr<Object> operator+ (Integer*);
     shared_ptr<Object> operator+ (String*);
     virtual int isZero();
 private:
     string s;
+};
+
+class Array : public Object {
+public:
+    Array(int n);
+    Array();
+    virtual string output();
+    virtual shared_ptr<Object> accept(Object::IVisitor*);
+    shared_ptr<Object>& operator[](int idx);
+    virtual int isZero();
+private:
+    vector<shared_ptr<Object>> v;
 };
 
 #endif

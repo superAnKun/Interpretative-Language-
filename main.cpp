@@ -91,8 +91,8 @@ shared_ptr<Object> ExprTreeEvaluator::getValue(pANTLR3_BASE_TREE tree) {
     }
 //    p = this;
 //    p->memory[getText(tree)] = 250;
-    printf("undeclear variable %s in line %d\n", getText(tree), tree->getLine(tree));
-    fflush(stdout);
+//    printf("undeclear variable %s in line %d\n", getText(tree), tree->getLine(tree));
+//    fflush(stdout);
     return nullptr;
 }
 
