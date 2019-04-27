@@ -149,4 +149,13 @@ private:
     shared_ptr<Object> obj;
 };
 
+class ArrayElementSetVisitor : public Object::IVisitor {
+public:
+    ArrayElementSetVisitor(shared_ptr<Object>, int);
+    virtual shared_ptr<Object>& Visit(Array*);
+private:
+    int idx;
+    shared_ptr<Object> obj;
+};
+
 #endif

@@ -9,41 +9,46 @@ ADAPTOR	./ExprCppTreeParser.c	163;"	d	file:
 ADAPTOR	./output/ExprCppTreeParser.c	121;"	d	file:
 ADAPTOR	./output/ExprCppTreeParser.c	163;"	d	file:
 AND	./ExprCppTreeLexer.h	438;"	d
-AND	./ExprCppTreeParser.h	491;"	d
+AND	./ExprCppTreeParser.h	510;"	d
 ARBITRARY_H	./include/ArbitraryType.h	2;"	d
 ARRELEM	./ExprCppTreeLexer.h	439;"	d
-ARRELEM	./ExprCppTreeParser.h	492;"	d
-ASSIGN	./ExprCppTreeLexer.h	440;"	d
-ASSIGN	./ExprCppTreeParser.h	493;"	d
+ARRELEM	./ExprCppTreeParser.h	511;"	d
+ARRELEMASSIGN	./ExprCppTreeLexer.h	440;"	d
+ARRELEMASSIGN	./ExprCppTreeParser.h	512;"	d
+ASSIGN	./ExprCppTreeLexer.h	441;"	d
+ASSIGN	./ExprCppTreeParser.h	513;"	d
 AddVisitor	./include/TypeVisitor.h	/^class AddVisitor : public Object::IVisitor {$/;"	c
 AddVisitor	./src/TypeVisitor.cpp	/^AddVisitor::AddVisitor() {$/;"	f	class:AddVisitor
 AddVisitor	./src/TypeVisitor.cpp	/^AddVisitor::AddVisitor(shared_ptr<Object> obj) {$/;"	f	class:AddVisitor
 Array	./include/ArbitraryType.h	/^class Array : public Object {$/;"	c
 Array	./src/ArbitraryType.cpp	/^Array::Array() {$/;"	f	class:Array
-Array	./src/ArbitraryType.cpp	/^Array::Array(int n) : v(n){$/;"	f	class:Array
+Array	./src/ArbitraryType.cpp	/^Array::Array(int n) : v(n) {$/;"	f	class:Array
+ArrayElementSetVisitor	./include/TypeVisitor.h	/^class ArrayElementSetVisitor : public Object::IVisitor {$/;"	c
+ArrayElementSetVisitor	./src/TypeVisitor.cpp	/^ArrayElementSetVisitor::ArrayElementSetVisitor(shared_ptr<Object> obj, int idx) {$/;"	f	class:ArrayElementSetVisitor
 ArrayElementVisitor	./include/TypeVisitor.h	/^class ArrayElementVisitor : public Object::IVisitor {$/;"	c
-ArrayElementVisitor	./src/TypeVisitor.cpp	/^ArrayElementVisitor::ArrayElementVisitor() {$/;"	f	class:ArrayElementVisitor
-ArrayElementVisitor	./src/TypeVisitor.cpp	/^ArrayElementVisitor::ArrayElementVisitor(int n) : n(n) {$/;"	f	class:ArrayElementVisitor
+ArrayElementVisitor	./src/TypeVisitor.cpp	/^ArrayElementVisitor::ArrayElementVisitor() : n(-1), obj(nullptr) {$/;"	f	class:ArrayElementVisitor
+ArrayElementVisitor	./src/TypeVisitor.cpp	/^ArrayElementVisitor::ArrayElementVisitor(int n) : n(n), obj(nullptr){$/;"	f	class:ArrayElementVisitor
+ArrayElementVisitor	./src/TypeVisitor.cpp	/^ArrayElementVisitor::ArrayElementVisitor(int n, shared_ptr<Object> obj) {$/;"	f	class:ArrayElementVisitor
 BACKTRACKING	./ExprCppTreeLexer.c	136;"	d	file:
 BACKTRACKING	./ExprCppTreeLexer.c	164;"	d	file:
 BACKTRACKING	./ExprCppTreeParser.c	160;"	d	file:
 BACKTRACKING	./output/ExprCppTreeLexer.c	107;"	d	file:
 BACKTRACKING	./output/ExprCppTreeLexer.c	135;"	d	file:
 BACKTRACKING	./output/ExprCppTreeParser.c	160;"	d	file:
-BITAND	./ExprCppTreeLexer.h	441;"	d
-BITAND	./ExprCppTreeParser.h	494;"	d
-BITOR	./ExprCppTreeLexer.h	442;"	d
-BITOR	./ExprCppTreeParser.h	495;"	d
-BLOCK	./ExprCppTreeLexer.h	443;"	d
-BLOCK	./ExprCppTreeParser.h	496;"	d
-BREAK	./ExprCppTreeLexer.h	444;"	d
-BREAK	./ExprCppTreeParser.h	497;"	d
+BITAND	./ExprCppTreeLexer.h	442;"	d
+BITAND	./ExprCppTreeParser.h	514;"	d
+BITOR	./ExprCppTreeLexer.h	443;"	d
+BITOR	./ExprCppTreeParser.h	515;"	d
+BLOCK	./ExprCppTreeLexer.h	444;"	d
+BLOCK	./ExprCppTreeParser.h	516;"	d
+BREAK	./ExprCppTreeLexer.h	445;"	d
+BREAK	./ExprCppTreeParser.h	517;"	d
 BREAKL	./include/global.h	/^    BREAKL,$/;"	m	class:Type
 BranchExprCalculate	./include/master_chain.h	/^    class BranchExprCalculate : public Calculate {$/;"	c	class:BranchExprFactory
 BranchExprConverter	./include/dfa.h	/^class BranchExprConverter : public Converter {$/;"	c
 BranchExprFactory	./include/master_chain.h	/^class BranchExprFactory : public Factory {$/;"	c
-CASE	./ExprCppTreeLexer.h	445;"	d
-CASE	./ExprCppTreeParser.h	498;"	d
+CASE	./ExprCppTreeLexer.h	446;"	d
+CASE	./ExprCppTreeParser.h	518;"	d
 CASEL	./include/global.h	/^    CASEL,$/;"	m	class:Type
 CONSTRUCTEX	./ExprCppTreeLexer.c	130;"	d	file:
 CONSTRUCTEX	./ExprCppTreeLexer.c	174;"	d	file:
@@ -63,8 +68,8 @@ CONSUME	./output/ExprCppTreeLexer.c	187;"	d	file:
 CONSUME	./output/ExprCppTreeLexer.c	206;"	d	file:
 CONSUME	./output/ExprCppTreeParser.c	111;"	d	file:
 CONSUME	./output/ExprCppTreeParser.c	152;"	d	file:
-CONTINUE	./ExprCppTreeLexer.h	446;"	d
-CONTINUE	./ExprCppTreeParser.h	499;"	d
+CONTINUE	./ExprCppTreeLexer.h	447;"	d
+CONTINUE	./ExprCppTreeParser.h	519;"	d
 CONTINUEL	./include/global.h	/^    CONTINUEL,$/;"	m	class:Type
 CREATE_stream_32	./output/ExprCppTreeParser.c	2596;"	d	file:
 CREATE_stream_32	./output/ExprCppTreeParser.c	3278;"	d	file:
@@ -76,70 +81,69 @@ CREATE_stream_34	./output/ExprCppTreeParser.c	3274;"	d	file:
 CREATE_stream_34	./output/ExprCppTreeParser.c	3784;"	d	file:
 CREATE_stream_35	./output/ExprCppTreeParser.c	4321;"	d	file:
 CREATE_stream_36	./output/ExprCppTreeParser.c	4323;"	d	file:
-CREATE_stream_41	./ExprCppTreeParser.c	2428;"	d	file:
-CREATE_stream_41	./ExprCppTreeParser.c	2696;"	d	file:
-CREATE_stream_41	./ExprCppTreeParser.c	2928;"	d	file:
-CREATE_stream_41	./ExprCppTreeParser.c	3572;"	d	file:
-CREATE_stream_41	./ExprCppTreeParser.c	4223;"	d	file:
-CREATE_stream_42	./ExprCppTreeParser.c	2432;"	d	file:
-CREATE_stream_42	./ExprCppTreeParser.c	2698;"	d	file:
-CREATE_stream_42	./ExprCppTreeParser.c	2930;"	d	file:
-CREATE_stream_42	./ExprCppTreeParser.c	3574;"	d	file:
-CREATE_stream_42	./ExprCppTreeParser.c	4225;"	d	file:
-CREATE_stream_43	./ExprCppTreeParser.c	3105;"	d	file:
-CREATE_stream_43	./ExprCppTreeParser.c	3319;"	d	file:
-CREATE_stream_44	./ExprCppTreeParser.c	2692;"	d	file:
-CREATE_stream_44	./ExprCppTreeParser.c	4221;"	d	file:
-CREATE_stream_45	./ExprCppTreeParser.c	1269;"	d	file:
-CREATE_stream_45	./ExprCppTreeParser.c	1567;"	d	file:
-CREATE_stream_45	./ExprCppTreeParser.c	1752;"	d	file:
-CREATE_stream_46	./ExprCppTreeParser.c	1271;"	d	file:
-CREATE_stream_46	./ExprCppTreeParser.c	1569;"	d	file:
-CREATE_stream_46	./ExprCppTreeParser.c	1754;"	d	file:
-CREATE_stream_47	./ExprCppTreeParser.c	3566;"	d	file:
-CREATE_stream_47	./ExprCppTreeParser.c	4664;"	d	file:
-CREATE_stream_48	./ExprCppTreeParser.c	3568;"	d	file:
-CREATE_stream_48	./ExprCppTreeParser.c	4666;"	d	file:
-CREATE_stream_ASSIGN	./ExprCppTreeParser.c	2100;"	d	file:
+CREATE_stream_41	./ExprCppTreeParser.c	2587;"	d	file:
+CREATE_stream_41	./ExprCppTreeParser.c	2855;"	d	file:
+CREATE_stream_41	./ExprCppTreeParser.c	3087;"	d	file:
+CREATE_stream_41	./ExprCppTreeParser.c	3731;"	d	file:
+CREATE_stream_41	./ExprCppTreeParser.c	4382;"	d	file:
+CREATE_stream_42	./ExprCppTreeParser.c	2591;"	d	file:
+CREATE_stream_42	./ExprCppTreeParser.c	2857;"	d	file:
+CREATE_stream_42	./ExprCppTreeParser.c	3089;"	d	file:
+CREATE_stream_42	./ExprCppTreeParser.c	3733;"	d	file:
+CREATE_stream_42	./ExprCppTreeParser.c	4384;"	d	file:
+CREATE_stream_43	./ExprCppTreeParser.c	3264;"	d	file:
+CREATE_stream_43	./ExprCppTreeParser.c	3478;"	d	file:
+CREATE_stream_44	./ExprCppTreeParser.c	2851;"	d	file:
+CREATE_stream_44	./ExprCppTreeParser.c	4380;"	d	file:
+CREATE_stream_45	./ExprCppTreeParser.c	1305;"	d	file:
+CREATE_stream_45	./ExprCppTreeParser.c	1603;"	d	file:
+CREATE_stream_46	./ExprCppTreeParser.c	1307;"	d	file:
+CREATE_stream_46	./ExprCppTreeParser.c	1605;"	d	file:
+CREATE_stream_47	./ExprCppTreeParser.c	3725;"	d	file:
+CREATE_stream_47	./ExprCppTreeParser.c	4823;"	d	file:
+CREATE_stream_48	./ExprCppTreeParser.c	3727;"	d	file:
+CREATE_stream_48	./ExprCppTreeParser.c	4825;"	d	file:
+CREATE_stream_ASSIGN	./ExprCppTreeParser.c	1823;"	d	file:
+CREATE_stream_ASSIGN	./ExprCppTreeParser.c	2184;"	d	file:
 CREATE_stream_ASSIGN	./output/ExprCppTreeParser.c	1806;"	d	file:
 CREATE_stream_ASSIGN	./output/ExprCppTreeParser.c	3070;"	d	file:
 CREATE_stream_BREAK	./output/ExprCppTreeParser.c	3786;"	d	file:
-CREATE_stream_CASE	./ExprCppTreeParser.c	3107;"	d	file:
+CREATE_stream_CASE	./ExprCppTreeParser.c	3266;"	d	file:
 CREATE_stream_CONTINUE	./output/ExprCppTreeParser.c	3782;"	d	file:
-CREATE_stream_DEF	./ExprCppTreeParser.c	1756;"	d	file:
+CREATE_stream_DEF	./ExprCppTreeParser.c	1977;"	d	file:
 CREATE_stream_DEF	./output/ExprCppTreeParser.c	774;"	d	file:
-CREATE_stream_DEFAULT	./ExprCppTreeParser.c	3317;"	d	file:
-CREATE_stream_DOT	./ExprCppTreeParser.c	1273;"	d	file:
-CREATE_stream_DOT	./ExprCppTreeParser.c	1758;"	d	file:
+CREATE_stream_DEFAULT	./ExprCppTreeParser.c	3476;"	d	file:
+CREATE_stream_DOT	./ExprCppTreeParser.c	1309;"	d	file:
+CREATE_stream_DOT	./ExprCppTreeParser.c	1979;"	d	file:
 CREATE_stream_DOT	./output/ExprCppTreeParser.c	2840;"	d	file:
 CREATE_stream_DOT	./output/ExprCppTreeParser.c	776;"	d	file:
-CREATE_stream_ELSE	./ExprCppTreeParser.c	2426;"	d	file:
+CREATE_stream_ELSE	./ExprCppTreeParser.c	2585;"	d	file:
 CREATE_stream_ELSE	./output/ExprCppTreeParser.c	2430;"	d	file:
-CREATE_stream_FOR	./ExprCppTreeParser.c	2694;"	d	file:
+CREATE_stream_FOR	./ExprCppTreeParser.c	2853;"	d	file:
 CREATE_stream_FOR	./output/ExprCppTreeParser.c	3276;"	d	file:
-CREATE_stream_ID	./ExprCppTreeParser.c	1571;"	d	file:
-CREATE_stream_ID	./ExprCppTreeParser.c	2098;"	d	file:
+CREATE_stream_ID	./ExprCppTreeParser.c	1607;"	d	file:
+CREATE_stream_ID	./ExprCppTreeParser.c	2182;"	d	file:
 CREATE_stream_ID	./output/ExprCppTreeParser.c	1804;"	d	file:
 CREATE_stream_ID	./output/ExprCppTreeParser.c	3068;"	d	file:
 CREATE_stream_ID	./output/ExprCppTreeParser.c	778;"	d	file:
-CREATE_stream_IF	./ExprCppTreeParser.c	2430;"	d	file:
+CREATE_stream_IF	./ExprCppTreeParser.c	2589;"	d	file:
 CREATE_stream_IF	./output/ExprCppTreeParser.c	2594;"	d	file:
-CREATE_stream_INT	./ExprCppTreeParser.c	1573;"	d	file:
-CREATE_stream_INT	./ExprCppTreeParser.c	1760;"	d	file:
+CREATE_stream_INT	./ExprCppTreeParser.c	1609;"	d	file:
 CREATE_stream_NOT	./output/ExprCppTreeParser.c	1211;"	d	file:
-CREATE_stream_PRINT	./ExprCppTreeParser.c	4219;"	d	file:
+CREATE_stream_PRINT	./ExprCppTreeParser.c	4378;"	d	file:
 CREATE_stream_PRINT	./output/ExprCppTreeParser.c	2838;"	d	file:
-CREATE_stream_SWITCH	./ExprCppTreeParser.c	3570;"	d	file:
-CREATE_stream_WHILE	./ExprCppTreeParser.c	2926;"	d	file:
+CREATE_stream_SWITCH	./ExprCppTreeParser.c	3729;"	d	file:
+CREATE_stream_WHILE	./ExprCppTreeParser.c	3085;"	d	file:
 CREATE_stream_WHILE	./output/ExprCppTreeParser.c	3532;"	d	file:
+CREATE_stream_arrayElem	./ExprCppTreeParser.c	1825;"	d	file:
 CREATE_stream_atom	./output/ExprCppTreeParser.c	1213;"	d	file:
-CREATE_stream_block	./ExprCppTreeParser.c	2436;"	d	file:
+CREATE_stream_block	./ExprCppTreeParser.c	2595;"	d	file:
 CREATE_stream_blockCode	./output/ExprCppTreeParser.c	4325;"	d	file:
-CREATE_stream_caseExpr	./ExprCppTreeParser.c	3578;"	d	file:
-CREATE_stream_conditionExpr	./ExprCppTreeParser.c	2434;"	d	file:
-CREATE_stream_conditionExpr	./ExprCppTreeParser.c	2700;"	d	file:
-CREATE_stream_conditionExpr	./ExprCppTreeParser.c	2932;"	d	file:
-CREATE_stream_conditionExpr	./ExprCppTreeParser.c	4227;"	d	file:
+CREATE_stream_caseExpr	./ExprCppTreeParser.c	3737;"	d	file:
+CREATE_stream_conditionExpr	./ExprCppTreeParser.c	2593;"	d	file:
+CREATE_stream_conditionExpr	./ExprCppTreeParser.c	2859;"	d	file:
+CREATE_stream_conditionExpr	./ExprCppTreeParser.c	3091;"	d	file:
+CREATE_stream_conditionExpr	./ExprCppTreeParser.c	4386;"	d	file:
 CREATE_stream_conditionExpr	./output/ExprCppTreeParser.c	1808;"	d	file:
 CREATE_stream_conditionExpr	./output/ExprCppTreeParser.c	2598;"	d	file:
 CREATE_stream_conditionExpr	./output/ExprCppTreeParser.c	3072;"	d	file:
@@ -147,24 +151,25 @@ CREATE_stream_conditionExpr	./output/ExprCppTreeParser.c	3282;"	d	file:
 CREATE_stream_conditionExpr	./output/ExprCppTreeParser.c	3536;"	d	file:
 CREATE_stream_conditionExpr	./output/ExprCppTreeParser.c	3788;"	d	file:
 CREATE_stream_defExpr	./output/ExprCppTreeParser.c	3790;"	d	file:
-CREATE_stream_defaultExpr	./ExprCppTreeParser.c	3580;"	d	file:
+CREATE_stream_defaultExpr	./ExprCppTreeParser.c	3739;"	d	file:
 CREATE_stream_elseExpr	./output/ExprCppTreeParser.c	2600;"	d	file:
-CREATE_stream_expr	./ExprCppTreeParser.c	1275;"	d	file:
-CREATE_stream_expr	./ExprCppTreeParser.c	1762;"	d	file:
-CREATE_stream_expr	./ExprCppTreeParser.c	2702;"	d	file:
-CREATE_stream_expr	./ExprCppTreeParser.c	3109;"	d	file:
-CREATE_stream_expr	./ExprCppTreeParser.c	3576;"	d	file:
+CREATE_stream_expr	./ExprCppTreeParser.c	1311;"	d	file:
+CREATE_stream_expr	./ExprCppTreeParser.c	1827;"	d	file:
+CREATE_stream_expr	./ExprCppTreeParser.c	1981;"	d	file:
+CREATE_stream_expr	./ExprCppTreeParser.c	2861;"	d	file:
+CREATE_stream_expr	./ExprCppTreeParser.c	3268;"	d	file:
+CREATE_stream_expr	./ExprCppTreeParser.c	3735;"	d	file:
 CREATE_stream_expr	./output/ExprCppTreeParser.c	2842;"	d	file:
 CREATE_stream_expr	./output/ExprCppTreeParser.c	3284;"	d	file:
 CREATE_stream_for1	./output/ExprCppTreeParser.c	3280;"	d	file:
-CREATE_stream_midExpr	./ExprCppTreeParser.c	2102;"	d	file:
+CREATE_stream_midExpr	./ExprCppTreeParser.c	2186;"	d	file:
 CREATE_stream_printExpr	./output/ExprCppTreeParser.c	3792;"	d	file:
-CREATE_stream_stmt	./ExprCppTreeParser.c	2438;"	d	file:
-CREATE_stream_stmt	./ExprCppTreeParser.c	2704;"	d	file:
-CREATE_stream_stmt	./ExprCppTreeParser.c	2934;"	d	file:
-CREATE_stream_stmt	./ExprCppTreeParser.c	3111;"	d	file:
-CREATE_stream_stmt	./ExprCppTreeParser.c	3321;"	d	file:
-CREATE_stream_stmt	./ExprCppTreeParser.c	4668;"	d	file:
+CREATE_stream_stmt	./ExprCppTreeParser.c	2597;"	d	file:
+CREATE_stream_stmt	./ExprCppTreeParser.c	2863;"	d	file:
+CREATE_stream_stmt	./ExprCppTreeParser.c	3093;"	d	file:
+CREATE_stream_stmt	./ExprCppTreeParser.c	3270;"	d	file:
+CREATE_stream_stmt	./ExprCppTreeParser.c	3480;"	d	file:
+CREATE_stream_stmt	./ExprCppTreeParser.c	4827;"	d	file:
 CREATE_stream_stmt	./output/ExprCppTreeParser.c	2432;"	d	file:
 CREATE_stream_stmt	./output/ExprCppTreeParser.c	2602;"	d	file:
 CREATE_stream_stmt	./output/ExprCppTreeParser.c	3286;"	d	file:
@@ -189,18 +194,16 @@ DBG	./ExprCppTreeParser.c	165;"	d	file:
 DBG	./output/ExprCppTreeLexer.c	161;"	d	file:
 DBG	./output/ExprCppTreeParser.c	124;"	d	file:
 DBG	./output/ExprCppTreeParser.c	165;"	d	file:
-DEF	./ExprCppTreeLexer.h	447;"	d
-DEF	./ExprCppTreeParser.h	500;"	d
-DEFAULT	./ExprCppTreeLexer.h	448;"	d
-DEFAULT	./ExprCppTreeParser.h	501;"	d
-DEFMID	./ExprCppTreeLexer.h	449;"	d
-DEFMID	./ExprCppTreeParser.h	502;"	d
+DEF	./ExprCppTreeLexer.h	448;"	d
+DEF	./ExprCppTreeParser.h	520;"	d
+DEFAULT	./ExprCppTreeLexer.h	449;"	d
+DEFAULT	./ExprCppTreeParser.h	521;"	d
 DFANode	./include/DFAEdge.h	/^class DFANode {$/;"	c
 DFANode	./src/DFAEdge.cpp	/^DFANode::DFANode(pANTLR3_BASE_TREE node) {$/;"	f	class:DFANode
 DIV	./ExprCppTreeLexer.h	450;"	d
-DIV	./ExprCppTreeParser.h	503;"	d
+DIV	./ExprCppTreeParser.h	522;"	d
 DOT	./ExprCppTreeLexer.h	451;"	d
-DOT	./ExprCppTreeParser.h	504;"	d
+DOT	./ExprCppTreeParser.h	523;"	d
 DOWN	./ExprCppTreeLexer.c	249;"	d	file:
 DOWN	./ExprCppTreeParser.c	177;"	d	file:
 DOWN	./output/ExprCppTreeLexer.c	220;"	d	file:
@@ -210,7 +213,7 @@ DivVisitor	./include/TypeVisitor.h	/^class DivVisitor : public Object::IVisitor 
 DivVisitor	./src/TypeVisitor.cpp	/^DivVisitor::DivVisitor() {$/;"	f	class:DivVisitor
 DivVisitor	./src/TypeVisitor.cpp	/^DivVisitor::DivVisitor(shared_ptr<Object> obj) {$/;"	f	class:DivVisitor
 ELSE	./ExprCppTreeLexer.h	452;"	d
-ELSE	./ExprCppTreeParser.h	505;"	d
+ELSE	./ExprCppTreeParser.h	524;"	d
 EMIT	./ExprCppTreeLexer.c	117;"	d	file:
 EMIT	./ExprCppTreeLexer.c	156;"	d	file:
 EMIT	./output/ExprCppTreeLexer.c	127;"	d	file:
@@ -223,10 +226,10 @@ EOF	./ExprCppTreeLexer.h	424;"	d
 EOF	./ExprCppTreeLexer.h	429;"	d
 EOF	./ExprCppTreeLexer.h	476;"	d
 EOF	./ExprCppTreeLexer.h	477;"	d
-EOF	./ExprCppTreeParser.h	477;"	d
-EOF	./ExprCppTreeParser.h	482;"	d
-EOF	./ExprCppTreeParser.h	529;"	d
-EOF	./ExprCppTreeParser.h	530;"	d
+EOF	./ExprCppTreeParser.h	496;"	d
+EOF	./ExprCppTreeParser.h	501;"	d
+EOF	./ExprCppTreeParser.h	548;"	d
+EOF	./ExprCppTreeParser.h	549;"	d
 EOF_TOKEN	./ExprCppTreeLexer.c	171;"	d	file:
 EOF_TOKEN	./output/ExprCppTreeLexer.c	142;"	d	file:
 EOR	./ExprCppTreeLexer.c	250;"	d	file:
@@ -234,7 +237,7 @@ EOR	./ExprCppTreeParser.c	178;"	d	file:
 EOR	./output/ExprCppTreeLexer.c	221;"	d	file:
 EOR	./output/ExprCppTreeParser.c	178;"	d	file:
 EQ	./ExprCppTreeLexer.h	453;"	d
-EQ	./ExprCppTreeParser.h	506;"	d
+EQ	./ExprCppTreeParser.h	525;"	d
 EQVisitor	./include/TypeVisitor.h	/^class EQVisitor : public Object::IVisitor {$/;"	c
 EQVisitor	./src/TypeVisitor.cpp	/^EQVisitor::EQVisitor() {$/;"	f	class:EQVisitor
 EQVisitor	./src/TypeVisitor.cpp	/^EQVisitor::EQVisitor(shared_ptr<Object> obj) {$/;"	f	class:EQVisitor
@@ -272,6 +275,8 @@ ExprCppTreeParserReset	./output/ExprCppTreeParser.c	/^ExprCppTreeParserReset (pE
 ExprCppTreeParserTokenNames	./ExprCppTreeParser.c	/^pANTLR3_UINT8   ExprCppTreeParserTokenNames[45+4]$/;"	v
 ExprCppTreeParserTokenNames	./output/ExprCppTreeParser.c	/^pANTLR3_UINT8   ExprCppTreeParserTokenNames[33+4]$/;"	v
 ExprCppTreeParser_Ctx_struct	./ExprCppTreeParser.h	/^struct ExprCppTreeParser_Ctx_struct$/;"	s
+ExprCppTreeParser_arrayElemAssign_return	./ExprCppTreeParser.h	/^    ExprCppTreeParser_arrayElemAssign_return;$/;"	t	typeref:struct:ExprCppTreeParser_arrayElemAssign_return_struct
+ExprCppTreeParser_arrayElemAssign_return_struct	./ExprCppTreeParser.h	/^typedef struct ExprCppTreeParser_arrayElemAssign_return_struct$/;"	s
 ExprCppTreeParser_arrayElem_return	./ExprCppTreeParser.h	/^    ExprCppTreeParser_arrayElem_return;$/;"	t	typeref:struct:ExprCppTreeParser_arrayElem_return_struct
 ExprCppTreeParser_arrayElem_return_struct	./ExprCppTreeParser.h	/^typedef struct ExprCppTreeParser_arrayElem_return_struct$/;"	s
 ExprCppTreeParser_assignExpr_return	./ExprCppTreeParser.h	/^    ExprCppTreeParser_assignExpr_return;$/;"	t	typeref:struct:ExprCppTreeParser_assignExpr_return_struct
@@ -368,98 +373,94 @@ FOLLOW_35_in_block717	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST 
 FOLLOW_35_in_block717_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_35_in_block717_bits[]	= { ANTLR3_UINT64_LIT(0x0000001952391C00) };$/;"	v	file:
 FOLLOW_36_in_block721	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_36_in_block721	= { FOLLOW_36_in_block721_bits, 1	};$/;"	v	file:
 FOLLOW_36_in_block721_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_36_in_block721_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_41_in_atom725	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_41_in_atom725	= { FOLLOW_41_in_atom725_bits, 1	};$/;"	v	file:
-FOLLOW_41_in_atom725_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_41_in_atom725_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
-FOLLOW_41_in_forExpr562	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_41_in_forExpr562	= { FOLLOW_41_in_forExpr562_bits, 1	};$/;"	v	file:
-FOLLOW_41_in_forExpr562_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_41_in_forExpr562_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
-FOLLOW_41_in_ifExpr527	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_41_in_ifExpr527	= { FOLLOW_41_in_ifExpr527_bits, 1	};$/;"	v	file:
-FOLLOW_41_in_ifExpr527_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_41_in_ifExpr527_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
-FOLLOW_41_in_stmt783	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_41_in_stmt783	= { FOLLOW_41_in_stmt783_bits, 1	};$/;"	v	file:
-FOLLOW_41_in_stmt783_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_41_in_stmt783_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
-FOLLOW_41_in_switchExpr666	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_41_in_switchExpr666	= { FOLLOW_41_in_switchExpr666_bits, 1	};$/;"	v	file:
-FOLLOW_41_in_switchExpr666_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_41_in_switchExpr666_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
-FOLLOW_41_in_whileExpr598	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_41_in_whileExpr598	= { FOLLOW_41_in_whileExpr598_bits, 1	};$/;"	v	file:
-FOLLOW_41_in_whileExpr598_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_41_in_whileExpr598_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
-FOLLOW_42_in_atom730	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_42_in_atom730	= { FOLLOW_42_in_atom730_bits, 1	};$/;"	v	file:
-FOLLOW_42_in_atom730_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_42_in_atom730_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_42_in_forExpr574	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_42_in_forExpr574	= { FOLLOW_42_in_forExpr574_bits, 1	};$/;"	v	file:
-FOLLOW_42_in_forExpr574_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_42_in_forExpr574_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803903400) };$/;"	v	file:
-FOLLOW_42_in_ifExpr531	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_42_in_ifExpr531	= { FOLLOW_42_in_ifExpr531_bits, 1	};$/;"	v	file:
-FOLLOW_42_in_ifExpr531_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_42_in_ifExpr531_bits[]	= { ANTLR3_UINT64_LIT(0x0000800000000000) };$/;"	v	file:
-FOLLOW_42_in_stmt787	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_42_in_stmt787	= { FOLLOW_42_in_stmt787_bits, 1	};$/;"	v	file:
-FOLLOW_42_in_stmt787_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_42_in_stmt787_bits[]	= { ANTLR3_UINT64_LIT(0x0000100000000000) };$/;"	v	file:
-FOLLOW_42_in_switchExpr670	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_42_in_switchExpr670	= { FOLLOW_42_in_switchExpr670_bits, 1	};$/;"	v	file:
-FOLLOW_42_in_switchExpr670_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_42_in_switchExpr670_bits[]	= { ANTLR3_UINT64_LIT(0x0000800000000000) };$/;"	v	file:
-FOLLOW_42_in_whileExpr602	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_42_in_whileExpr602	= { FOLLOW_42_in_whileExpr602_bits, 1	};$/;"	v	file:
-FOLLOW_42_in_whileExpr602_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_42_in_whileExpr602_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803903400) };$/;"	v	file:
-FOLLOW_43_in_caseExpr623	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_43_in_caseExpr623	= { FOLLOW_43_in_caseExpr623_bits, 1	};$/;"	v	file:
-FOLLOW_43_in_caseExpr623_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_43_in_caseExpr623_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803903402) };$/;"	v	file:
-FOLLOW_43_in_defaultExpr645	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_43_in_defaultExpr645	= { FOLLOW_43_in_defaultExpr645_bits, 1	};$/;"	v	file:
-FOLLOW_43_in_defaultExpr645_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_43_in_defaultExpr645_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803903400) };$/;"	v	file:
-FOLLOW_44_in_forExpr566	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_44_in_forExpr566	= { FOLLOW_44_in_forExpr566_bits, 1	};$/;"	v	file:
-FOLLOW_44_in_forExpr566_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_44_in_forExpr566_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
-FOLLOW_44_in_forExpr570	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_44_in_forExpr570	= { FOLLOW_44_in_forExpr570_bits, 1	};$/;"	v	file:
-FOLLOW_44_in_forExpr570_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_44_in_forExpr570_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
-FOLLOW_44_in_stmt752	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_44_in_stmt752	= { FOLLOW_44_in_stmt752_bits, 1	};$/;"	v	file:
-FOLLOW_44_in_stmt752_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_44_in_stmt752_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_44_in_stmt772	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_44_in_stmt772	= { FOLLOW_44_in_stmt772_bits, 1	};$/;"	v	file:
-FOLLOW_44_in_stmt772_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_44_in_stmt772_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_44_in_stmt788	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_44_in_stmt788	= { FOLLOW_44_in_stmt788_bits, 1	};$/;"	v	file:
-FOLLOW_44_in_stmt788_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_44_in_stmt788_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_44_in_stmt837	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_44_in_stmt837	= { FOLLOW_44_in_stmt837_bits, 1	};$/;"	v	file:
-FOLLOW_44_in_stmt837_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_44_in_stmt837_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_44_in_stmt847	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_44_in_stmt847	= { FOLLOW_44_in_stmt847_bits, 1	};$/;"	v	file:
-FOLLOW_44_in_stmt847_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_44_in_stmt847_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_45_in_arrayElem354	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_45_in_arrayElem354	= { FOLLOW_45_in_arrayElem354_bits, 1	};$/;"	v	file:
-FOLLOW_45_in_arrayElem354_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_45_in_arrayElem354_bits[]	= { ANTLR3_UINT64_LIT(0x0000000002000000) };$/;"	v	file:
-FOLLOW_45_in_defExpr406	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_45_in_defExpr406	= { FOLLOW_45_in_defExpr406_bits, 1	};$/;"	v	file:
-FOLLOW_45_in_defExpr406_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_45_in_defExpr406_bits[]	= { ANTLR3_UINT64_LIT(0x0000000002000000) };$/;"	v	file:
+FOLLOW_41_in_atom744	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_41_in_atom744	= { FOLLOW_41_in_atom744_bits, 1	};$/;"	v	file:
+FOLLOW_41_in_atom744_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_41_in_atom744_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
+FOLLOW_41_in_forExpr581	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_41_in_forExpr581	= { FOLLOW_41_in_forExpr581_bits, 1	};$/;"	v	file:
+FOLLOW_41_in_forExpr581_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_41_in_forExpr581_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
+FOLLOW_41_in_ifExpr546	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_41_in_ifExpr546	= { FOLLOW_41_in_ifExpr546_bits, 1	};$/;"	v	file:
+FOLLOW_41_in_ifExpr546_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_41_in_ifExpr546_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
+FOLLOW_41_in_stmt802	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_41_in_stmt802	= { FOLLOW_41_in_stmt802_bits, 1	};$/;"	v	file:
+FOLLOW_41_in_stmt802_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_41_in_stmt802_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
+FOLLOW_41_in_switchExpr685	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_41_in_switchExpr685	= { FOLLOW_41_in_switchExpr685_bits, 1	};$/;"	v	file:
+FOLLOW_41_in_switchExpr685_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_41_in_switchExpr685_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
+FOLLOW_41_in_whileExpr617	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_41_in_whileExpr617	= { FOLLOW_41_in_whileExpr617_bits, 1	};$/;"	v	file:
+FOLLOW_41_in_whileExpr617_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_41_in_whileExpr617_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
+FOLLOW_42_in_atom749	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_42_in_atom749	= { FOLLOW_42_in_atom749_bits, 1	};$/;"	v	file:
+FOLLOW_42_in_atom749_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_42_in_atom749_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_42_in_forExpr593	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_42_in_forExpr593	= { FOLLOW_42_in_forExpr593_bits, 1	};$/;"	v	file:
+FOLLOW_42_in_forExpr593_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_42_in_forExpr593_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803906800) };$/;"	v	file:
+FOLLOW_42_in_ifExpr550	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_42_in_ifExpr550	= { FOLLOW_42_in_ifExpr550_bits, 1	};$/;"	v	file:
+FOLLOW_42_in_ifExpr550_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_42_in_ifExpr550_bits[]	= { ANTLR3_UINT64_LIT(0x0000800000000000) };$/;"	v	file:
+FOLLOW_42_in_stmt806	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_42_in_stmt806	= { FOLLOW_42_in_stmt806_bits, 1	};$/;"	v	file:
+FOLLOW_42_in_stmt806_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_42_in_stmt806_bits[]	= { ANTLR3_UINT64_LIT(0x0000100000000000) };$/;"	v	file:
+FOLLOW_42_in_switchExpr689	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_42_in_switchExpr689	= { FOLLOW_42_in_switchExpr689_bits, 1	};$/;"	v	file:
+FOLLOW_42_in_switchExpr689_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_42_in_switchExpr689_bits[]	= { ANTLR3_UINT64_LIT(0x0000800000000000) };$/;"	v	file:
+FOLLOW_42_in_whileExpr621	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_42_in_whileExpr621	= { FOLLOW_42_in_whileExpr621_bits, 1	};$/;"	v	file:
+FOLLOW_42_in_whileExpr621_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_42_in_whileExpr621_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803906800) };$/;"	v	file:
+FOLLOW_43_in_caseExpr642	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_43_in_caseExpr642	= { FOLLOW_43_in_caseExpr642_bits, 1	};$/;"	v	file:
+FOLLOW_43_in_caseExpr642_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_43_in_caseExpr642_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803906802) };$/;"	v	file:
+FOLLOW_43_in_defaultExpr664	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_43_in_defaultExpr664	= { FOLLOW_43_in_defaultExpr664_bits, 1	};$/;"	v	file:
+FOLLOW_43_in_defaultExpr664_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_43_in_defaultExpr664_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803906800) };$/;"	v	file:
+FOLLOW_44_in_forExpr585	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_44_in_forExpr585	= { FOLLOW_44_in_forExpr585_bits, 1	};$/;"	v	file:
+FOLLOW_44_in_forExpr585_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_44_in_forExpr585_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
+FOLLOW_44_in_forExpr589	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_44_in_forExpr589	= { FOLLOW_44_in_forExpr589_bits, 1	};$/;"	v	file:
+FOLLOW_44_in_forExpr589_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_44_in_forExpr589_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
+FOLLOW_44_in_stmt771	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_44_in_stmt771	= { FOLLOW_44_in_stmt771_bits, 1	};$/;"	v	file:
+FOLLOW_44_in_stmt771_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_44_in_stmt771_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_44_in_stmt791	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_44_in_stmt791	= { FOLLOW_44_in_stmt791_bits, 1	};$/;"	v	file:
+FOLLOW_44_in_stmt791_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_44_in_stmt791_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_44_in_stmt807	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_44_in_stmt807	= { FOLLOW_44_in_stmt807_bits, 1	};$/;"	v	file:
+FOLLOW_44_in_stmt807_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_44_in_stmt807_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_44_in_stmt856	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_44_in_stmt856	= { FOLLOW_44_in_stmt856_bits, 1	};$/;"	v	file:
+FOLLOW_44_in_stmt856_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_44_in_stmt856_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_44_in_stmt866	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_44_in_stmt866	= { FOLLOW_44_in_stmt866_bits, 1	};$/;"	v	file:
+FOLLOW_44_in_stmt866_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_44_in_stmt866_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_45_in_arrayElem355	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_45_in_arrayElem355	= { FOLLOW_45_in_arrayElem355_bits, 1	};$/;"	v	file:
+FOLLOW_45_in_arrayElem355_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_45_in_arrayElem355_bits[]	= { ANTLR3_UINT64_LIT(0x0000000002000000) };$/;"	v	file:
 FOLLOW_45_in_midExpr302	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_45_in_midExpr302	= { FOLLOW_45_in_midExpr302_bits, 1	};$/;"	v	file:
 FOLLOW_45_in_midExpr302_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_45_in_midExpr302_bits[]	= { ANTLR3_UINT64_LIT(0x0000421002800000) };$/;"	v	file:
-FOLLOW_46_in_arrayElem358	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_46_in_arrayElem358	= { FOLLOW_46_in_arrayElem358_bits, 1	};$/;"	v	file:
-FOLLOW_46_in_arrayElem358_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_46_in_arrayElem358_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_46_in_defExpr410	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_46_in_defExpr410	= { FOLLOW_46_in_defExpr410_bits, 1	};$/;"	v	file:
-FOLLOW_46_in_defExpr410_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_46_in_defExpr410_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_46_in_arrayElem359	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_46_in_arrayElem359	= { FOLLOW_46_in_arrayElem359_bits, 1	};$/;"	v	file:
+FOLLOW_46_in_arrayElem359_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_46_in_arrayElem359_bits[]	= { ANTLR3_UINT64_LIT(0x0000200000000002) };$/;"	v	file:
 FOLLOW_46_in_midExpr316	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_46_in_midExpr316	= { FOLLOW_46_in_midExpr316_bits, 1	};$/;"	v	file:
 FOLLOW_46_in_midExpr316_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_46_in_midExpr316_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_47_in_block860	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_47_in_block860	= { FOLLOW_47_in_block860_bits, 1	};$/;"	v	file:
-FOLLOW_47_in_block860_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_47_in_block860_bits[]	= { ANTLR3_UINT64_LIT(0x000182B803903400) };$/;"	v	file:
-FOLLOW_47_in_switchExpr672	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_47_in_switchExpr672	= { FOLLOW_47_in_switchExpr672_bits, 1	};$/;"	v	file:
-FOLLOW_47_in_switchExpr672_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_47_in_switchExpr672_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000800) };$/;"	v	file:
-FOLLOW_48_in_block865	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_48_in_block865	= { FOLLOW_48_in_block865_bits, 1	};$/;"	v	file:
-FOLLOW_48_in_block865_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_48_in_block865_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_48_in_switchExpr680	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_48_in_switchExpr680	= { FOLLOW_48_in_switchExpr680_bits, 1	};$/;"	v	file:
-FOLLOW_48_in_switchExpr680_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_48_in_switchExpr680_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_ASSIGN_in_assignExpr435	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ASSIGN_in_assignExpr435	= { FOLLOW_ASSIGN_in_assignExpr435_bits, 1	};$/;"	v	file:
-FOLLOW_ASSIGN_in_assignExpr435_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ASSIGN_in_assignExpr435_bits[]	= { ANTLR3_UINT64_LIT(0x0000221002800000) };$/;"	v	file:
+FOLLOW_47_in_block879	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_47_in_block879	= { FOLLOW_47_in_block879_bits, 1	};$/;"	v	file:
+FOLLOW_47_in_block879_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_47_in_block879_bits[]	= { ANTLR3_UINT64_LIT(0x000182B803906800) };$/;"	v	file:
+FOLLOW_47_in_switchExpr691	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_47_in_switchExpr691	= { FOLLOW_47_in_switchExpr691_bits, 1	};$/;"	v	file:
+FOLLOW_47_in_switchExpr691_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_47_in_switchExpr691_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000001000) };$/;"	v	file:
+FOLLOW_48_in_block884	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_48_in_block884	= { FOLLOW_48_in_block884_bits, 1	};$/;"	v	file:
+FOLLOW_48_in_block884_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_48_in_block884_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_48_in_switchExpr699	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_48_in_switchExpr699	= { FOLLOW_48_in_switchExpr699_bits, 1	};$/;"	v	file:
+FOLLOW_48_in_switchExpr699_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_48_in_switchExpr699_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_ASSIGN_in_arrayElemAssign380	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ASSIGN_in_arrayElemAssign380	= { FOLLOW_ASSIGN_in_arrayElemAssign380_bits, 1	};$/;"	v	file:
+FOLLOW_ASSIGN_in_arrayElemAssign380_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ASSIGN_in_arrayElemAssign380_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
+FOLLOW_ASSIGN_in_assignExpr433	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ASSIGN_in_assignExpr433	= { FOLLOW_ASSIGN_in_assignExpr433_bits, 1	};$/;"	v	file:
+FOLLOW_ASSIGN_in_assignExpr433_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ASSIGN_in_assignExpr433_bits[]	= { ANTLR3_UINT64_LIT(0x0000221002800000) };$/;"	v	file:
 FOLLOW_ASSIGN_in_for1530	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ASSIGN_in_for1530	= { FOLLOW_ASSIGN_in_for1530_bits, 1	};$/;"	v	file:
 FOLLOW_ASSIGN_in_for1530_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ASSIGN_in_for1530_bits[]	= { ANTLR3_UINT64_LIT(0x0000000102280000) };$/;"	v	file:
 FOLLOW_ASSIGN_in_recursiveExpr409	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ASSIGN_in_recursiveExpr409	= { FOLLOW_ASSIGN_in_recursiveExpr409_bits, 1	};$/;"	v	file:
 FOLLOW_ASSIGN_in_recursiveExpr409_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ASSIGN_in_recursiveExpr409_bits[]	= { ANTLR3_UINT64_LIT(0x0000000102280000) };$/;"	v	file:
 FOLLOW_BREAK_in_stmt673	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_BREAK_in_stmt673	= { FOLLOW_BREAK_in_stmt673_bits, 1	};$/;"	v	file:
 FOLLOW_BREAK_in_stmt673_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_BREAK_in_stmt673_bits[]	= { ANTLR3_UINT64_LIT(0x0000000400000000) };$/;"	v	file:
-FOLLOW_BREAK_in_stmt836	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_BREAK_in_stmt836	= { FOLLOW_BREAK_in_stmt836_bits, 1	};$/;"	v	file:
-FOLLOW_BREAK_in_stmt836_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_BREAK_in_stmt836_bits[]	= { ANTLR3_UINT64_LIT(0x0000100000000000) };$/;"	v	file:
-FOLLOW_CASE_in_caseExpr620	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_CASE_in_caseExpr620	= { FOLLOW_CASE_in_caseExpr620_bits, 1	};$/;"	v	file:
-FOLLOW_CASE_in_caseExpr620_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_CASE_in_caseExpr620_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
+FOLLOW_BREAK_in_stmt855	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_BREAK_in_stmt855	= { FOLLOW_BREAK_in_stmt855_bits, 1	};$/;"	v	file:
+FOLLOW_BREAK_in_stmt855_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_BREAK_in_stmt855_bits[]	= { ANTLR3_UINT64_LIT(0x0000100000000000) };$/;"	v	file:
+FOLLOW_CASE_in_caseExpr639	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_CASE_in_caseExpr639	= { FOLLOW_CASE_in_caseExpr639_bits, 1	};$/;"	v	file:
+FOLLOW_CASE_in_caseExpr639_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_CASE_in_caseExpr639_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
 FOLLOW_CONTINUE_in_stmt686	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_CONTINUE_in_stmt686	= { FOLLOW_CONTINUE_in_stmt686_bits, 1	};$/;"	v	file:
 FOLLOW_CONTINUE_in_stmt686_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_CONTINUE_in_stmt686_bits[]	= { ANTLR3_UINT64_LIT(0x0000000400000000) };$/;"	v	file:
-FOLLOW_CONTINUE_in_stmt846	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_CONTINUE_in_stmt846	= { FOLLOW_CONTINUE_in_stmt846_bits, 1	};$/;"	v	file:
-FOLLOW_CONTINUE_in_stmt846_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_CONTINUE_in_stmt846_bits[]	= { ANTLR3_UINT64_LIT(0x0000100000000000) };$/;"	v	file:
-FOLLOW_DEFAULT_in_defaultExpr644	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_DEFAULT_in_defaultExpr644	= { FOLLOW_DEFAULT_in_defaultExpr644_bits, 1	};$/;"	v	file:
-FOLLOW_DEFAULT_in_defaultExpr644_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_DEFAULT_in_defaultExpr644_bits[]	= { ANTLR3_UINT64_LIT(0x0000080000000000) };$/;"	v	file:
+FOLLOW_CONTINUE_in_stmt865	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_CONTINUE_in_stmt865	= { FOLLOW_CONTINUE_in_stmt865_bits, 1	};$/;"	v	file:
+FOLLOW_CONTINUE_in_stmt865_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_CONTINUE_in_stmt865_bits[]	= { ANTLR3_UINT64_LIT(0x0000100000000000) };$/;"	v	file:
+FOLLOW_DEFAULT_in_defaultExpr663	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_DEFAULT_in_defaultExpr663	= { FOLLOW_DEFAULT_in_defaultExpr663_bits, 1	};$/;"	v	file:
+FOLLOW_DEFAULT_in_defaultExpr663_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_DEFAULT_in_defaultExpr663_bits[]	= { ANTLR3_UINT64_LIT(0x0000080000000000) };$/;"	v	file:
 FOLLOW_DEF_in_defExpr231	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_DEF_in_defExpr231	= { FOLLOW_DEF_in_defExpr231_bits, 1	};$/;"	v	file:
 FOLLOW_DEF_in_defExpr231_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_DEF_in_defExpr231_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000080000) };$/;"	v	file:
-FOLLOW_DEF_in_defExpr374	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_DEF_in_defExpr374	= { FOLLOW_DEF_in_defExpr374_bits, 1	};$/;"	v	file:
-FOLLOW_DEF_in_defExpr374_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_DEF_in_defExpr374_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
-FOLLOW_DEF_in_defExpr404	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_DEF_in_defExpr404	= { FOLLOW_DEF_in_defExpr404_bits, 1	};$/;"	v	file:
-FOLLOW_DEF_in_defExpr404_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_DEF_in_defExpr404_bits[]	= { ANTLR3_UINT64_LIT(0x0000200000000000) };$/;"	v	file:
+FOLLOW_DEF_in_defExpr398	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_DEF_in_defExpr398	= { FOLLOW_DEF_in_defExpr398_bits, 1	};$/;"	v	file:
+FOLLOW_DEF_in_defExpr398_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_DEF_in_defExpr398_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
 FOLLOW_DIV_in_multOrDivExpr449	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_DIV_in_multOrDivExpr449	= { FOLLOW_DIV_in_multOrDivExpr449_bits, 1	};$/;"	v	file:
 FOLLOW_DIV_in_multOrDivExpr449_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_DIV_in_multOrDivExpr449_bits[]	= { ANTLR3_UINT64_LIT(0x0000000100280000) };$/;"	v	file:
 FOLLOW_DOT_in_defExpr236	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_DOT_in_defExpr236	= { FOLLOW_DOT_in_defExpr236_bits, 1	};$/;"	v	file:
 FOLLOW_DOT_in_defExpr236_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_DOT_in_defExpr236_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000080000) };$/;"	v	file:
-FOLLOW_DOT_in_defExpr379	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_DOT_in_defExpr379	= { FOLLOW_DOT_in_defExpr379_bits, 1	};$/;"	v	file:
-FOLLOW_DOT_in_defExpr379_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_DOT_in_defExpr379_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
+FOLLOW_DOT_in_defExpr403	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_DOT_in_defExpr403	= { FOLLOW_DOT_in_defExpr403_bits, 1	};$/;"	v	file:
+FOLLOW_DOT_in_defExpr403_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_DOT_in_defExpr403_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
 FOLLOW_DOT_in_expr307	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_DOT_in_expr307	= { FOLLOW_DOT_in_expr307_bits, 1	};$/;"	v	file:
 FOLLOW_DOT_in_expr307_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_DOT_in_expr307_bits[]	= { ANTLR3_UINT64_LIT(0x0000000102280000) };$/;"	v	file:
 FOLLOW_DOT_in_midExpr308	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_DOT_in_midExpr308	= { FOLLOW_DOT_in_midExpr308_bits, 1	};$/;"	v	file:
@@ -468,20 +469,20 @@ FOLLOW_DOT_in_printExpr509	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_
 FOLLOW_DOT_in_printExpr509_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_DOT_in_printExpr509_bits[]	= { ANTLR3_UINT64_LIT(0x0000000102280000) };$/;"	v	file:
 FOLLOW_ELSE_in_elseExpr463	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ELSE_in_elseExpr463	= { FOLLOW_ELSE_in_elseExpr463_bits, 1	};$/;"	v	file:
 FOLLOW_ELSE_in_elseExpr463_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ELSE_in_elseExpr463_bits[]	= { ANTLR3_UINT64_LIT(0x0000000952391C00) };$/;"	v	file:
-FOLLOW_ELSE_in_ifExpr536	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ELSE_in_ifExpr536	= { FOLLOW_ELSE_in_ifExpr536_bits, 1	};$/;"	v	file:
-FOLLOW_ELSE_in_ifExpr536_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ELSE_in_ifExpr536_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803903400) };$/;"	v	file:
+FOLLOW_ELSE_in_ifExpr555	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ELSE_in_ifExpr555	= { FOLLOW_ELSE_in_ifExpr555_bits, 1	};$/;"	v	file:
+FOLLOW_ELSE_in_ifExpr555_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ELSE_in_ifExpr555_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803906800) };$/;"	v	file:
 FOLLOW_FOR_in_forExpr548	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_FOR_in_forExpr548	= { FOLLOW_FOR_in_forExpr548_bits, 1	};$/;"	v	file:
 FOLLOW_FOR_in_forExpr548_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_FOR_in_forExpr548_bits[]	= { ANTLR3_UINT64_LIT(0x0000000100000000) };$/;"	v	file:
-FOLLOW_FOR_in_forExpr560	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_FOR_in_forExpr560	= { FOLLOW_FOR_in_forExpr560_bits, 1	};$/;"	v	file:
-FOLLOW_FOR_in_forExpr560_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_FOR_in_forExpr560_bits[]	= { ANTLR3_UINT64_LIT(0x0000020000000000) };$/;"	v	file:
+FOLLOW_FOR_in_forExpr579	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_FOR_in_forExpr579	= { FOLLOW_FOR_in_forExpr579_bits, 1	};$/;"	v	file:
+FOLLOW_FOR_in_forExpr579_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_FOR_in_forExpr579_bits[]	= { ANTLR3_UINT64_LIT(0x0000020000000000) };$/;"	v	file:
 FOLLOW_ID_in_arrayElem352	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ID_in_arrayElem352	= { FOLLOW_ID_in_arrayElem352_bits, 1	};$/;"	v	file:
 FOLLOW_ID_in_arrayElem352_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ID_in_arrayElem352_bits[]	= { ANTLR3_UINT64_LIT(0x0000200000000000) };$/;"	v	file:
-FOLLOW_ID_in_assignExpr433	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ID_in_assignExpr433	= { FOLLOW_ID_in_assignExpr433_bits, 1	};$/;"	v	file:
-FOLLOW_ID_in_assignExpr433_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ID_in_assignExpr433_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000040) };$/;"	v	file:
+FOLLOW_ID_in_assignExpr431	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ID_in_assignExpr431	= { FOLLOW_ID_in_assignExpr431_bits, 1	};$/;"	v	file:
+FOLLOW_ID_in_assignExpr431_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ID_in_assignExpr431_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000080) };$/;"	v	file:
 FOLLOW_ID_in_atom263	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ID_in_atom263	= { FOLLOW_ID_in_atom263_bits, 1	};$/;"	v	file:
 FOLLOW_ID_in_atom263_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ID_in_atom263_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_ID_in_atom709	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ID_in_atom709	= { FOLLOW_ID_in_atom709_bits, 1	};$/;"	v	file:
-FOLLOW_ID_in_atom709_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ID_in_atom709_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_ID_in_atom728	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ID_in_atom728	= { FOLLOW_ID_in_atom728_bits, 1	};$/;"	v	file:
+FOLLOW_ID_in_atom728_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ID_in_atom728_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
 FOLLOW_ID_in_defExpr233	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ID_in_defExpr233	= { FOLLOW_ID_in_defExpr233_bits, 1	};$/;"	v	file:
 FOLLOW_ID_in_defExpr233_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ID_in_defExpr233_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000004002) };$/;"	v	file:
 FOLLOW_ID_in_defExpr238	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ID_in_defExpr238	= { FOLLOW_ID_in_defExpr238_bits, 1	};$/;"	v	file:
@@ -492,16 +493,14 @@ FOLLOW_ID_in_recursiveExpr407	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITS
 FOLLOW_ID_in_recursiveExpr407_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ID_in_recursiveExpr407_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000040) };$/;"	v	file:
 FOLLOW_IF_in_ifExpr475	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_IF_in_ifExpr475	= { FOLLOW_IF_in_ifExpr475_bits, 1	};$/;"	v	file:
 FOLLOW_IF_in_ifExpr475_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_IF_in_ifExpr475_bits[]	= { ANTLR3_UINT64_LIT(0x0000000100000000) };$/;"	v	file:
-FOLLOW_IF_in_ifExpr525	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_IF_in_ifExpr525	= { FOLLOW_IF_in_ifExpr525_bits, 1	};$/;"	v	file:
-FOLLOW_IF_in_ifExpr525_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_IF_in_ifExpr525_bits[]	= { ANTLR3_UINT64_LIT(0x0000020000000000) };$/;"	v	file:
-FOLLOW_INT_in_arrayElem356	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_INT_in_arrayElem356	= { FOLLOW_INT_in_arrayElem356_bits, 1	};$/;"	v	file:
-FOLLOW_INT_in_arrayElem356_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_INT_in_arrayElem356_bits[]	= { ANTLR3_UINT64_LIT(0x0000400000000000) };$/;"	v	file:
+FOLLOW_IF_in_ifExpr544	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_IF_in_ifExpr544	= { FOLLOW_IF_in_ifExpr544_bits, 1	};$/;"	v	file:
+FOLLOW_IF_in_ifExpr544_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_IF_in_ifExpr544_bits[]	= { ANTLR3_UINT64_LIT(0x0000020000000000) };$/;"	v	file:
+FOLLOW_INT_in_arrayElem357	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_INT_in_arrayElem357	= { FOLLOW_INT_in_arrayElem357_bits, 1	};$/;"	v	file:
+FOLLOW_INT_in_arrayElem357_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_INT_in_arrayElem357_bits[]	= { ANTLR3_UINT64_LIT(0x0000400000000000) };$/;"	v	file:
 FOLLOW_INT_in_atom255	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_INT_in_atom255	= { FOLLOW_INT_in_atom255_bits, 1	};$/;"	v	file:
 FOLLOW_INT_in_atom255_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_INT_in_atom255_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_INT_in_atom701	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_INT_in_atom701	= { FOLLOW_INT_in_atom701_bits, 1	};$/;"	v	file:
-FOLLOW_INT_in_atom701_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_INT_in_atom701_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_INT_in_defExpr408	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_INT_in_defExpr408	= { FOLLOW_INT_in_defExpr408_bits, 1	};$/;"	v	file:
-FOLLOW_INT_in_defExpr408_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_INT_in_defExpr408_bits[]	= { ANTLR3_UINT64_LIT(0x0000400000000000) };$/;"	v	file:
+FOLLOW_INT_in_atom720	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_INT_in_atom720	= { FOLLOW_INT_in_atom720_bits, 1	};$/;"	v	file:
+FOLLOW_INT_in_atom720_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_INT_in_atom720_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
 FOLLOW_MINUS_in_expr239	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_MINUS_in_expr239	= { FOLLOW_MINUS_in_expr239_bits, 1	};$/;"	v	file:
 FOLLOW_MINUS_in_expr239_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_MINUS_in_expr239_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
 FOLLOW_MINUS_in_recursiveExpr385	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_MINUS_in_recursiveExpr385	= { FOLLOW_MINUS_in_recursiveExpr385_bits, 1	};$/;"	v	file:
@@ -514,20 +513,24 @@ FOLLOW_PLUS_in_recursiveExpr380	./output/ExprCppTreeParser.c	/^static  ANTLR3_BI
 FOLLOW_PLUS_in_recursiveExpr380_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_PLUS_in_recursiveExpr380_bits[]	= { ANTLR3_UINT64_LIT(0x0000000100280000) };$/;"	v	file:
 FOLLOW_PRINT_in_printExpr504	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_PRINT_in_printExpr504	= { FOLLOW_PRINT_in_printExpr504_bits, 1	};$/;"	v	file:
 FOLLOW_PRINT_in_printExpr504_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_PRINT_in_printExpr504_bits[]	= { ANTLR3_UINT64_LIT(0x0000000102280000) };$/;"	v	file:
-FOLLOW_PRINT_in_stmt781	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_PRINT_in_stmt781	= { FOLLOW_PRINT_in_stmt781_bits, 1	};$/;"	v	file:
-FOLLOW_PRINT_in_stmt781_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_PRINT_in_stmt781_bits[]	= { ANTLR3_UINT64_LIT(0x0000020000000000) };$/;"	v	file:
-FOLLOW_STRING_in_atom717	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_STRING_in_atom717	= { FOLLOW_STRING_in_atom717_bits, 1	};$/;"	v	file:
-FOLLOW_STRING_in_atom717_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_STRING_in_atom717_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_SWITCH_in_switchExpr664	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_SWITCH_in_switchExpr664	= { FOLLOW_SWITCH_in_switchExpr664_bits, 1	};$/;"	v	file:
-FOLLOW_SWITCH_in_switchExpr664_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_SWITCH_in_switchExpr664_bits[]	= { ANTLR3_UINT64_LIT(0x0000020000000000) };$/;"	v	file:
+FOLLOW_PRINT_in_stmt800	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_PRINT_in_stmt800	= { FOLLOW_PRINT_in_stmt800_bits, 1	};$/;"	v	file:
+FOLLOW_PRINT_in_stmt800_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_PRINT_in_stmt800_bits[]	= { ANTLR3_UINT64_LIT(0x0000020000000000) };$/;"	v	file:
+FOLLOW_STRING_in_atom736	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_STRING_in_atom736	= { FOLLOW_STRING_in_atom736_bits, 1	};$/;"	v	file:
+FOLLOW_STRING_in_atom736_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_STRING_in_atom736_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_SWITCH_in_switchExpr683	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_SWITCH_in_switchExpr683	= { FOLLOW_SWITCH_in_switchExpr683_bits, 1	};$/;"	v	file:
+FOLLOW_SWITCH_in_switchExpr683_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_SWITCH_in_switchExpr683_bits[]	= { ANTLR3_UINT64_LIT(0x0000020000000000) };$/;"	v	file:
 FOLLOW_TIMES_in_multOrDivExpr444	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_TIMES_in_multOrDivExpr444	= { FOLLOW_TIMES_in_multOrDivExpr444_bits, 1	};$/;"	v	file:
 FOLLOW_TIMES_in_multOrDivExpr444_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_TIMES_in_multOrDivExpr444_bits[]	= { ANTLR3_UINT64_LIT(0x0000000100280000) };$/;"	v	file:
 FOLLOW_WHILE_in_whileExpr584	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_WHILE_in_whileExpr584	= { FOLLOW_WHILE_in_whileExpr584_bits, 1	};$/;"	v	file:
 FOLLOW_WHILE_in_whileExpr584_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_WHILE_in_whileExpr584_bits[]	= { ANTLR3_UINT64_LIT(0x0000000100000000) };$/;"	v	file:
-FOLLOW_WHILE_in_whileExpr596	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_WHILE_in_whileExpr596	= { FOLLOW_WHILE_in_whileExpr596_bits, 1	};$/;"	v	file:
-FOLLOW_WHILE_in_whileExpr596_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_WHILE_in_whileExpr596_bits[]	= { ANTLR3_UINT64_LIT(0x0000020000000000) };$/;"	v	file:
-FOLLOW_arrayElem_in_atom739	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_arrayElem_in_atom739	= { FOLLOW_arrayElem_in_atom739_bits, 1	};$/;"	v	file:
-FOLLOW_arrayElem_in_atom739_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_arrayElem_in_atom739_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_WHILE_in_whileExpr615	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_WHILE_in_whileExpr615	= { FOLLOW_WHILE_in_whileExpr615_bits, 1	};$/;"	v	file:
+FOLLOW_WHILE_in_whileExpr615_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_WHILE_in_whileExpr615_bits[]	= { ANTLR3_UINT64_LIT(0x0000020000000000) };$/;"	v	file:
+FOLLOW_arrayElemAssign_in_assignExpr457	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_arrayElemAssign_in_assignExpr457	= { FOLLOW_arrayElemAssign_in_assignExpr457_bits, 1	};$/;"	v	file:
+FOLLOW_arrayElemAssign_in_assignExpr457_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_arrayElemAssign_in_assignExpr457_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_arrayElem_in_arrayElemAssign378	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_arrayElem_in_arrayElemAssign378	= { FOLLOW_arrayElem_in_arrayElemAssign378_bits, 1	};$/;"	v	file:
+FOLLOW_arrayElem_in_arrayElemAssign378_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_arrayElem_in_arrayElemAssign378_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000080) };$/;"	v	file:
+FOLLOW_arrayElem_in_atom758	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_arrayElem_in_atom758	= { FOLLOW_arrayElem_in_atom758_bits, 1	};$/;"	v	file:
+FOLLOW_arrayElem_in_atom758_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_arrayElem_in_atom758_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
 FOLLOW_assignExpr_in_expr253	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_assignExpr_in_expr253	= { FOLLOW_assignExpr_in_expr253_bits, 1	};$/;"	v	file:
 FOLLOW_assignExpr_in_expr253_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_assignExpr_in_expr253_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
 FOLLOW_atom_in_multExpr270	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_atom_in_multExpr270	= { FOLLOW_atom_in_multExpr270_bits, 1	};$/;"	v	file:
@@ -542,16 +545,16 @@ FOLLOW_atom_in_notExpr290	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_L
 FOLLOW_atom_in_notExpr290_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_atom_in_notExpr290_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
 FOLLOW_blockCode_in_block719	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_blockCode_in_block719	= { FOLLOW_blockCode_in_block719_bits, 1	};$/;"	v	file:
 FOLLOW_blockCode_in_block719_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_blockCode_in_block719_bits[]	= { ANTLR3_UINT64_LIT(0x0000001000000000) };$/;"	v	file:
-FOLLOW_block_in_ifExpr533	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_block_in_ifExpr533	= { FOLLOW_block_in_ifExpr533_bits, 1	};$/;"	v	file:
-FOLLOW_block_in_ifExpr533_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_block_in_ifExpr533_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000040002) };$/;"	v	file:
+FOLLOW_block_in_ifExpr552	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_block_in_ifExpr552	= { FOLLOW_block_in_ifExpr552_bits, 1	};$/;"	v	file:
+FOLLOW_block_in_ifExpr552_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_block_in_ifExpr552_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000040002) };$/;"	v	file:
 FOLLOW_block_in_prog750	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_block_in_prog750	= { FOLLOW_block_in_prog750_bits, 1	};$/;"	v	file:
 FOLLOW_block_in_prog750_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_block_in_prog750_bits[]	= { ANTLR3_UINT64_LIT(0x0000000800000002) };$/;"	v	file:
 FOLLOW_block_in_stmt665	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_block_in_stmt665	= { FOLLOW_block_in_stmt665_bits, 1	};$/;"	v	file:
 FOLLOW_block_in_stmt665_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_block_in_stmt665_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_block_in_stmt763	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_block_in_stmt763	= { FOLLOW_block_in_stmt763_bits, 1	};$/;"	v	file:
-FOLLOW_block_in_stmt763_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_block_in_stmt763_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_caseExpr_in_switchExpr674	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_caseExpr_in_switchExpr674	= { FOLLOW_caseExpr_in_switchExpr674_bits, 1	};$/;"	v	file:
-FOLLOW_caseExpr_in_switchExpr674_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_caseExpr_in_switchExpr674_bits[]	= { ANTLR3_UINT64_LIT(0x0001000000004800) };$/;"	v	file:
+FOLLOW_block_in_stmt782	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_block_in_stmt782	= { FOLLOW_block_in_stmt782_bits, 1	};$/;"	v	file:
+FOLLOW_block_in_stmt782_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_block_in_stmt782_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_caseExpr_in_switchExpr693	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_caseExpr_in_switchExpr693	= { FOLLOW_caseExpr_in_switchExpr693_bits, 1	};$/;"	v	file:
+FOLLOW_caseExpr_in_switchExpr693_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_caseExpr_in_switchExpr693_bits[]	= { ANTLR3_UINT64_LIT(0x0001000000009000) };$/;"	v	file:
 FOLLOW_conditionExpr_in_atom274	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_atom274	= { FOLLOW_conditionExpr_in_atom274_bits, 1	};$/;"	v	file:
 FOLLOW_conditionExpr_in_atom274_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_atom274_bits[]	= { ANTLR3_UINT64_LIT(0x0000000200000000) };$/;"	v	file:
 FOLLOW_conditionExpr_in_expr310	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_expr310	= { FOLLOW_conditionExpr_in_expr310_bits, 1	};$/;"	v	file:
@@ -560,54 +563,56 @@ FOLLOW_conditionExpr_in_for1532	./output/ExprCppTreeParser.c	/^static  ANTLR3_BI
 FOLLOW_conditionExpr_in_for1532_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_for1532_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
 FOLLOW_conditionExpr_in_forExpr556	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_forExpr556	= { FOLLOW_conditionExpr_in_forExpr556_bits, 1	};$/;"	v	file:
 FOLLOW_conditionExpr_in_forExpr556_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_forExpr556_bits[]	= { ANTLR3_UINT64_LIT(0x0000000400000000) };$/;"	v	file:
-FOLLOW_conditionExpr_in_forExpr568	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_forExpr568	= { FOLLOW_conditionExpr_in_forExpr568_bits, 1	};$/;"	v	file:
-FOLLOW_conditionExpr_in_forExpr568_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_forExpr568_bits[]	= { ANTLR3_UINT64_LIT(0x0000100000000000) };$/;"	v	file:
+FOLLOW_conditionExpr_in_forExpr587	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_forExpr587	= { FOLLOW_conditionExpr_in_forExpr587_bits, 1	};$/;"	v	file:
+FOLLOW_conditionExpr_in_forExpr587_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_forExpr587_bits[]	= { ANTLR3_UINT64_LIT(0x0000100000000000) };$/;"	v	file:
 FOLLOW_conditionExpr_in_ifExpr479	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_ifExpr479	= { FOLLOW_conditionExpr_in_ifExpr479_bits, 1	};$/;"	v	file:
 FOLLOW_conditionExpr_in_ifExpr479_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_ifExpr479_bits[]	= { ANTLR3_UINT64_LIT(0x0000000200000000) };$/;"	v	file:
-FOLLOW_conditionExpr_in_ifExpr529	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_ifExpr529	= { FOLLOW_conditionExpr_in_ifExpr529_bits, 1	};$/;"	v	file:
-FOLLOW_conditionExpr_in_ifExpr529_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_ifExpr529_bits[]	= { ANTLR3_UINT64_LIT(0x0000040000000000) };$/;"	v	file:
+FOLLOW_conditionExpr_in_ifExpr548	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_ifExpr548	= { FOLLOW_conditionExpr_in_ifExpr548_bits, 1	};$/;"	v	file:
+FOLLOW_conditionExpr_in_ifExpr548_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_ifExpr548_bits[]	= { ANTLR3_UINT64_LIT(0x0000040000000000) };$/;"	v	file:
 FOLLOW_conditionExpr_in_recursiveExpr411	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_recursiveExpr411	= { FOLLOW_conditionExpr_in_recursiveExpr411_bits, 1	};$/;"	v	file:
 FOLLOW_conditionExpr_in_recursiveExpr411_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_recursiveExpr411_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
 FOLLOW_conditionExpr_in_stmt611	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_stmt611	= { FOLLOW_conditionExpr_in_stmt611_bits, 1	};$/;"	v	file:
 FOLLOW_conditionExpr_in_stmt611_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_stmt611_bits[]	= { ANTLR3_UINT64_LIT(0x0000000400000000) };$/;"	v	file:
-FOLLOW_conditionExpr_in_stmt751	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_stmt751	= { FOLLOW_conditionExpr_in_stmt751_bits, 1	};$/;"	v	file:
-FOLLOW_conditionExpr_in_stmt751_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_stmt751_bits[]	= { ANTLR3_UINT64_LIT(0x0000100000000000) };$/;"	v	file:
-FOLLOW_conditionExpr_in_stmt785	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_stmt785	= { FOLLOW_conditionExpr_in_stmt785_bits, 1	};$/;"	v	file:
-FOLLOW_conditionExpr_in_stmt785_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_stmt785_bits[]	= { ANTLR3_UINT64_LIT(0x0000040000000000) };$/;"	v	file:
+FOLLOW_conditionExpr_in_stmt770	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_stmt770	= { FOLLOW_conditionExpr_in_stmt770_bits, 1	};$/;"	v	file:
+FOLLOW_conditionExpr_in_stmt770_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_stmt770_bits[]	= { ANTLR3_UINT64_LIT(0x0000100000000000) };$/;"	v	file:
+FOLLOW_conditionExpr_in_stmt804	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_stmt804	= { FOLLOW_conditionExpr_in_stmt804_bits, 1	};$/;"	v	file:
+FOLLOW_conditionExpr_in_stmt804_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_stmt804_bits[]	= { ANTLR3_UINT64_LIT(0x0000040000000000) };$/;"	v	file:
 FOLLOW_conditionExpr_in_whileExpr588	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_whileExpr588	= { FOLLOW_conditionExpr_in_whileExpr588_bits, 1	};$/;"	v	file:
 FOLLOW_conditionExpr_in_whileExpr588_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_whileExpr588_bits[]	= { ANTLR3_UINT64_LIT(0x0000000200000000) };$/;"	v	file:
-FOLLOW_conditionExpr_in_whileExpr600	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_whileExpr600	= { FOLLOW_conditionExpr_in_whileExpr600_bits, 1	};$/;"	v	file:
-FOLLOW_conditionExpr_in_whileExpr600_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_whileExpr600_bits[]	= { ANTLR3_UINT64_LIT(0x0000040000000000) };$/;"	v	file:
+FOLLOW_conditionExpr_in_whileExpr619	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_conditionExpr_in_whileExpr619	= { FOLLOW_conditionExpr_in_whileExpr619_bits, 1	};$/;"	v	file:
+FOLLOW_conditionExpr_in_whileExpr619_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_conditionExpr_in_whileExpr619_bits[]	= { ANTLR3_UINT64_LIT(0x0000040000000000) };$/;"	v	file:
 FOLLOW_defExpr_in_stmt627	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_defExpr_in_stmt627	= { FOLLOW_defExpr_in_stmt627_bits, 1	};$/;"	v	file:
 FOLLOW_defExpr_in_stmt627_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_defExpr_in_stmt627_bits[]	= { ANTLR3_UINT64_LIT(0x0000000400000000) };$/;"	v	file:
-FOLLOW_defExpr_in_stmt771	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_defExpr_in_stmt771	= { FOLLOW_defExpr_in_stmt771_bits, 1	};$/;"	v	file:
-FOLLOW_defExpr_in_stmt771_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_defExpr_in_stmt771_bits[]	= { ANTLR3_UINT64_LIT(0x0000100000000000) };$/;"	v	file:
-FOLLOW_defaultExpr_in_switchExpr677	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_defaultExpr_in_switchExpr677	= { FOLLOW_defaultExpr_in_switchExpr677_bits, 1	};$/;"	v	file:
-FOLLOW_defaultExpr_in_switchExpr677_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_defaultExpr_in_switchExpr677_bits[]	= { ANTLR3_UINT64_LIT(0x0001000000000000) };$/;"	v	file:
+FOLLOW_defExpr_in_stmt790	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_defExpr_in_stmt790	= { FOLLOW_defExpr_in_stmt790_bits, 1	};$/;"	v	file:
+FOLLOW_defExpr_in_stmt790_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_defExpr_in_stmt790_bits[]	= { ANTLR3_UINT64_LIT(0x0000100000000000) };$/;"	v	file:
+FOLLOW_defaultExpr_in_switchExpr696	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_defaultExpr_in_switchExpr696	= { FOLLOW_defaultExpr_in_switchExpr696_bits, 1	};$/;"	v	file:
+FOLLOW_defaultExpr_in_switchExpr696_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_defaultExpr_in_switchExpr696_bits[]	= { ANTLR3_UINT64_LIT(0x0001000000000000) };$/;"	v	file:
 FOLLOW_elseExpr_in_ifExpr485	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_elseExpr_in_ifExpr485	= { FOLLOW_elseExpr_in_ifExpr485_bits, 1	};$/;"	v	file:
 FOLLOW_elseExpr_in_ifExpr485_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_elseExpr_in_ifExpr485_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_expr_in_atom728	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_atom728	= { FOLLOW_expr_in_atom728_bits, 1	};$/;"	v	file:
-FOLLOW_expr_in_atom728_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_atom728_bits[]	= { ANTLR3_UINT64_LIT(0x0000040000000000) };$/;"	v	file:
-FOLLOW_expr_in_caseExpr622	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_caseExpr622	= { FOLLOW_expr_in_caseExpr622_bits, 1	};$/;"	v	file:
-FOLLOW_expr_in_caseExpr622_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_caseExpr622_bits[]	= { ANTLR3_UINT64_LIT(0x0000080000000000) };$/;"	v	file:
+FOLLOW_expr_in_arrayElemAssign382	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_arrayElemAssign382	= { FOLLOW_expr_in_arrayElemAssign382_bits, 1	};$/;"	v	file:
+FOLLOW_expr_in_arrayElemAssign382_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_arrayElemAssign382_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_expr_in_atom747	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_atom747	= { FOLLOW_expr_in_atom747_bits, 1	};$/;"	v	file:
+FOLLOW_expr_in_atom747_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_atom747_bits[]	= { ANTLR3_UINT64_LIT(0x0000040000000000) };$/;"	v	file:
+FOLLOW_expr_in_caseExpr641	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_caseExpr641	= { FOLLOW_expr_in_caseExpr641_bits, 1	};$/;"	v	file:
+FOLLOW_expr_in_caseExpr641_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_caseExpr641_bits[]	= { ANTLR3_UINT64_LIT(0x0000080000000000) };$/;"	v	file:
 FOLLOW_expr_in_conditionExpr331	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_conditionExpr331	= { FOLLOW_expr_in_conditionExpr331_bits, 1	};$/;"	v	file:
 FOLLOW_expr_in_conditionExpr331_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_conditionExpr331_bits[]	= { ANTLR3_UINT64_LIT(0x0000000004C60192) };$/;"	v	file:
 FOLLOW_expr_in_conditionExpr367	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_conditionExpr367	= { FOLLOW_expr_in_conditionExpr367_bits, 1	};$/;"	v	file:
 FOLLOW_expr_in_conditionExpr367_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_conditionExpr367_bits[]	= { ANTLR3_UINT64_LIT(0x0000000004C60192) };$/;"	v	file:
-FOLLOW_expr_in_conditionExpr467	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_conditionExpr467	= { FOLLOW_expr_in_conditionExpr467_bits, 1	};$/;"	v	file:
-FOLLOW_expr_in_conditionExpr467_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_conditionExpr467_bits[]	= { ANTLR3_UINT64_LIT(0x000000028C680012) };$/;"	v	file:
-FOLLOW_expr_in_conditionExpr503	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_conditionExpr503	= { FOLLOW_expr_in_conditionExpr503_bits, 1	};$/;"	v	file:
-FOLLOW_expr_in_conditionExpr503_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_conditionExpr503_bits[]	= { ANTLR3_UINT64_LIT(0x000000028C680012) };$/;"	v	file:
-FOLLOW_expr_in_defExpr376	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_defExpr376	= { FOLLOW_expr_in_defExpr376_bits, 1	};$/;"	v	file:
-FOLLOW_expr_in_defExpr376_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_defExpr376_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000020002) };$/;"	v	file:
-FOLLOW_expr_in_defExpr381	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_defExpr381	= { FOLLOW_expr_in_defExpr381_bits, 1	};$/;"	v	file:
-FOLLOW_expr_in_defExpr381_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_defExpr381_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000020002) };$/;"	v	file:
+FOLLOW_expr_in_conditionExpr486	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_conditionExpr486	= { FOLLOW_expr_in_conditionExpr486_bits, 1	};$/;"	v	file:
+FOLLOW_expr_in_conditionExpr486_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_conditionExpr486_bits[]	= { ANTLR3_UINT64_LIT(0x000000028C680012) };$/;"	v	file:
+FOLLOW_expr_in_conditionExpr522	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_conditionExpr522	= { FOLLOW_expr_in_conditionExpr522_bits, 1	};$/;"	v	file:
+FOLLOW_expr_in_conditionExpr522_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_conditionExpr522_bits[]	= { ANTLR3_UINT64_LIT(0x000000028C680012) };$/;"	v	file:
+FOLLOW_expr_in_defExpr400	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_defExpr400	= { FOLLOW_expr_in_defExpr400_bits, 1	};$/;"	v	file:
+FOLLOW_expr_in_defExpr400_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_defExpr400_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000020002) };$/;"	v	file:
+FOLLOW_expr_in_defExpr405	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_defExpr405	= { FOLLOW_expr_in_defExpr405_bits, 1	};$/;"	v	file:
+FOLLOW_expr_in_defExpr405_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_defExpr405_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000020002) };$/;"	v	file:
 FOLLOW_expr_in_forExpr560	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_forExpr560	= { FOLLOW_expr_in_forExpr560_bits, 1	};$/;"	v	file:
 FOLLOW_expr_in_forExpr560_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_forExpr560_bits[]	= { ANTLR3_UINT64_LIT(0x0000000200000000) };$/;"	v	file:
-FOLLOW_expr_in_forExpr564	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_forExpr564	= { FOLLOW_expr_in_forExpr564_bits, 1	};$/;"	v	file:
-FOLLOW_expr_in_forExpr564_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_forExpr564_bits[]	= { ANTLR3_UINT64_LIT(0x0000100000000000) };$/;"	v	file:
-FOLLOW_expr_in_forExpr572	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_forExpr572	= { FOLLOW_expr_in_forExpr572_bits, 1	};$/;"	v	file:
-FOLLOW_expr_in_forExpr572_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_forExpr572_bits[]	= { ANTLR3_UINT64_LIT(0x0000040000000000) };$/;"	v	file:
+FOLLOW_expr_in_forExpr583	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_forExpr583	= { FOLLOW_expr_in_forExpr583_bits, 1	};$/;"	v	file:
+FOLLOW_expr_in_forExpr583_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_forExpr583_bits[]	= { ANTLR3_UINT64_LIT(0x0000100000000000) };$/;"	v	file:
+FOLLOW_expr_in_forExpr591	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_forExpr591	= { FOLLOW_expr_in_forExpr591_bits, 1	};$/;"	v	file:
+FOLLOW_expr_in_forExpr591_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_forExpr591_bits[]	= { ANTLR3_UINT64_LIT(0x0000040000000000) };$/;"	v	file:
 FOLLOW_expr_in_midExpr305	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_midExpr305	= { FOLLOW_expr_in_midExpr305_bits, 1	};$/;"	v	file:
 FOLLOW_expr_in_midExpr305_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_midExpr305_bits[]	= { ANTLR3_UINT64_LIT(0x0000400000020000) };$/;"	v	file:
 FOLLOW_expr_in_midExpr310	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_midExpr310	= { FOLLOW_expr_in_midExpr310_bits, 1	};$/;"	v	file:
@@ -618,20 +623,20 @@ FOLLOW_expr_in_printExpr506	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET
 FOLLOW_expr_in_printExpr506_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_printExpr506_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000004002) };$/;"	v	file:
 FOLLOW_expr_in_printExpr511	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_printExpr511	= { FOLLOW_expr_in_printExpr511_bits, 1	};$/;"	v	file:
 FOLLOW_expr_in_printExpr511_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_printExpr511_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000004002) };$/;"	v	file:
-FOLLOW_expr_in_switchExpr668	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_switchExpr668	= { FOLLOW_expr_in_switchExpr668_bits, 1	};$/;"	v	file:
-FOLLOW_expr_in_switchExpr668_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_switchExpr668_bits[]	= { ANTLR3_UINT64_LIT(0x0000040000000000) };$/;"	v	file:
+FOLLOW_expr_in_switchExpr687	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_expr_in_switchExpr687	= { FOLLOW_expr_in_switchExpr687_bits, 1	};$/;"	v	file:
+FOLLOW_expr_in_switchExpr687_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_expr_in_switchExpr687_bits[]	= { ANTLR3_UINT64_LIT(0x0000040000000000) };$/;"	v	file:
 FOLLOW_for1_in_forExpr552	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_for1_in_forExpr552	= { FOLLOW_for1_in_forExpr552_bits, 1	};$/;"	v	file:
 FOLLOW_for1_in_forExpr552_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_for1_in_forExpr552_bits[]	= { ANTLR3_UINT64_LIT(0x0000000400000000) };$/;"	v	file:
 FOLLOW_forExpr_in_stmt649	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_forExpr_in_stmt649	= { FOLLOW_forExpr_in_stmt649_bits, 1	};$/;"	v	file:
 FOLLOW_forExpr_in_stmt649_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_forExpr_in_stmt649_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_forExpr_in_stmt812	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_forExpr_in_stmt812	= { FOLLOW_forExpr_in_stmt812_bits, 1	};$/;"	v	file:
-FOLLOW_forExpr_in_stmt812_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_forExpr_in_stmt812_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_forExpr_in_stmt831	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_forExpr_in_stmt831	= { FOLLOW_forExpr_in_stmt831_bits, 1	};$/;"	v	file:
+FOLLOW_forExpr_in_stmt831_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_forExpr_in_stmt831_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
 FOLLOW_ifExpr_in_stmt641	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ifExpr_in_stmt641	= { FOLLOW_ifExpr_in_stmt641_bits, 1	};$/;"	v	file:
 FOLLOW_ifExpr_in_stmt641_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ifExpr_in_stmt641_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_ifExpr_in_stmt804	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ifExpr_in_stmt804	= { FOLLOW_ifExpr_in_stmt804_bits, 1	};$/;"	v	file:
-FOLLOW_ifExpr_in_stmt804_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ifExpr_in_stmt804_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_midExpr_in_assignExpr437	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_midExpr_in_assignExpr437	= { FOLLOW_midExpr_in_assignExpr437_bits, 1	};$/;"	v	file:
-FOLLOW_midExpr_in_assignExpr437_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_midExpr_in_assignExpr437_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_ifExpr_in_stmt823	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_ifExpr_in_stmt823	= { FOLLOW_ifExpr_in_stmt823_bits, 1	};$/;"	v	file:
+FOLLOW_ifExpr_in_stmt823_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_ifExpr_in_stmt823_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_midExpr_in_assignExpr435	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_midExpr_in_assignExpr435	= { FOLLOW_midExpr_in_assignExpr435_bits, 1	};$/;"	v	file:
+FOLLOW_midExpr_in_assignExpr435_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_midExpr_in_assignExpr435_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
 FOLLOW_multExpr_in_expr230	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_multExpr_in_expr230	= { FOLLOW_multExpr_in_expr230_bits, 1	};$/;"	v	file:
 FOLLOW_multExpr_in_expr230_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_multExpr_in_expr230_bits[]	= { ANTLR3_UINT64_LIT(0x0000000420000002) };$/;"	v	file:
 FOLLOW_multExpr_in_expr243	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_multExpr_in_expr243	= { FOLLOW_multExpr_in_expr243_bits, 1	};$/;"	v	file:
@@ -648,45 +653,45 @@ FOLLOW_recursiveExpr_in_expr304	./output/ExprCppTreeParser.c	/^static  ANTLR3_BI
 FOLLOW_recursiveExpr_in_expr304_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_recursiveExpr_in_expr304_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000004002) };$/;"	v	file:
 FOLLOW_set_in_conditionExpr334	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_set_in_conditionExpr334	= { FOLLOW_set_in_conditionExpr334_bits, 1	};$/;"	v	file:
 FOLLOW_set_in_conditionExpr334_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_set_in_conditionExpr334_bits[]	= { ANTLR3_UINT64_LIT(0x0000000102280000) };$/;"	v	file:
-FOLLOW_set_in_conditionExpr470	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_set_in_conditionExpr470	= { FOLLOW_set_in_conditionExpr470_bits, 1	};$/;"	v	file:
-FOLLOW_set_in_conditionExpr470_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_set_in_conditionExpr470_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
+FOLLOW_set_in_conditionExpr489	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_set_in_conditionExpr489	= { FOLLOW_set_in_conditionExpr489_bits, 1	};$/;"	v	file:
+FOLLOW_set_in_conditionExpr489_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_set_in_conditionExpr489_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
 FOLLOW_set_in_multExpr273	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_set_in_multExpr273	= { FOLLOW_set_in_multExpr273_bits, 1	};$/;"	v	file:
 FOLLOW_set_in_multExpr273_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_set_in_multExpr273_bits[]	= { ANTLR3_UINT64_LIT(0x0000021002800000) };$/;"	v	file:
-FOLLOW_stmt_in_block862	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_block862	= { FOLLOW_stmt_in_block862_bits, 1	};$/;"	v	file:
-FOLLOW_stmt_in_block862_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_block862_bits[]	= { ANTLR3_UINT64_LIT(0x000182B803903400) };$/;"	v	file:
+FOLLOW_stmt_in_block881	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_block881	= { FOLLOW_stmt_in_block881_bits, 1	};$/;"	v	file:
+FOLLOW_stmt_in_block881_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_block881_bits[]	= { ANTLR3_UINT64_LIT(0x000182B803906800) };$/;"	v	file:
 FOLLOW_stmt_in_blockCode736	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_blockCode736	= { FOLLOW_stmt_in_blockCode736_bits, 1	};$/;"	v	file:
 FOLLOW_stmt_in_blockCode736_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_blockCode736_bits[]	= { ANTLR3_UINT64_LIT(0x0000000952391C02) };$/;"	v	file:
-FOLLOW_stmt_in_caseExpr625	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_caseExpr625	= { FOLLOW_stmt_in_caseExpr625_bits, 1	};$/;"	v	file:
-FOLLOW_stmt_in_caseExpr625_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_caseExpr625_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803903402) };$/;"	v	file:
-FOLLOW_stmt_in_defaultExpr647	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_defaultExpr647	= { FOLLOW_stmt_in_defaultExpr647_bits, 1	};$/;"	v	file:
-FOLLOW_stmt_in_defaultExpr647_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_defaultExpr647_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803903402) };$/;"	v	file:
+FOLLOW_stmt_in_caseExpr644	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_caseExpr644	= { FOLLOW_stmt_in_caseExpr644_bits, 1	};$/;"	v	file:
+FOLLOW_stmt_in_caseExpr644_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_caseExpr644_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803906802) };$/;"	v	file:
+FOLLOW_stmt_in_defaultExpr666	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_defaultExpr666	= { FOLLOW_stmt_in_defaultExpr666_bits, 1	};$/;"	v	file:
+FOLLOW_stmt_in_defaultExpr666_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_defaultExpr666_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803906802) };$/;"	v	file:
 FOLLOW_stmt_in_elseExpr465	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_elseExpr465	= { FOLLOW_stmt_in_elseExpr465_bits, 1	};$/;"	v	file:
 FOLLOW_stmt_in_elseExpr465_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_elseExpr465_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
 FOLLOW_stmt_in_forExpr564	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_forExpr564	= { FOLLOW_stmt_in_forExpr564_bits, 1	};$/;"	v	file:
 FOLLOW_stmt_in_forExpr564_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_forExpr564_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_stmt_in_forExpr576	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_forExpr576	= { FOLLOW_stmt_in_forExpr576_bits, 1	};$/;"	v	file:
-FOLLOW_stmt_in_forExpr576_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_forExpr576_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_stmt_in_forExpr595	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_forExpr595	= { FOLLOW_stmt_in_forExpr595_bits, 1	};$/;"	v	file:
+FOLLOW_stmt_in_forExpr595_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_forExpr595_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
 FOLLOW_stmt_in_ifExpr483	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_ifExpr483	= { FOLLOW_stmt_in_ifExpr483_bits, 1	};$/;"	v	file:
 FOLLOW_stmt_in_ifExpr483_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_ifExpr483_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000008002) };$/;"	v	file:
-FOLLOW_stmt_in_ifExpr538	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_ifExpr538	= { FOLLOW_stmt_in_ifExpr538_bits, 1	};$/;"	v	file:
-FOLLOW_stmt_in_ifExpr538_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_ifExpr538_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_stmt_in_prog887	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_prog887	= { FOLLOW_stmt_in_prog887_bits, 1	};$/;"	v	file:
-FOLLOW_stmt_in_prog887_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_prog887_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803903402) };$/;"	v	file:
+FOLLOW_stmt_in_ifExpr557	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_ifExpr557	= { FOLLOW_stmt_in_ifExpr557_bits, 1	};$/;"	v	file:
+FOLLOW_stmt_in_ifExpr557_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_ifExpr557_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_stmt_in_prog906	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_prog906	= { FOLLOW_stmt_in_prog906_bits, 1	};$/;"	v	file:
+FOLLOW_stmt_in_prog906_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_prog906_bits[]	= { ANTLR3_UINT64_LIT(0x000082B803906802) };$/;"	v	file:
 FOLLOW_stmt_in_whileExpr592	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_whileExpr592	= { FOLLOW_stmt_in_whileExpr592_bits, 1	};$/;"	v	file:
 FOLLOW_stmt_in_whileExpr592_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_whileExpr592_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_stmt_in_whileExpr604	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_whileExpr604	= { FOLLOW_stmt_in_whileExpr604_bits, 1	};$/;"	v	file:
-FOLLOW_stmt_in_whileExpr604_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_whileExpr604_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_switchExpr_in_stmt828	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_switchExpr_in_stmt828	= { FOLLOW_switchExpr_in_stmt828_bits, 1	};$/;"	v	file:
-FOLLOW_switchExpr_in_stmt828_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_switchExpr_in_stmt828_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_stmt_in_whileExpr623	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_stmt_in_whileExpr623	= { FOLLOW_stmt_in_whileExpr623_bits, 1	};$/;"	v	file:
+FOLLOW_stmt_in_whileExpr623_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_stmt_in_whileExpr623_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_switchExpr_in_stmt847	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_switchExpr_in_stmt847	= { FOLLOW_switchExpr_in_stmt847_bits, 1	};$/;"	v	file:
+FOLLOW_switchExpr_in_stmt847_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_switchExpr_in_stmt847_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
 FOLLOW_whileExpr_in_stmt657	./output/ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_whileExpr_in_stmt657	= { FOLLOW_whileExpr_in_stmt657_bits, 1	};$/;"	v	file:
 FOLLOW_whileExpr_in_stmt657_bits	./output/ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_whileExpr_in_stmt657_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
-FOLLOW_whileExpr_in_stmt820	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_whileExpr_in_stmt820	= { FOLLOW_whileExpr_in_stmt820_bits, 1	};$/;"	v	file:
-FOLLOW_whileExpr_in_stmt820_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_whileExpr_in_stmt820_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
+FOLLOW_whileExpr_in_stmt839	./ExprCppTreeParser.c	/^static  ANTLR3_BITSET_LIST FOLLOW_whileExpr_in_stmt839	= { FOLLOW_whileExpr_in_stmt839_bits, 1	};$/;"	v	file:
+FOLLOW_whileExpr_in_stmt839_bits	./ExprCppTreeParser.c	/^static	ANTLR3_BITWORD FOLLOW_whileExpr_in_stmt839_bits[]	= { ANTLR3_UINT64_LIT(0x0000000000000002) };$/;"	v	file:
 FOR	./ExprCppTreeLexer.h	454;"	d
-FOR	./ExprCppTreeParser.h	507;"	d
+FOR	./ExprCppTreeParser.h	526;"	d
 Factory	./include/master_chain.h	/^class Factory {$/;"	c
 GEQ	./ExprCppTreeLexer.h	455;"	d
-GEQ	./ExprCppTreeParser.h	508;"	d
+GEQ	./ExprCppTreeParser.h	527;"	d
 GEQVisitor	./include/TypeVisitor.h	/^class GEQVisitor : public Object::IVisitor {$/;"	c
 GEQVisitor	./src/TypeVisitor.cpp	/^GEQVisitor::GEQVisitor() {$/;"	f	class:GEQVisitor
 GEQVisitor	./src/TypeVisitor.cpp	/^GEQVisitor::GEQVisitor(shared_ptr<Object> obj) {$/;"	f	class:GEQVisitor
@@ -708,7 +713,7 @@ GETTEXT	./output/ExprCppTreeLexer.c	111;"	d	file:
 GETTEXT	./output/ExprCppTreeLexer.c	125;"	d	file:
 GLOBAL_H	./include/global.h	2;"	d
 GT	./ExprCppTreeLexer.h	456;"	d
-GT	./ExprCppTreeParser.h	509;"	d
+GT	./ExprCppTreeParser.h	528;"	d
 GTVisitor	./include/TypeVisitor.h	/^class GTVisitor : public Object::IVisitor {$/;"	c
 GTVisitor	./src/TypeVisitor.cpp	/^GTVisitor::GTVisitor() {$/;"	f	class:GTVisitor
 GTVisitor	./src/TypeVisitor.cpp	/^GTVisitor::GTVisitor(shared_ptr<Object> obj) {$/;"	f	class:GTVisitor
@@ -737,9 +742,9 @@ HAVEPARSEDRULE	./output/ExprCppTreeLexer.c	151;"	d	file:
 HAVEPARSEDRULE	./output/ExprCppTreeParser.c	129;"	d	file:
 HAVEPARSEDRULE	./output/ExprCppTreeParser.c	95;"	d	file:
 ID	./ExprCppTreeLexer.h	457;"	d
-ID	./ExprCppTreeParser.h	510;"	d
+ID	./ExprCppTreeParser.h	529;"	d
 IF	./ExprCppTreeLexer.h	458;"	d
-IF	./ExprCppTreeParser.h	511;"	d
+IF	./ExprCppTreeParser.h	530;"	d
 IN	./include/global.h	/^    IN,$/;"	m	class:Type
 INDEX	./ExprCppTreeLexer.c	141;"	d	file:
 INDEX	./ExprCppTreeLexer.c	169;"	d	file:
@@ -758,7 +763,7 @@ INPUT	./output/ExprCppTreeLexer.c	96;"	d	file:
 INPUT	./output/ExprCppTreeParser.c	131;"	d	file:
 INPUT	./output/ExprCppTreeParser.c	97;"	d	file:
 INT	./ExprCppTreeLexer.h	459;"	d
-INT	./ExprCppTreeParser.h	512;"	d
+INT	./ExprCppTreeParser.h	531;"	d
 INVALID	./ExprCppTreeLexer.c	251;"	d	file:
 INVALID	./ExprCppTreeParser.c	179;"	d	file:
 INVALID	./output/ExprCppTreeLexer.c	222;"	d	file:
@@ -782,7 +787,7 @@ LA	./output/ExprCppTreeLexer.c	98;"	d	file:
 LA	./output/ExprCppTreeParser.c	108;"	d	file:
 LA	./output/ExprCppTreeParser.c	149;"	d	file:
 LEQ	./ExprCppTreeLexer.h	460;"	d
-LEQ	./ExprCppTreeParser.h	513;"	d
+LEQ	./ExprCppTreeParser.h	532;"	d
 LEQVisitor	./include/TypeVisitor.h	/^class LEQVisitor : public Object::IVisitor {$/;"	c
 LEQVisitor	./src/TypeVisitor.cpp	/^LEQVisitor::LEQVisitor() {$/;"	f	class:LEQVisitor
 LEQVisitor	./src/TypeVisitor.cpp	/^LEQVisitor::LEQVisitor(shared_ptr<Object> obj) {$/;"	f	class:LEQVisitor
@@ -797,7 +802,7 @@ LRECOVER	./ExprCppTreeLexer.c	175;"	d	file:
 LRECOVER	./output/ExprCppTreeLexer.c	103;"	d	file:
 LRECOVER	./output/ExprCppTreeLexer.c	146;"	d	file:
 LS	./ExprCppTreeLexer.h	461;"	d
-LS	./ExprCppTreeParser.h	514;"	d
+LS	./ExprCppTreeParser.h	533;"	d
 LSVisitor	./include/TypeVisitor.h	/^class LSVisitor : public Object::IVisitor {$/;"	c
 LSVisitor	./src/TypeVisitor.cpp	/^LSVisitor::LSVisitor() {$/;"	f	class:LSVisitor
 LSVisitor	./src/TypeVisitor.cpp	/^LSVisitor::LSVisitor(shared_ptr<Object> obj) {$/;"	f	class:LSVisitor
@@ -854,11 +859,11 @@ MEMOIZE	./output/ExprCppTreeLexer.c	150;"	d	file:
 MEMOIZE	./output/ExprCppTreeParser.c	130;"	d	file:
 MEMOIZE	./output/ExprCppTreeParser.c	96;"	d	file:
 MID	./ExprCppTreeLexer.h	462;"	d
-MID	./ExprCppTreeParser.h	515;"	d
+MID	./ExprCppTreeParser.h	534;"	d
 MINUS	./ExprCppTreeLexer.h	463;"	d
-MINUS	./ExprCppTreeParser.h	516;"	d
+MINUS	./ExprCppTreeParser.h	535;"	d
 MOD	./ExprCppTreeLexer.h	464;"	d
-MOD	./ExprCppTreeParser.h	517;"	d
+MOD	./ExprCppTreeParser.h	536;"	d
 MasterChain	./include/master_chain.h	/^    MasterChain(MasterChain& m) {}$/;"	f	class:MasterChain
 MasterChain	./include/master_chain.h	/^    MasterChain(MasterChain&& m) {}$/;"	f	class:MasterChain
 MasterChain	./include/master_chain.h	/^class MasterChain {$/;"	c
@@ -867,7 +872,7 @@ ModVisitor	./include/TypeVisitor.h	/^class ModVisitor : public Object::IVisitor 
 ModVisitor	./src/TypeVisitor.cpp	/^ModVisitor::ModVisitor() {$/;"	f	class:ModVisitor
 ModVisitor	./src/TypeVisitor.cpp	/^ModVisitor::ModVisitor(shared_ptr<Object> obj) {$/;"	f	class:ModVisitor
 NEQ	./ExprCppTreeLexer.h	465;"	d
-NEQ	./ExprCppTreeParser.h	518;"	d
+NEQ	./ExprCppTreeParser.h	537;"	d
 NEQVisitor	./include/TypeVisitor.h	/^class NEQVisitor : public Object::IVisitor {$/;"	c
 NEQVisitor	./src/TypeVisitor.cpp	/^NEQVisitor::NEQVisitor() {$/;"	f	class:NEQVisitor
 NEQVisitor	./src/TypeVisitor.cpp	/^NEQVisitor::NEQVisitor(shared_ptr<Object> obj) {$/;"	f	class:NEQVisitor
@@ -877,10 +882,10 @@ NEXTCHAR	./output/ExprCppTreeLexer.c	176;"	d	file:
 NEXTCHAR	./output/ExprCppTreeLexer.c	181;"	d	file:
 NO	./include/global.h	/^    NO,$/;"	m	class:Type
 NOT	./ExprCppTreeLexer.h	466;"	d
-NOT	./ExprCppTreeParser.h	519;"	d
+NOT	./ExprCppTreeParser.h	538;"	d
 OK	./include/global.h	/^    OK,$/;"	m	class:Type
 OR	./ExprCppTreeLexer.h	467;"	d
-OR	./ExprCppTreeParser.h	520;"	d
+OR	./ExprCppTreeParser.h	539;"	d
 OUT	./include/global.h	/^    OUT,$/;"	m	class:Type
 Object	./include/ArbitraryType.h	/^class Object {$/;"	c
 Object	./src/ArbitraryType.cpp	/^Object::Object() {$/;"	f	class:Object
@@ -893,7 +898,7 @@ PERRORRECOVERY	./ExprCppTreeParser.c	157;"	d	file:
 PERRORRECOVERY	./output/ExprCppTreeParser.c	115;"	d	file:
 PERRORRECOVERY	./output/ExprCppTreeParser.c	157;"	d	file:
 PLUS	./ExprCppTreeLexer.h	468;"	d
-PLUS	./ExprCppTreeParser.h	521;"	d
+PLUS	./ExprCppTreeParser.h	540;"	d
 POPSTREAM	./ExprCppTreeLexer.c	144;"	d	file:
 POPSTREAM	./ExprCppTreeLexer.c	182;"	d	file:
 POPSTREAM	./output/ExprCppTreeLexer.c	115;"	d	file:
@@ -907,7 +912,7 @@ PREPORTERROR	./ExprCppTreeParser.c	148;"	d	file:
 PREPORTERROR	./output/ExprCppTreeParser.c	107;"	d	file:
 PREPORTERROR	./output/ExprCppTreeParser.c	148;"	d	file:
 PRINT	./ExprCppTreeLexer.h	469;"	d
-PRINT	./ExprCppTreeParser.h	522;"	d
+PRINT	./ExprCppTreeParser.h	541;"	d
 PSRSTATE	./ExprCppTreeParser.c	128;"	d	file:
 PSRSTATE	./output/ExprCppTreeParser.c	128;"	d	file:
 PUSHSTREAM	./ExprCppTreeLexer.c	143;"	d	file:
@@ -930,116 +935,122 @@ RECOVERFROMMISMATCHEDSET	./ExprCppTreeParser.c	118;"	d	file:
 RECOVERFROMMISMATCHEDSET	./ExprCppTreeParser.c	161;"	d	file:
 RECOVERFROMMISMATCHEDSET	./output/ExprCppTreeParser.c	118;"	d	file:
 RECOVERFROMMISMATCHEDSET	./output/ExprCppTreeParser.c	161;"	d	file:
-RETURN_TYPE_arrayElem75	./ExprCppTreeParser.c	3852;"	d	file:
-RETURN_TYPE_arrayElem75	./ExprCppTreeParser.c	3853;"	d	file:
-RETURN_TYPE_assignExpr5	./ExprCppTreeParser.c	781;"	d	file:
-RETURN_TYPE_assignExpr5	./ExprCppTreeParser.c	782;"	d	file:
+RETURN_TYPE_arrayElem19	./ExprCppTreeParser.c	1797;"	d	file:
+RETURN_TYPE_arrayElem19	./ExprCppTreeParser.c	1798;"	d	file:
+RETURN_TYPE_arrayElem75	./ExprCppTreeParser.c	4011;"	d	file:
+RETURN_TYPE_arrayElem75	./ExprCppTreeParser.c	4012;"	d	file:
+RETURN_TYPE_arrayElemAssign29	./ExprCppTreeParser.c	2157;"	d	file:
+RETURN_TYPE_arrayElemAssign29	./ExprCppTreeParser.c	2158;"	d	file:
+RETURN_TYPE_assignExpr5	./ExprCppTreeParser.c	880;"	d	file:
+RETURN_TYPE_assignExpr5	./ExprCppTreeParser.c	881;"	d	file:
 RETURN_TYPE_atom11	./output/ExprCppTreeParser.c	1192;"	d	file:
 RETURN_TYPE_atom11	./output/ExprCppTreeParser.c	1193;"	d	file:
 RETURN_TYPE_atom26	./output/ExprCppTreeParser.c	2170;"	d	file:
 RETURN_TYPE_atom26	./output/ExprCppTreeParser.c	2171;"	d	file:
 RETURN_TYPE_atom29	./output/ExprCppTreeParser.c	2174;"	d	file:
 RETURN_TYPE_atom29	./output/ExprCppTreeParser.c	2175;"	d	file:
-RETURN_TYPE_atom6	./ExprCppTreeParser.c	1077;"	d	file:
-RETURN_TYPE_atom6	./ExprCppTreeParser.c	1078;"	d	file:
-RETURN_TYPE_atom8	./ExprCppTreeParser.c	1081;"	d	file:
-RETURN_TYPE_atom8	./ExprCppTreeParser.c	1082;"	d	file:
-RETURN_TYPE_block37	./ExprCppTreeParser.c	2385;"	d	file:
-RETURN_TYPE_block37	./ExprCppTreeParser.c	2386;"	d	file:
+RETURN_TYPE_atom6	./ExprCppTreeParser.c	1113;"	d	file:
+RETURN_TYPE_atom6	./ExprCppTreeParser.c	1114;"	d	file:
+RETURN_TYPE_atom8	./ExprCppTreeParser.c	1117;"	d	file:
+RETURN_TYPE_atom8	./ExprCppTreeParser.c	1118;"	d	file:
+RETURN_TYPE_block37	./ExprCppTreeParser.c	2544;"	d	file:
+RETURN_TYPE_block37	./ExprCppTreeParser.c	2545;"	d	file:
 RETURN_TYPE_block66	./output/ExprCppTreeParser.c	3725;"	d	file:
 RETURN_TYPE_block66	./output/ExprCppTreeParser.c	3726;"	d	file:
 RETURN_TYPE_block77	./output/ExprCppTreeParser.c	4606;"	d	file:
 RETURN_TYPE_block77	./output/ExprCppTreeParser.c	4607;"	d	file:
-RETURN_TYPE_block78	./ExprCppTreeParser.c	4132;"	d	file:
-RETURN_TYPE_block78	./ExprCppTreeParser.c	4133;"	d	file:
+RETURN_TYPE_block78	./ExprCppTreeParser.c	4291;"	d	file:
+RETURN_TYPE_block78	./ExprCppTreeParser.c	4292;"	d	file:
 RETURN_TYPE_blockCode74	./output/ExprCppTreeParser.c	4298;"	d	file:
 RETURN_TYPE_blockCode74	./output/ExprCppTreeParser.c	4299;"	d	file:
-RETURN_TYPE_caseExpr66	./ExprCppTreeParser.c	3521;"	d	file:
-RETURN_TYPE_caseExpr66	./ExprCppTreeParser.c	3522;"	d	file:
+RETURN_TYPE_caseExpr66	./ExprCppTreeParser.c	3680;"	d	file:
+RETURN_TYPE_caseExpr66	./ExprCppTreeParser.c	3681;"	d	file:
 RETURN_TYPE_conditionExpr14	./output/ExprCppTreeParser.c	1344;"	d	file:
 RETURN_TYPE_conditionExpr14	./output/ExprCppTreeParser.c	1345;"	d	file:
 RETURN_TYPE_conditionExpr25	./output/ExprCppTreeParser.c	1771;"	d	file:
 RETURN_TYPE_conditionExpr25	./output/ExprCppTreeParser.c	1772;"	d	file:
 RETURN_TYPE_conditionExpr34	./output/ExprCppTreeParser.c	2551;"	d	file:
 RETURN_TYPE_conditionExpr34	./output/ExprCppTreeParser.c	2552;"	d	file:
-RETURN_TYPE_conditionExpr35	./ExprCppTreeParser.c	2381;"	d	file:
-RETURN_TYPE_conditionExpr35	./ExprCppTreeParser.c	2382;"	d	file:
-RETURN_TYPE_conditionExpr44	./ExprCppTreeParser.c	2642;"	d	file:
-RETURN_TYPE_conditionExpr44	./ExprCppTreeParser.c	2643;"	d	file:
+RETURN_TYPE_conditionExpr35	./ExprCppTreeParser.c	2540;"	d	file:
+RETURN_TYPE_conditionExpr35	./ExprCppTreeParser.c	2541;"	d	file:
+RETURN_TYPE_conditionExpr44	./ExprCppTreeParser.c	2801;"	d	file:
+RETURN_TYPE_conditionExpr44	./ExprCppTreeParser.c	2802;"	d	file:
 RETURN_TYPE_conditionExpr44	./output/ExprCppTreeParser.c	3045;"	d	file:
 RETURN_TYPE_conditionExpr44	./output/ExprCppTreeParser.c	3046;"	d	file:
 RETURN_TYPE_conditionExpr49	./output/ExprCppTreeParser.c	3221;"	d	file:
 RETURN_TYPE_conditionExpr49	./output/ExprCppTreeParser.c	3222;"	d	file:
-RETURN_TYPE_conditionExpr51	./ExprCppTreeParser.c	2892;"	d	file:
-RETURN_TYPE_conditionExpr51	./ExprCppTreeParser.c	2893;"	d	file:
+RETURN_TYPE_conditionExpr51	./ExprCppTreeParser.c	3051;"	d	file:
+RETURN_TYPE_conditionExpr51	./ExprCppTreeParser.c	3052;"	d	file:
 RETURN_TYPE_conditionExpr56	./output/ExprCppTreeParser.c	3496;"	d	file:
 RETURN_TYPE_conditionExpr56	./output/ExprCppTreeParser.c	3497;"	d	file:
 RETURN_TYPE_conditionExpr59	./output/ExprCppTreeParser.c	3705;"	d	file:
 RETURN_TYPE_conditionExpr59	./output/ExprCppTreeParser.c	3706;"	d	file:
-RETURN_TYPE_conditionExpr76	./ExprCppTreeParser.c	4128;"	d	file:
-RETURN_TYPE_conditionExpr76	./ExprCppTreeParser.c	4129;"	d	file:
+RETURN_TYPE_conditionExpr76	./ExprCppTreeParser.c	4287;"	d	file:
+RETURN_TYPE_conditionExpr76	./ExprCppTreeParser.c	4288;"	d	file:
 RETURN_TYPE_conditionExpr8	./output/ExprCppTreeParser.c	981;"	d	file:
 RETURN_TYPE_conditionExpr8	./output/ExprCppTreeParser.c	982;"	d	file:
-RETURN_TYPE_conditionExpr83	./ExprCppTreeParser.c	4140;"	d	file:
-RETURN_TYPE_conditionExpr83	./ExprCppTreeParser.c	4141;"	d	file:
+RETURN_TYPE_conditionExpr83	./ExprCppTreeParser.c	4299;"	d	file:
+RETURN_TYPE_conditionExpr83	./ExprCppTreeParser.c	4300;"	d	file:
 RETURN_TYPE_defExpr61	./output/ExprCppTreeParser.c	3709;"	d	file:
 RETURN_TYPE_defExpr61	./output/ExprCppTreeParser.c	3710;"	d	file:
-RETURN_TYPE_defExpr79	./ExprCppTreeParser.c	4136;"	d	file:
-RETURN_TYPE_defExpr79	./ExprCppTreeParser.c	4137;"	d	file:
-RETURN_TYPE_defaultExpr67	./ExprCppTreeParser.c	3525;"	d	file:
-RETURN_TYPE_defaultExpr67	./ExprCppTreeParser.c	3526;"	d	file:
+RETURN_TYPE_defExpr79	./ExprCppTreeParser.c	4295;"	d	file:
+RETURN_TYPE_defExpr79	./ExprCppTreeParser.c	4296;"	d	file:
+RETURN_TYPE_defaultExpr67	./ExprCppTreeParser.c	3684;"	d	file:
+RETURN_TYPE_defaultExpr67	./ExprCppTreeParser.c	3685;"	d	file:
 RETURN_TYPE_elseExpr37	./output/ExprCppTreeParser.c	2559;"	d	file:
 RETURN_TYPE_elseExpr37	./output/ExprCppTreeParser.c	2560;"	d	file:
-RETURN_TYPE_expr10	./ExprCppTreeParser.c	1230;"	d	file:
-RETURN_TYPE_expr10	./ExprCppTreeParser.c	1231;"	d	file:
-RETURN_TYPE_expr12	./ExprCppTreeParser.c	1234;"	d	file:
-RETURN_TYPE_expr12	./ExprCppTreeParser.c	1235;"	d	file:
-RETURN_TYPE_expr14	./ExprCppTreeParser.c	1238;"	d	file:
-RETURN_TYPE_expr14	./ExprCppTreeParser.c	1239;"	d	file:
+RETURN_TYPE_expr10	./ExprCppTreeParser.c	1266;"	d	file:
+RETURN_TYPE_expr10	./ExprCppTreeParser.c	1267;"	d	file:
+RETURN_TYPE_expr12	./ExprCppTreeParser.c	1270;"	d	file:
+RETURN_TYPE_expr12	./ExprCppTreeParser.c	1271;"	d	file:
+RETURN_TYPE_expr14	./ExprCppTreeParser.c	1274;"	d	file:
+RETURN_TYPE_expr14	./ExprCppTreeParser.c	1275;"	d	file:
 RETURN_TYPE_expr16	./output/ExprCppTreeParser.c	1578;"	d	file:
 RETURN_TYPE_expr16	./output/ExprCppTreeParser.c	1579;"	d	file:
 RETURN_TYPE_expr18	./output/ExprCppTreeParser.c	1582;"	d	file:
 RETURN_TYPE_expr18	./output/ExprCppTreeParser.c	1583;"	d	file:
-RETURN_TYPE_expr20	./ExprCppTreeParser.c	1708;"	d	file:
-RETURN_TYPE_expr20	./ExprCppTreeParser.c	1709;"	d	file:
-RETURN_TYPE_expr22	./ExprCppTreeParser.c	1712;"	d	file:
-RETURN_TYPE_expr22	./ExprCppTreeParser.c	1713;"	d	file:
-RETURN_TYPE_expr30	./ExprCppTreeParser.c	2222;"	d	file:
-RETURN_TYPE_expr30	./ExprCppTreeParser.c	2223;"	d	file:
-RETURN_TYPE_expr32	./ExprCppTreeParser.c	2226;"	d	file:
-RETURN_TYPE_expr32	./ExprCppTreeParser.c	2227;"	d	file:
+RETURN_TYPE_expr21	./ExprCppTreeParser.c	1801;"	d	file:
+RETURN_TYPE_expr21	./ExprCppTreeParser.c	1802;"	d	file:
+RETURN_TYPE_expr23	./ExprCppTreeParser.c	1948;"	d	file:
+RETURN_TYPE_expr23	./ExprCppTreeParser.c	1949;"	d	file:
+RETURN_TYPE_expr25	./ExprCppTreeParser.c	1952;"	d	file:
+RETURN_TYPE_expr25	./ExprCppTreeParser.c	1953;"	d	file:
+RETURN_TYPE_expr30	./ExprCppTreeParser.c	2381;"	d	file:
+RETURN_TYPE_expr30	./ExprCppTreeParser.c	2382;"	d	file:
+RETURN_TYPE_expr32	./ExprCppTreeParser.c	2385;"	d	file:
+RETURN_TYPE_expr32	./ExprCppTreeParser.c	2386;"	d	file:
 RETURN_TYPE_expr39	./output/ExprCppTreeParser.c	2809;"	d	file:
 RETURN_TYPE_expr39	./output/ExprCppTreeParser.c	2810;"	d	file:
 RETURN_TYPE_expr41	./output/ExprCppTreeParser.c	2813;"	d	file:
 RETURN_TYPE_expr41	./output/ExprCppTreeParser.c	2814;"	d	file:
-RETURN_TYPE_expr42	./ExprCppTreeParser.c	2638;"	d	file:
-RETURN_TYPE_expr42	./ExprCppTreeParser.c	2639;"	d	file:
-RETURN_TYPE_expr46	./ExprCppTreeParser.c	2646;"	d	file:
-RETURN_TYPE_expr46	./ExprCppTreeParser.c	2647;"	d	file:
+RETURN_TYPE_expr42	./ExprCppTreeParser.c	2797;"	d	file:
+RETURN_TYPE_expr42	./ExprCppTreeParser.c	2798;"	d	file:
+RETURN_TYPE_expr46	./ExprCppTreeParser.c	2805;"	d	file:
+RETURN_TYPE_expr46	./ExprCppTreeParser.c	2806;"	d	file:
 RETURN_TYPE_expr51	./output/ExprCppTreeParser.c	3225;"	d	file:
 RETURN_TYPE_expr51	./output/ExprCppTreeParser.c	3226;"	d	file:
-RETURN_TYPE_expr55	./ExprCppTreeParser.c	3075;"	d	file:
-RETURN_TYPE_expr55	./ExprCppTreeParser.c	3076;"	d	file:
-RETURN_TYPE_expr63	./ExprCppTreeParser.c	3517;"	d	file:
-RETURN_TYPE_expr63	./ExprCppTreeParser.c	3518;"	d	file:
-RETURN_TYPE_expr73	./ExprCppTreeParser.c	3848;"	d	file:
-RETURN_TYPE_expr73	./ExprCppTreeParser.c	3849;"	d	file:
+RETURN_TYPE_expr55	./ExprCppTreeParser.c	3234;"	d	file:
+RETURN_TYPE_expr55	./ExprCppTreeParser.c	3235;"	d	file:
+RETURN_TYPE_expr63	./ExprCppTreeParser.c	3676;"	d	file:
+RETURN_TYPE_expr63	./ExprCppTreeParser.c	3677;"	d	file:
+RETURN_TYPE_expr73	./ExprCppTreeParser.c	4007;"	d	file:
+RETURN_TYPE_expr73	./ExprCppTreeParser.c	4008;"	d	file:
 RETURN_TYPE_for147	./output/ExprCppTreeParser.c	3217;"	d	file:
 RETURN_TYPE_for147	./output/ExprCppTreeParser.c	3218;"	d	file:
 RETURN_TYPE_forExpr64	./output/ExprCppTreeParser.c	3717;"	d	file:
 RETURN_TYPE_forExpr64	./output/ExprCppTreeParser.c	3718;"	d	file:
-RETURN_TYPE_forExpr87	./ExprCppTreeParser.c	4148;"	d	file:
-RETURN_TYPE_forExpr87	./ExprCppTreeParser.c	4149;"	d	file:
+RETURN_TYPE_forExpr87	./ExprCppTreeParser.c	4307;"	d	file:
+RETURN_TYPE_forExpr87	./ExprCppTreeParser.c	4308;"	d	file:
 RETURN_TYPE_ifExpr63	./output/ExprCppTreeParser.c	3713;"	d	file:
 RETURN_TYPE_ifExpr63	./output/ExprCppTreeParser.c	3714;"	d	file:
-RETURN_TYPE_ifExpr86	./ExprCppTreeParser.c	4144;"	d	file:
-RETURN_TYPE_ifExpr86	./ExprCppTreeParser.c	4145;"	d	file:
-RETURN_TYPE_midExpr29	./ExprCppTreeParser.c	2075;"	d	file:
-RETURN_TYPE_midExpr29	./ExprCppTreeParser.c	2076;"	d	file:
-RETURN_TYPE_multExpr1	./ExprCppTreeParser.c	773;"	d	file:
-RETURN_TYPE_multExpr1	./ExprCppTreeParser.c	774;"	d	file:
-RETURN_TYPE_multExpr4	./ExprCppTreeParser.c	777;"	d	file:
-RETURN_TYPE_multExpr4	./ExprCppTreeParser.c	778;"	d	file:
+RETURN_TYPE_ifExpr86	./ExprCppTreeParser.c	4303;"	d	file:
+RETURN_TYPE_ifExpr86	./ExprCppTreeParser.c	4304;"	d	file:
+RETURN_TYPE_midExpr28	./ExprCppTreeParser.c	2153;"	d	file:
+RETURN_TYPE_midExpr28	./ExprCppTreeParser.c	2154;"	d	file:
+RETURN_TYPE_multExpr1	./ExprCppTreeParser.c	872;"	d	file:
+RETURN_TYPE_multExpr1	./ExprCppTreeParser.c	873;"	d	file:
+RETURN_TYPE_multExpr4	./ExprCppTreeParser.c	876;"	d	file:
+RETURN_TYPE_multExpr4	./ExprCppTreeParser.c	877;"	d	file:
 RETURN_TYPE_multOrDivExpr19	./output/ExprCppTreeParser.c	1763;"	d	file:
 RETURN_TYPE_multOrDivExpr19	./output/ExprCppTreeParser.c	1764;"	d	file:
 RETURN_TYPE_multOrDivExpr22	./output/ExprCppTreeParser.c	1767;"	d	file:
@@ -1054,32 +1065,32 @@ RETURN_TYPE_stmt31	./output/ExprCppTreeParser.c	2411;"	d	file:
 RETURN_TYPE_stmt31	./output/ExprCppTreeParser.c	2412;"	d	file:
 RETURN_TYPE_stmt36	./output/ExprCppTreeParser.c	2555;"	d	file:
 RETURN_TYPE_stmt36	./output/ExprCppTreeParser.c	2556;"	d	file:
-RETURN_TYPE_stmt39	./ExprCppTreeParser.c	2389;"	d	file:
-RETURN_TYPE_stmt39	./ExprCppTreeParser.c	2390;"	d	file:
-RETURN_TYPE_stmt48	./ExprCppTreeParser.c	2650;"	d	file:
-RETURN_TYPE_stmt48	./ExprCppTreeParser.c	2651;"	d	file:
-RETURN_TYPE_stmt53	./ExprCppTreeParser.c	2896;"	d	file:
-RETURN_TYPE_stmt53	./ExprCppTreeParser.c	2897;"	d	file:
+RETURN_TYPE_stmt39	./ExprCppTreeParser.c	2548;"	d	file:
+RETURN_TYPE_stmt39	./ExprCppTreeParser.c	2549;"	d	file:
+RETURN_TYPE_stmt48	./ExprCppTreeParser.c	2809;"	d	file:
+RETURN_TYPE_stmt48	./ExprCppTreeParser.c	2810;"	d	file:
+RETURN_TYPE_stmt53	./ExprCppTreeParser.c	3055;"	d	file:
+RETURN_TYPE_stmt53	./ExprCppTreeParser.c	3056;"	d	file:
 RETURN_TYPE_stmt53	./output/ExprCppTreeParser.c	3229;"	d	file:
 RETURN_TYPE_stmt53	./output/ExprCppTreeParser.c	3230;"	d	file:
-RETURN_TYPE_stmt57	./ExprCppTreeParser.c	3079;"	d	file:
-RETURN_TYPE_stmt57	./ExprCppTreeParser.c	3080;"	d	file:
+RETURN_TYPE_stmt57	./ExprCppTreeParser.c	3238;"	d	file:
+RETURN_TYPE_stmt57	./ExprCppTreeParser.c	3239;"	d	file:
 RETURN_TYPE_stmt58	./output/ExprCppTreeParser.c	3500;"	d	file:
 RETURN_TYPE_stmt58	./output/ExprCppTreeParser.c	3501;"	d	file:
-RETURN_TYPE_stmt60	./ExprCppTreeParser.c	3294;"	d	file:
-RETURN_TYPE_stmt60	./ExprCppTreeParser.c	3295;"	d	file:
+RETURN_TYPE_stmt60	./ExprCppTreeParser.c	3453;"	d	file:
+RETURN_TYPE_stmt60	./ExprCppTreeParser.c	3454;"	d	file:
 RETURN_TYPE_stmt76	./output/ExprCppTreeParser.c	4470;"	d	file:
 RETURN_TYPE_stmt76	./output/ExprCppTreeParser.c	4471;"	d	file:
-RETURN_TYPE_stmt95	./ExprCppTreeParser.c	4641;"	d	file:
-RETURN_TYPE_stmt95	./ExprCppTreeParser.c	4642;"	d	file:
-RETURN_TYPE_stmt97	./ExprCppTreeParser.c	4835;"	d	file:
-RETURN_TYPE_stmt97	./ExprCppTreeParser.c	4836;"	d	file:
-RETURN_TYPE_switchExpr89	./ExprCppTreeParser.c	4156;"	d	file:
-RETURN_TYPE_switchExpr89	./ExprCppTreeParser.c	4157;"	d	file:
+RETURN_TYPE_stmt95	./ExprCppTreeParser.c	4800;"	d	file:
+RETURN_TYPE_stmt95	./ExprCppTreeParser.c	4801;"	d	file:
+RETURN_TYPE_stmt97	./ExprCppTreeParser.c	4994;"	d	file:
+RETURN_TYPE_stmt97	./ExprCppTreeParser.c	4995;"	d	file:
+RETURN_TYPE_switchExpr89	./ExprCppTreeParser.c	4315;"	d	file:
+RETURN_TYPE_switchExpr89	./ExprCppTreeParser.c	4316;"	d	file:
 RETURN_TYPE_whileExpr65	./output/ExprCppTreeParser.c	3721;"	d	file:
 RETURN_TYPE_whileExpr65	./output/ExprCppTreeParser.c	3722;"	d	file:
-RETURN_TYPE_whileExpr88	./ExprCppTreeParser.c	4152;"	d	file:
-RETURN_TYPE_whileExpr88	./ExprCppTreeParser.c	4153;"	d	file:
+RETURN_TYPE_whileExpr88	./ExprCppTreeParser.c	4311;"	d	file:
+RETURN_TYPE_whileExpr88	./ExprCppTreeParser.c	4312;"	d	file:
 REWIND	./ExprCppTreeLexer.c	134;"	d	file:
 REWIND	./ExprCppTreeLexer.c	177;"	d	file:
 REWIND	./ExprCppTreeParser.c	113;"	d	file:
@@ -1153,7 +1164,7 @@ SETTEXT8	./output/ExprCppTreeLexer.c	117;"	d	file:
 SKIP	./ExprCppTreeLexer.c	184;"	d	file:
 SKIP	./output/ExprCppTreeLexer.c	155;"	d	file:
 STRING	./ExprCppTreeLexer.h	470;"	d
-STRING	./ExprCppTreeParser.h	523;"	d
+STRING	./ExprCppTreeParser.h	542;"	d
 STRSTREAM	./ExprCppTreeLexer.c	126;"	d	file:
 STRSTREAM	./ExprCppTreeLexer.c	167;"	d	file:
 STRSTREAM	./ExprCppTreeParser.c	132;"	d	file:
@@ -1163,7 +1174,7 @@ STRSTREAM	./output/ExprCppTreeLexer.c	97;"	d	file:
 STRSTREAM	./output/ExprCppTreeParser.c	132;"	d	file:
 STRSTREAM	./output/ExprCppTreeParser.c	98;"	d	file:
 SWITCH	./ExprCppTreeLexer.h	471;"	d
-SWITCH	./ExprCppTreeParser.h	524;"	d
+SWITCH	./ExprCppTreeParser.h	543;"	d
 Status	./include/global.h	/^struct Status {$/;"	s
 String	./include/ArbitraryType.h	/^class String : public Object {$/;"	c
 String	./src/ArbitraryType.cpp	/^String::String(double value) {$/;"	f	class:String
@@ -1174,9 +1185,9 @@ SubVisitor	./src/TypeVisitor.cpp	/^SubVisitor::SubVisitor() {$/;"	f	class:SubVis
 SubVisitor	./src/TypeVisitor.cpp	/^SubVisitor::SubVisitor(shared_ptr<Object> p) {$/;"	f	class:SubVisitor
 SwitchExprConverter	./include/dfa.h	/^class SwitchExprConverter : public Converter {$/;"	c
 TIMES	./ExprCppTreeLexer.h	472;"	d
-TIMES	./ExprCppTreeParser.h	525;"	d
+TIMES	./ExprCppTreeParser.h	544;"	d
 TOKENSOURCE	./ExprCppTreeLexer.h	481;"	d
-TOKENSOURCE	./ExprCppTreeParser.h	534;"	d
+TOKENSOURCE	./ExprCppTreeParser.h	553;"	d
 TOKSOURCE	./ExprCppTreeLexer.c	151;"	d	file:
 TOKSOURCE	./output/ExprCppTreeLexer.c	122;"	d	file:
 TOKTEXT	./ExprCppTreeLexer.c	240;"	d	file:
@@ -1184,26 +1195,26 @@ TOKTEXT	./ExprCppTreeParser.c	168;"	d	file:
 TOKTEXT	./output/ExprCppTreeLexer.c	211;"	d	file:
 TOKTEXT	./output/ExprCppTreeParser.c	168;"	d	file:
 T__41	./ExprCppTreeLexer.h	430;"	d
-T__41	./ExprCppTreeParser.h	483;"	d
+T__41	./ExprCppTreeParser.h	502;"	d
 T__42	./ExprCppTreeLexer.h	431;"	d
-T__42	./ExprCppTreeParser.h	484;"	d
+T__42	./ExprCppTreeParser.h	503;"	d
 T__43	./ExprCppTreeLexer.h	432;"	d
-T__43	./ExprCppTreeParser.h	485;"	d
+T__43	./ExprCppTreeParser.h	504;"	d
 T__44	./ExprCppTreeLexer.h	433;"	d
-T__44	./ExprCppTreeParser.h	486;"	d
+T__44	./ExprCppTreeParser.h	505;"	d
 T__45	./ExprCppTreeLexer.h	434;"	d
-T__45	./ExprCppTreeParser.h	487;"	d
+T__45	./ExprCppTreeParser.h	506;"	d
 T__46	./ExprCppTreeLexer.h	435;"	d
-T__46	./ExprCppTreeParser.h	488;"	d
+T__46	./ExprCppTreeParser.h	507;"	d
 T__47	./ExprCppTreeLexer.h	436;"	d
-T__47	./ExprCppTreeParser.h	489;"	d
+T__47	./ExprCppTreeParser.h	508;"	d
 T__48	./ExprCppTreeLexer.h	437;"	d
-T__48	./ExprCppTreeParser.h	490;"	d
+T__48	./ExprCppTreeParser.h	509;"	d
 TimeVisitor	./include/TypeVisitor.h	/^class TimeVisitor : public Object::IVisitor {$/;"	c
 TimeVisitor	./src/TypeVisitor.cpp	/^TimeVisitor::TimeVisitor() {$/;"	f	class:TimeVisitor
 TimeVisitor	./src/TypeVisitor.cpp	/^TimeVisitor::TimeVisitor(shared_ptr<Object> obj) {$/;"	f	class:TimeVisitor
 Tokens	./ExprCppTreeLexer.h	427;"	d
-Tokens	./ExprCppTreeParser.h	480;"	d
+Tokens	./ExprCppTreeParser.h	499;"	d
 Type	./include/global.h	/^enum class Type {$/;"	c
 UP	./ExprCppTreeLexer.c	248;"	d	file:
 UP	./ExprCppTreeParser.c	176;"	d	file:
@@ -1221,6 +1232,7 @@ Visit	./src/ArbitraryType.cpp	/^shared_ptr<Object> Object::IVisitor::Visit(Objec
 Visit	./src/ArbitraryType.cpp	/^shared_ptr<Object> Object::IVisitor::Visit(String* obj) {$/;"	f	class:Object::IVisitor
 Visit	./src/ArbitraryType.cpp	/^shared_ptr<Object> Object::IVisitor::Visit(String* s1, Integer* s2) {$/;"	f	class:Object::IVisitor
 Visit	./src/ArbitraryType.cpp	/^shared_ptr<Object> Object::IVisitor::Visit(String* s1, String* s2) {$/;"	f	class:Object::IVisitor
+Visit	./src/ArbitraryType.cpp	/^shared_ptr<Object>& Object::IVisitor::Visit(Array* obj) {$/;"	f	class:Object::IVisitor
 Visit	./src/TypeVisitor.cpp	/^shared_ptr<Object> AddVisitor::Visit(Integer* p) {$/;"	f	class:AddVisitor
 Visit	./src/TypeVisitor.cpp	/^shared_ptr<Object> AddVisitor::Visit(Integer* p1, Integer* p2) {$/;"	f	class:AddVisitor
 Visit	./src/TypeVisitor.cpp	/^shared_ptr<Object> AddVisitor::Visit(String* s) {$/;"	f	class:AddVisitor
@@ -1258,14 +1270,15 @@ Visit	./src/TypeVisitor.cpp	/^shared_ptr<Object> SubVisitor::Visit(Integer* p) {
 Visit	./src/TypeVisitor.cpp	/^shared_ptr<Object> SubVisitor::Visit(Integer* p1, Integer* p2) {$/;"	f	class:SubVisitor
 Visit	./src/TypeVisitor.cpp	/^shared_ptr<Object> TimeVisitor::Visit(Integer* p) {$/;"	f	class:TimeVisitor
 Visit	./src/TypeVisitor.cpp	/^shared_ptr<Object> TimeVisitor::Visit(Integer* p1, Integer* p2) {$/;"	f	class:TimeVisitor
+Visit	./src/TypeVisitor.cpp	/^shared_ptr<Object>& ArrayElementSetVisitor::Visit(Array* p) {$/;"	f	class:ArrayElementSetVisitor
 Visit	./src/TypeVisitor.cpp	/^shared_ptr<Object>& ArrayElementVisitor::Visit(Array* obj) {$/;"	f	class:ArrayElementVisitor
 WHILE	./ExprCppTreeLexer.h	473;"	d
-WHILE	./ExprCppTreeParser.h	526;"	d
+WHILE	./ExprCppTreeParser.h	545;"	d
 WS	./ExprCppTreeLexer.h	474;"	d
-WS	./ExprCppTreeParser.h	527;"	d
+WS	./ExprCppTreeParser.h	546;"	d
 YES	./include/global.h	/^    YES,$/;"	m	class:Type
 _ExprCppTreeLexer_H	./ExprCppTreeLexer.h	206;"	d
-_ExprCppTreeParser_H	./ExprCppTreeParser.h	116;"	d
+_ExprCppTreeParser_H	./ExprCppTreeParser.h	119;"	d
 _INCLUDE_MASTER_CHAIN_H	./include/master_chain.h	2;"	d
 __INCLUDE_DFAEDGE_H__	./include/DFAEdge.h	2;"	d
 __INCLUDE_DFA_H	./include/dfa.h	2;"	d
@@ -1284,6 +1297,8 @@ adaptor	./ExprCppTreeParser.h	/^pANTLR3_BASE_TREE_ADAPTOR	adaptor;$/;"	m	struct:
 addEdge	./src/DFAEdge.cpp	/^void DFANode::addEdge(Type type, shared_ptr<DFANode> node) {$/;"	f	class:DFANode
 arrayElem	./ExprCppTreeParser.c	/^arrayElem(pExprCppTreeParser ctx)$/;"	f	file:
 arrayElem	./ExprCppTreeParser.h	/^     (*arrayElem)	(struct ExprCppTreeParser_Ctx_struct * ctx);$/;"	m	struct:ExprCppTreeParser_Ctx_struct
+arrayElemAssign	./ExprCppTreeParser.c	/^arrayElemAssign(pExprCppTreeParser ctx)$/;"	f	file:
+arrayElemAssign	./ExprCppTreeParser.h	/^     (*arrayElemAssign)	(struct ExprCppTreeParser_Ctx_struct * ctx);$/;"	m	struct:ExprCppTreeParser_Ctx_struct
 assignExpr	./ExprCppTreeParser.c	/^assignExpr(pExprCppTreeParser ctx)$/;"	f	file:
 assignExpr	./ExprCppTreeParser.h	/^     (*assignExpr)	(struct ExprCppTreeParser_Ctx_struct * ctx);$/;"	m	struct:ExprCppTreeParser_Ctx_struct
 atom	./ExprCppTreeParser.c	/^atom(pExprCppTreeParser ctx)$/;"	f	file:
@@ -1295,6 +1310,7 @@ block	./output/ExprCppTreeParser.c	/^block(pExprCppTreeParser ctx)$/;"	f	file:
 blockCode	./output/ExprCppTreeParser.c	/^blockCode(pExprCppTreeParser ctx)$/;"	f	file:
 caseExpr	./ExprCppTreeParser.c	/^caseExpr(pExprCppTreeParser ctx)$/;"	f	file:
 caseExpr	./ExprCppTreeParser.h	/^     (*caseExpr)	(struct ExprCppTreeParser_Ctx_struct * ctx);$/;"	m	struct:ExprCppTreeParser_Ctx_struct
+cdfa3	./ExprCppTreeParser.c	/^ANTLR3_CYCLIC_DFA cdfa3$/;"	v	file:
 cdfa5	./output/ExprCppTreeLexer.c	/^ANTLR3_CYCLIC_DFA cdfa5$/;"	v	file:
 check	./src/DFAEdge.cpp	/^bool Edge::check(Status status, ExprTreeEvaluator* eval) {$/;"	f	class:Edge
 conditionExpr	./ExprCppTreeParser.c	/^conditionExpr(pExprCppTreeParser ctx)$/;"	f	file:
@@ -1307,6 +1323,7 @@ create	./src/MasterChain.cpp	/^Calculate* BranchExprFactory::create() {$/;"	f	cl
 create	./src/MasterChain.cpp	/^Calculate* ConditionExprFactory::create() {$/;"	f	class:ConditionExprFactory
 create	./src/MasterChain.cpp	/^Calculate* ExprFactory::create() {$/;"	f	class:ExprFactory
 create	./src/MasterChain.cpp	/^Calculate* LoopExprFactory::create() {$/;"	f	class:LoopExprFactory
+createArray	./src/MasterChain.cpp	/^shared_ptr<Object> createArray(pANTLR3_BASE_TREE tree, int len, ExprTreeEvaluator* eval) {$/;"	f
 decRuleLevel	./output/ExprCppTreeParser.c	/^static void decRuleLevel()$/;"	f	file:
 defExpr	./ExprCppTreeParser.c	/^defExpr(pExprCppTreeParser ctx)$/;"	f	file:
 defExpr	./ExprCppTreeParser.h	/^     (*defExpr)	(struct ExprCppTreeParser_Ctx_struct * ctx);$/;"	m	struct:ExprCppTreeParser_Ctx_struct
@@ -1317,6 +1334,18 @@ destory	./src/MasterChain.cpp	/^void BranchExprFactory::destory(Calculate* c) {$
 destory	./src/MasterChain.cpp	/^void ConditionExprFactory::destory(Calculate* cal) {$/;"	f	class:ConditionExprFactory
 destory	./src/MasterChain.cpp	/^void ExprFactory::destory(Calculate* cal) {$/;"	f	class:ExprFactory
 destory	./src/MasterChain.cpp	/^void LoopExprFactory::destory(Calculate* c) {$/;"	f	class:LoopExprFactory
+dfa3_T0	./ExprCppTreeParser.c	/^static const ANTLR3_INT32 dfa3_T0[] =$/;"	v	file:
+dfa3_T1	./ExprCppTreeParser.c	/^static const ANTLR3_INT32 dfa3_T1[] =$/;"	v	file:
+dfa3_T2	./ExprCppTreeParser.c	/^static const ANTLR3_INT32 dfa3_T2[] =$/;"	v	file:
+dfa3_T3	./ExprCppTreeParser.c	/^static const ANTLR3_INT32 dfa3_T3[] =$/;"	v	file:
+dfa3_T_empty	./ExprCppTreeParser.c	792;"	d	file:
+dfa3_accept	./ExprCppTreeParser.c	/^static const ANTLR3_INT32 dfa3_accept[7] =$/;"	v	file:
+dfa3_eof	./ExprCppTreeParser.c	/^static const ANTLR3_INT32 dfa3_eof[7] =$/;"	v	file:
+dfa3_eot	./ExprCppTreeParser.c	/^static const ANTLR3_INT32 dfa3_eot[7] =$/;"	v	file:
+dfa3_max	./ExprCppTreeParser.c	/^static const ANTLR3_INT32 dfa3_max[7] =$/;"	v	file:
+dfa3_min	./ExprCppTreeParser.c	/^static const ANTLR3_INT32 dfa3_min[7] =$/;"	v	file:
+dfa3_special	./ExprCppTreeParser.c	/^static const ANTLR3_INT32 dfa3_special[7] =$/;"	v	file:
+dfa3_transitions	./ExprCppTreeParser.c	/^static const ANTLR3_INT32 * const dfa3_transitions[] =$/;"	v	file:
 dfa5_T0	./output/ExprCppTreeLexer.c	/^static const ANTLR3_INT32 dfa5_T0[] =$/;"	v	file:
 dfa5_T1	./output/ExprCppTreeLexer.c	/^static const ANTLR3_INT32 dfa5_T1[] =$/;"	v	file:
 dfa5_T10	./output/ExprCppTreeLexer.c	/^static const ANTLR3_INT32 dfa5_T10[] =$/;"	v	file:
@@ -1379,6 +1408,7 @@ free	./ExprCppTreeLexer.h	/^    void	    (*free)   (struct ExprCppTreeLexer_Ctx_
 free	./ExprCppTreeParser.h	/^    void	    (*free)   (struct ExprCppTreeParser_Ctx_struct * ctx);$/;"	m	struct:ExprCppTreeParser_Ctx_struct
 freeScope	./ExprCppTreeParser.c	/^static	void ANTLR3_CDECL freeScope(void * scope)$/;"	f	file:
 freeScope	./output/ExprCppTreeParser.c	/^static	void ANTLR3_CDECL freeScope(void * scope)$/;"	f	file:
+getArrayElem	./src/MasterChain.cpp	/^shared_ptr<Object>& getArrayElem(pANTLR3_BASE_TREE tree, ExprTreeEvaluator* eval) {$/;"	f
 getChild	./include/master_chain.h	/^    pANTLR3_BASE_TREE getChild(pANTLR3_BASE_TREE tree, unsigned i) {$/;"	f	class:Calculate
 getChild	./main.cpp	/^pANTLR3_BASE_TREE getChild(pANTLR3_BASE_TREE tree, unsigned i)$/;"	f
 getGrammarFileName	./ExprCppTreeLexer.c	/^static const char * getGrammarFileName()$/;"	f	file:
@@ -1400,6 +1430,7 @@ getTokenNames	./ExprCppTreeParser.c	/^static pANTLR3_UINT8    *getTokenNames()$/
 getTokenNames	./output/ExprCppTreeParser.c	/^static pANTLR3_UINT8    *getTokenNames()$/;"	f	file:
 getTree	./src/DFAEdge.cpp	/^pANTLR3_BASE_TREE DFANode::getTree() {$/;"	f	class:DFANode
 getValue	./main.cpp	/^shared_ptr<Object> ExprTreeEvaluator::getValue(pANTLR3_BASE_TREE tree) {$/;"	f	class:ExprTreeEvaluator
+idx	./include/TypeVisitor.h	/^    int idx;$/;"	m	class:ArrayElementSetVisitor
 ifExpr	./ExprCppTreeParser.c	/^ifExpr(pExprCppTreeParser ctx)$/;"	f	file:
 ifExpr	./ExprCppTreeParser.h	/^     (*ifExpr)	(struct ExprCppTreeParser_Ctx_struct * ctx);$/;"	m	struct:ExprCppTreeParser_Ctx_struct
 ifExpr	./output/ExprCppTreeParser.c	/^ifExpr(pExprCppTreeParser ctx)$/;"	f	file:
@@ -1420,8 +1451,8 @@ lit_17	./ExprCppTreeLexer.c	/^static ANTLR3_UCHAR	lit_17[]  = { 0x63, 0x6F, 0x6E
 lit_18	./ExprCppTreeLexer.c	/^static ANTLR3_UCHAR	lit_18[]  = { 0x7B, 0x7D,  ANTLR3_STRING_TERMINATOR};$/;"	v	file:
 lit_19	./ExprCppTreeLexer.c	/^static ANTLR3_UCHAR	lit_19[]  = { 0x5B, 0x5D,  ANTLR3_STRING_TERMINATOR};$/;"	v	file:
 lit_2	./ExprCppTreeLexer.c	/^static ANTLR3_UCHAR	lit_2[]  = { 0x69, 0x66,  ANTLR3_STRING_TERMINATOR};$/;"	v	file:
-lit_20	./ExprCppTreeLexer.c	/^static ANTLR3_UCHAR	lit_20[]  = { 0x64, 0x65, 0x66, 0x5B, 0x5D,  ANTLR3_STRING_TERMINATOR};$/;"	v	file:
-lit_21	./ExprCppTreeLexer.c	/^static ANTLR3_UCHAR	lit_21[]  = { 0x65, 0x6C, 0x65, 0x6D, 0x5B, 0x5D,  ANTLR3_STRING_TERMINATOR};$/;"	v	file:
+lit_20	./ExprCppTreeLexer.c	/^static ANTLR3_UCHAR	lit_20[]  = { 0x65, 0x6C, 0x65, 0x6D, 0x5B, 0x5D,  ANTLR3_STRING_TERMINATOR};$/;"	v	file:
+lit_21	./ExprCppTreeLexer.c	/^static ANTLR3_UCHAR	lit_21[]  = { 0x65, 0x6C, 0x65, 0x6C, 0x6D, 0x5B, 0x5D, 0x61, 0x73, 0x73, 0x69, 0x67, 0x6E,  ANTLR3_STRING_TERMINATOR};$/;"	v	file:
 lit_3	./ExprCppTreeLexer.c	/^static ANTLR3_UCHAR	lit_3[]  = { 0x65, 0x6C, 0x73, 0x65,  ANTLR3_STRING_TERMINATOR};$/;"	v	file:
 lit_4	./ExprCppTreeLexer.c	/^static ANTLR3_UCHAR	lit_4[]  = { 0x3E, 0x3D,  ANTLR3_STRING_TERMINATOR};$/;"	v	file:
 lit_5	./ExprCppTreeLexer.c	/^static ANTLR3_UCHAR	lit_5[]  = { 0x3C, 0x3D,  ANTLR3_STRING_TERMINATOR};$/;"	v	file:
@@ -1435,6 +1466,8 @@ mAND	./output/ExprCppTreeLexer.c	/^void mAND(pExprCppTreeLexer ctx)$/;"	f	file:
 mARRAY	./output/ExprCppTreeLexer.c	/^void mARRAY(pExprCppTreeLexer ctx)$/;"	f	file:
 mARRELEM	./ExprCppTreeLexer.c	/^void mARRELEM(pExprCppTreeLexer ctx)$/;"	f	file:
 mARRELEM	./ExprCppTreeLexer.h	/^     (*mARRELEM)	(struct ExprCppTreeLexer_Ctx_struct * ctx);$/;"	m	struct:ExprCppTreeLexer_Ctx_struct
+mARRELEMASSIGN	./ExprCppTreeLexer.c	/^void mARRELEMASSIGN(pExprCppTreeLexer ctx)$/;"	f	file:
+mARRELEMASSIGN	./ExprCppTreeLexer.h	/^     (*mARRELEMASSIGN)	(struct ExprCppTreeLexer_Ctx_struct * ctx);$/;"	m	struct:ExprCppTreeLexer_Ctx_struct
 mASSIGN	./ExprCppTreeLexer.c	/^void mASSIGN(pExprCppTreeLexer ctx)$/;"	f	file:
 mASSIGN	./ExprCppTreeLexer.h	/^     (*mASSIGN)	(struct ExprCppTreeLexer_Ctx_struct * ctx);$/;"	m	struct:ExprCppTreeLexer_Ctx_struct
 mASSIGN	./output/ExprCppTreeLexer.c	/^void mASSIGN(pExprCppTreeLexer ctx)$/;"	f	file:
@@ -1460,8 +1493,6 @@ mDEF	./ExprCppTreeLexer.h	/^     (*mDEF)	(struct ExprCppTreeLexer_Ctx_struct * c
 mDEF	./output/ExprCppTreeLexer.c	/^void mDEF(pExprCppTreeLexer ctx)$/;"	f	file:
 mDEFAULT	./ExprCppTreeLexer.c	/^void mDEFAULT(pExprCppTreeLexer ctx)$/;"	f	file:
 mDEFAULT	./ExprCppTreeLexer.h	/^     (*mDEFAULT)	(struct ExprCppTreeLexer_Ctx_struct * ctx);$/;"	m	struct:ExprCppTreeLexer_Ctx_struct
-mDEFMID	./ExprCppTreeLexer.c	/^void mDEFMID(pExprCppTreeLexer ctx)$/;"	f	file:
-mDEFMID	./ExprCppTreeLexer.h	/^     (*mDEFMID)	(struct ExprCppTreeLexer_Ctx_struct * ctx);$/;"	m	struct:ExprCppTreeLexer_Ctx_struct
 mDIV	./ExprCppTreeLexer.c	/^void mDIV(pExprCppTreeLexer ctx)$/;"	f	file:
 mDIV	./ExprCppTreeLexer.h	/^     (*mDIV)	(struct ExprCppTreeLexer_Ctx_struct * ctx);$/;"	m	struct:ExprCppTreeLexer_Ctx_struct
 mDIV	./output/ExprCppTreeLexer.c	/^void mDIV(pExprCppTreeLexer ctx)$/;"	f	file:
@@ -1571,6 +1602,8 @@ next	./include/master_chain.h	/^    Factory* next;$/;"	m	class:Factory
 node	./include/DFAEdge.h	/^    weak_ptr<DFANode> node;$/;"	m	class:Edge
 notExpr	./output/ExprCppTreeParser.c	/^notExpr(pExprCppTreeParser ctx)$/;"	f	file:
 obj	./include/TypeVisitor.h	/^    shared_ptr<Object> obj;$/;"	m	class:AddVisitor
+obj	./include/TypeVisitor.h	/^    shared_ptr<Object> obj;$/;"	m	class:ArrayElementSetVisitor
+obj	./include/TypeVisitor.h	/^    shared_ptr<Object> obj;$/;"	m	class:ArrayElementVisitor
 obj	./include/TypeVisitor.h	/^    shared_ptr<Object> obj;$/;"	m	class:DivVisitor
 obj	./include/TypeVisitor.h	/^    shared_ptr<Object> obj;$/;"	m	class:EQVisitor
 obj	./include/TypeVisitor.h	/^    shared_ptr<Object> obj;$/;"	m	class:GEQVisitor
@@ -1624,6 +1657,7 @@ s	./include/ArbitraryType.h	/^    string s;$/;"	m	class:Object
 s	./include/ArbitraryType.h	/^    string s;$/;"	m	class:String
 setStatus	./main.cpp	/^void ExprTreeEvaluator::setStatus(Status status) {$/;"	f	class:ExprTreeEvaluator
 setValue	./main.cpp	/^void ExprTreeEvaluator::setValue(string& key, shared_ptr<Object> value) {$/;"	f	class:ExprTreeEvaluator
+start	./ExprCppTreeParser.h	/^    pANTLR3_COMMON_TOKEN    start;$/;"	m	struct:ExprCppTreeParser_arrayElemAssign_return_struct
 start	./ExprCppTreeParser.h	/^    pANTLR3_COMMON_TOKEN    start;$/;"	m	struct:ExprCppTreeParser_arrayElem_return_struct
 start	./ExprCppTreeParser.h	/^    pANTLR3_COMMON_TOKEN    start;$/;"	m	struct:ExprCppTreeParser_assignExpr_return_struct
 start	./ExprCppTreeParser.h	/^    pANTLR3_COMMON_TOKEN    start;$/;"	m	struct:ExprCppTreeParser_atom_return_struct
@@ -1646,6 +1680,7 @@ status	./include/master_chain.h	/^    Status status;$/;"	m	class:ExprTreeEvaluat
 stmt	./ExprCppTreeParser.c	/^stmt(pExprCppTreeParser ctx)$/;"	f	file:
 stmt	./ExprCppTreeParser.h	/^     (*stmt)	(struct ExprCppTreeParser_Ctx_struct * ctx);$/;"	m	struct:ExprCppTreeParser_Ctx_struct
 stmt	./output/ExprCppTreeParser.c	/^stmt(pExprCppTreeParser ctx)$/;"	f	file:
+stop	./ExprCppTreeParser.h	/^    pANTLR3_COMMON_TOKEN    stop;$/;"	m	struct:ExprCppTreeParser_arrayElemAssign_return_struct
 stop	./ExprCppTreeParser.h	/^    pANTLR3_COMMON_TOKEN    stop;$/;"	m	struct:ExprCppTreeParser_arrayElem_return_struct
 stop	./ExprCppTreeParser.h	/^    pANTLR3_COMMON_TOKEN    stop;$/;"	m	struct:ExprCppTreeParser_assignExpr_return_struct
 stop	./ExprCppTreeParser.h	/^    pANTLR3_COMMON_TOKEN    stop;$/;"	m	struct:ExprCppTreeParser_atom_return_struct
@@ -1672,6 +1707,7 @@ test	./src/MasterChain.cpp	/^bool LoopExprFactory::test(pANTLR3_COMMON_TOKEN tok
 test	./src/dfa.cpp	/^bool BranchExprConverter::test(pANTLR3_COMMON_TOKEN tok) {$/;"	f	class:BranchExprConverter
 test	./src/dfa.cpp	/^bool LoopConverter::test(pANTLR3_COMMON_TOKEN tok) {$/;"	f	class:LoopConverter
 test	./src/dfa.cpp	/^bool SwitchExprConverter::test(pANTLR3_COMMON_TOKEN tok) {$/;"	f	class:SwitchExprConverter
+tree	./ExprCppTreeParser.h	/^    pANTLR3_BASE_TREE	tree;$/;"	m	struct:ExprCppTreeParser_arrayElemAssign_return_struct
 tree	./ExprCppTreeParser.h	/^    pANTLR3_BASE_TREE	tree;$/;"	m	struct:ExprCppTreeParser_arrayElem_return_struct
 tree	./ExprCppTreeParser.h	/^    pANTLR3_BASE_TREE	tree;$/;"	m	struct:ExprCppTreeParser_assignExpr_return_struct
 tree	./ExprCppTreeParser.h	/^    pANTLR3_BASE_TREE	tree;$/;"	m	struct:ExprCppTreeParser_atom_return_struct

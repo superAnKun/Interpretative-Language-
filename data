@@ -1,8 +1,26 @@
 
+def prime[105];
+for (i = 0; i < 100; i = i + 1) {
+    prime[i] = 0;    
+}
+	prime[1] = 1;
+	for (i = 2; i < 100; i = i + 1) {
+		if (prime[i] == 0) {
+            prime[0] = prime[0] + 1;
+            prime[prime[0]] = i;
+        }
+		for (j = 1; j <= prime[0]; j = j + 1) {
+			if (prime[j] * i > 100) {
+                break;
+            }
+			prime[prime[j] * i] = 1;
+			if (i % prime[j]) {
+                break;
+            }
+		}
+	}
 
-def arr[100];
-
-arr[1] = 123;
-arr[2] = "hello world";
-print (arr);
+    for (i = 1; i < prime[0]; i = i + 1) {
+        print(prime[i]);    
+    }
 

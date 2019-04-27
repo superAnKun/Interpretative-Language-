@@ -335,3 +335,21 @@ shared_ptr<Object>& ArrayElementVisitor::Visit(Array* obj) {
     }
     return obj->operator[](this->n);
 }
+
+/**
+ *
+ * ArrayElementSetVisitor
+ *
+ * Param obj要赋值的对象 idx数组索引
+ */
+
+ArrayElementSetVisitor::ArrayElementSetVisitor(shared_ptr<Object> obj, int idx) {
+    this->obj = obj;
+    this->idx = idx;
+}
+
+shared_ptr<Object>& ArrayElementSetVisitor::Visit(Array* p) {
+    p->operator[](this->idx) = this->obj;
+    return this->obj;
+}
+

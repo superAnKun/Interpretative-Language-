@@ -44,8 +44,8 @@ DEFAULT: 'default';
 BREAK: 'break';
 CONTINUE: 'continue';
 
-expr: multExpr ((PLUS^ | MINUS^) multExpr)*
-    | assignExpr
+expr1: multExpr ((PLUS^ | MINUS^) multExpr)*
+//    | assignExpr
     ;
 
 multExpr
@@ -57,7 +57,7 @@ multExpr
 midExpr: '[' (expr (DOT expr)*)? ']' -> ^(MID expr*)
         | expr
         ;
-arrayElem: ID '[' INT ']' -> ^(ARRELEM ID INT);
+arrayElem: ID ('[' expr ']')+ -> ^(ARRELEM ID expr+);
 arrayElemAssign: arrayElem ASSIGN expr -> ^(ARRELEMASSIGN arrayElem expr);
 defExpr: DEF expr (DOT expr)* -> ^(DEF expr+)
         ;
@@ -66,12 +66,15 @@ assignExpr: ID ASSIGN midExpr -> ^(ASSIGN ID midExpr)
         ;
 
 conditionExpr: 
-            expr ((GT | GEQ | LS | LEQ | OR | AND | EQ | NEQ)^ expr)*
+            expr1 ((GT | GEQ | LS | LEQ | OR | AND | EQ | NEQ)^ expr1)*
+            ;
+expr: 
+            expr1 ((GT | GEQ | LS | LEQ | OR | AND | EQ | NEQ)^ expr1)*
             ;
 
 ifExpr: IF '(' conditionExpr ')' block (ELSE stmt)? -> ^(IF conditionExpr block stmt?);
 
-forExpr: FOR '(' expr ';' conditionExpr ';' expr ')' stmt -> ^(FOR expr conditionExpr expr stmt);
+forExpr: FOR '(' assignExpr ';' conditionExpr ';' assignExpr ')' stmt -> ^(FOR assignExpr conditionExpr assignExpr stmt);
 whileExpr: WHILE '(' conditionExpr ')' stmt -> ^(WHILE conditionExpr stmt);
 caseExpr: CASE expr':' stmt* -> ^(CASE expr stmt*);
 defaultExpr: (DEFAULT':' stmt+) -> ^(DEFAULT stmt+);
@@ -84,9 +87,10 @@ atom: INT
     | arrayElem
     ;
 
-stmt: conditionExpr';'!  // tree rewrite syntax
-    | block
+stmt: //conditionExpr';'!  // tree rewrite syntax
+     block
     | defExpr';'!
+    | assignExpr';'!
     | PRINT '(' conditionExpr ')'';' -> ^(PRINT conditionExpr)
     | ifExpr
     | forExpr

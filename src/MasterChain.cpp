@@ -2,7 +2,8 @@
 #include "../include/dfa.h"
 #include "../include/TypeVisitor.h"
 MasterChain* MasterChain::master = nullptr;
-
+shared_ptr<Object> getArrayElem(pANTLR3_BASE_TREE, ExprTreeEvaluator* eval);
+shared_ptr<Object> createArray(pANTLR3_BASE_TREE tree, int len, ExprTreeEvaluator* eval);
 MasterChain::MasterChain() {
     this->factory = new ExprFactory();
     this->factory->next = new ConditionExprFactory();
@@ -122,27 +123,32 @@ Status ExprFactory::ExprCalculate::getResult(ExprTreeEvaluator* eval, pANTLR3_BA
         return {Type::OK, p};
     }
     case ARRELEM: {
-        shared_ptr<Object> p1 = eval->getValue(getChild(tree, 0));       
-        shared_ptr<Object> p2 = eval->run(getChild(tree, 1)).value;
-        int idx = p2->isZero();
-        if (p1 == nullptr) {
-            shared_ptr<Array> p3 = make_shared<Array>(idx);
+        shared_ptr<Object> p = eval->getValue(getChild(tree, 0));       
+        if (p == nullptr) {
+            p = createArray(tree, 1, eval);
             string var(getText(getChild(tree, 0)));
-            eval->setValue(var, p3);
-            return {Type::OK, p3};
+            eval->setValue(var, p);
+            return {Type::OK, p};
         }
-        ArrayElementVisitor visitor(idx);
-        return {Type::OK, p1->accept(&visitor)};
+        p = getArrayElem(tree, eval);
+        return {Type::OK, p};
     }
     case ARRELEMASSIGN: {
         pANTLR3_BASE_TREE arrelem = (pANTLR3_BASE_TREE)tree->getChild(tree, 0);
-        shared_ptr<Object> p1 = eval->getValue(getChild(arrelem, 0));       
-        shared_ptr<Object> p2 = eval->run(getChild(arrelem, 1)).value;
-        int idx = p2->isZero();
-        shared_ptr<Object> p3 = eval->run(getChild(tree, 1)).value;
-        ArrayElementVisitor visitor(idx, p3);
+        shared_ptr<Object> p = eval->run(getChild(tree, 1)).value;
+        shared_ptr<Object> p1 = eval->getValue((pANTLR3_BASE_TREE)arrelem->getChild(arrelem, 0));       
+        int k = arrelem->getChildCount(arrelem);
+        shared_ptr<Object> ans;
+        for (int i = 1; i < k - 1; i++) {
+            ans = eval->run((pANTLR3_BASE_TREE)arrelem->getChild(arrelem, i)).value;
+            int idx = ans->isZero();
+            ArrayElementVisitor visitor(idx);
+            p1 = p1->accept(&visitor);
+        }
+        shared_ptr<Object> p2 = eval->run((pANTLR3_BASE_TREE)arrelem->getChild(arrelem, k - 1)).value;
+        ArrayElementSetVisitor visitor(p, p2->isZero());
         p1->accept(&visitor);
-        return {Type::OK, p3};
+        return {Type::OK, p};
     }
     default:
         cout << "Unhandled token: #" << tok->type << '\n';
@@ -373,3 +379,41 @@ Status LoopExprFactory::LoopExprCalculate::getResult(ExprTreeEvaluator* eval, pA
         return {Type::OUT, nullptr};
     }
 }
+
+shared_ptr<Object> getArrayElem(pANTLR3_BASE_TREE tree, ExprTreeEvaluator* eval) {
+    shared_ptr<Object> p1 = eval->getValue((pANTLR3_BASE_TREE)tree->getChild(tree, 0));       
+    int k = tree->getChildCount(tree);
+    shared_ptr<Object> p2 = nullptr;
+    for (int i = 1; i < k; i++) {
+        p2 = eval->run((pANTLR3_BASE_TREE)tree->getChild(tree, i)).value;
+        int idx = p2->isZero();
+        ArrayElementVisitor visitor(idx);
+        p1 = p1->accept(&visitor);
+    }
+    return p1;
+}
+
+shared_ptr<Object> createArray(pANTLR3_BASE_TREE tree, int len, ExprTreeEvaluator* eval) {
+    pANTLR3_BASE_TREE node = (pANTLR3_BASE_TREE)tree->getChild(tree, len);
+    if (node == nullptr) return make_shared<Object>();
+    shared_ptr<Object> p = eval->run((pANTLR3_BASE_TREE)tree->getChild(tree, len)).value;
+    int idx = p->isZero();
+    shared_ptr<Object> ret = make_shared<Array>(idx);
+    for (int i = 0; i < idx; i++) {
+        shared_ptr<Object> lvalue = createArray(tree, len + 1, eval);
+        ArrayElementVisitor visitor(i, lvalue);
+        ret->accept(&visitor);
+    }
+    return ret;
+}
+
+
+
+
+
+
+
+
+
+
+
