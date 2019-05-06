@@ -353,3 +353,15 @@ shared_ptr<Object>& ArrayElementSetVisitor::Visit(Array* p) {
     return this->obj;
 }
 
+/**
+ *
+ * FunCallVisitor
+ *
+ */
+
+FunCallVisitor::FunCallVisitor(vector<shared_ptr<Object>>& v) : v(v) {}
+
+shared_ptr<Object> FunCallVisitor::Visit(Function* f) {
+    return f->runFunc(this->v);
+}
+

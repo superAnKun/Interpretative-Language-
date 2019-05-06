@@ -8,10 +8,15 @@ using namespace std;
  *Object 
  *
  */
+static int obj_count = 0;
+static int obj_dec = 0;
 Object::Object() {
+//    cout << "Object create!!!!!!!     " << obj_count++ << endl;
 }
 
-Object::~Object() {}
+Object::~Object() {
+//    cout << "Object destructor!!!!!!   "<< obj_dec++ << endl;
+}
 
 shared_ptr<Object> Object::accept(Object::IVisitor* visitor) {
     return visitor->Visit(this);
@@ -28,6 +33,7 @@ shared_ptr<Object> Object::accept(Object::IVisitor* visitor, Integer* obj) {
 shared_ptr<Object> Object::accept(Object::IVisitor* visitor, String* obj) {
     return nullptr;
 }
+
 
 string Object::output() {
     return this->s;
@@ -57,6 +63,10 @@ shared_ptr<Object> Object::IVisitor::Visit(Integer* obj) {
 shared_ptr<Object>& Object::IVisitor::Visit(Array* obj) {
     shared_ptr<Object> ret = make_shared<Object>();
     return ret;
+}
+
+shared_ptr<Object> Object::IVisitor::Visit(Function* f) {
+    return nullptr;
 }
 
 shared_ptr<Object> Object::IVisitor::Visit(Integer* p1, Integer* p2) {
@@ -261,5 +271,33 @@ shared_ptr<Object>& Array::operator[](int idx) {
 
 int Array::isZero() {
     return this->v.size();
+}
+
+/**
+ *
+ * Function
+ *
+ */
+
+Function::Function(ExprTreeEvaluator* eval, pANTLR3_BASE_TREE tree, vector<string> s) : e(eval), node(tree), param(s) {}
+
+string Function::output() {
+    return "function!!";
+}
+
+shared_ptr<Object> Function::accept(Object::IVisitor* visitor) {
+    return visitor->Visit(this);
+}
+
+int Function::isZero() {
+    return true;
+}
+
+shared_ptr<Object> Function::runFunc(vector<shared_ptr<Object>>& v) {
+    if (v.size() != this->param.size()) return make_shared<Object>();
+    for (int i = 0; i < this->param.size(); i++) {
+        e.setValue(param[i], v[i]);
+    }
+    return this->e.run(this->node).value;
 }
 

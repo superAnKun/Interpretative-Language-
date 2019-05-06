@@ -9,7 +9,9 @@ class Converter {
 public:
     virtual bool test(pANTLR3_COMMON_TOKEN tok) = 0;
     virtual shared_ptr<DFANode> convert(pANTLR3_BASE_TREE tree) = 0;
-    virtual ~Converter() {}
+    virtual ~Converter() {
+        this->v_node.clear();
+    }
 protected:
     vector<shared_ptr<DFANode>> v_node;
 };

@@ -1,12 +1,13 @@
 #ifndef ARBITRARY_H
 #define ARBITRARY_H
-#include "global.h"
 #include <vector>
 #include <string>
+#include "global.h"
 using namespace std;
 class String;
 class Integer;
 class Array;
+class Function;
 
 class Object {
 public:
@@ -19,6 +20,7 @@ public:
         virtual shared_ptr<Object> Visit(String*);
         virtual shared_ptr<Object> Visit(Integer*);
         virtual shared_ptr<Object>& Visit(Array*);
+        virtual shared_ptr<Object> Visit(Function*);
 
         virtual shared_ptr<Object> Visit(Integer*, Integer*);
         virtual shared_ptr<Object> Visit(String*, String*);
@@ -93,6 +95,19 @@ public:
     virtual int isZero();
 private:
     vector<shared_ptr<Object>> v;
+};
+
+class Function : public Object {
+public:
+    Function(ExprTreeEvaluator*, pANTLR3_BASE_TREE, vector<string>);
+    virtual string output();
+    virtual shared_ptr<Object> accept(Object::IVisitor*);
+    virtual int isZero();
+    shared_ptr<Object> runFunc(vector<shared_ptr<Object>>&);
+private:
+    ExprTreeEvaluator e;
+    pANTLR3_BASE_TREE node;
+    vector<string> param;
 };
 
 #endif

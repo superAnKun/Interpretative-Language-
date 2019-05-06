@@ -12,22 +12,6 @@
 #include <vector>
 using namespace std;
 
-
-class ExprTreeEvaluator {
-private:
-    map<string, shared_ptr<Object>> memory;
-    ExprTreeEvaluator* next;
-    Status status;
-public:
-    ExprTreeEvaluator(ExprTreeEvaluator* next): next(next), status({Type::OK, nullptr}) {}
-    ExprTreeEvaluator(): next(nullptr) {}
-    Status run(pANTLR3_BASE_TREE);
-    shared_ptr<Object> getValue(pANTLR3_BASE_TREE);
-    void setValue(string&, shared_ptr<Object>);
-    void setStatus(Status);
-    Status getStatus();
-};
-
 class Calculate {
 public:
     virtual Status getResult(ExprTreeEvaluator* eval, pANTLR3_BASE_TREE tree) = 0;
@@ -123,5 +107,16 @@ public:
     virtual ~LoopExprFactory() {}
 };
 
+class FunctionFactory : public Factory {
+public:
+    class FunctionCalculate : public Calculate {
+        virtual Status getResult(ExprTreeEvaluator* eval, pANTLR3_BASE_TREE tree);
+        virtual ~FunctionCalculate() {}
+    };
+    virtual bool test(pANTLR3_COMMON_TOKEN token);
+    virtual Calculate* create();
+    virtual void destory(Calculate* c);
+    virtual ~FunctionFactory() {}
+};
 
 #endif

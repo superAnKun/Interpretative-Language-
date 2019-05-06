@@ -9,7 +9,8 @@ MasterChain::MasterChain() {
     this->factory->next = new ConditionExprFactory();
     this->factory->next->next = new BranchExprFactory();
     this->factory->next->next->next = new LoopExprFactory();
-    this->factory->next->next->next->next = nullptr;
+    this->factory->next->next->next->next = new FunctionFactory();
+    this->factory->next->next->next->next->next = nullptr;
 }
 
 MasterChain::~MasterChain() {
@@ -334,11 +335,13 @@ Status LoopExprFactory::LoopExprCalculate::getResult(ExprTreeEvaluator* eval, pA
         int k = tree->getChildCount(tree);
         if (k != 4) return {Type::OUT, nullptr};
         ExprTreeEvaluator e(eval);
-        LoopConverter c;
-        shared_ptr<DFANode> p = c.convert(tree);
+        LoopConverter* c = new LoopConverter;
+        shared_ptr<DFANode> p = c->convert(tree);
         while (p) {
             p = p->forward(&e);
         }
+        delete c;
+
         //不管是正常循环结束还是通过break结束循环 都是正常的跳出循环 对外层dfa会产生相同的影响
         return {Type::OK, make_shared<Object>()};
     }
@@ -379,6 +382,63 @@ Status LoopExprFactory::LoopExprCalculate::getResult(ExprTreeEvaluator* eval, pA
         return {Type::OUT, nullptr};
     }
 }
+
+
+/**
+ *
+ * FunctioinFactory
+ *
+ */
+
+bool FunctionFactory::test(pANTLR3_COMMON_TOKEN tok) {
+    switch (tok->type) {
+        case FUN:
+        case FUNCALL:
+            return true;
+    }
+    return false;
+}
+
+Calculate* FunctionFactory::create() {
+    return new FunctionCalculate;
+}
+
+void FunctionFactory::destory(Calculate* c) {
+    delete c;
+}
+
+/**
+ *
+ * FunctionCalculate
+ *
+ */
+
+Status FunctionFactory::FunctionCalculate::getResult(ExprTreeEvaluator* eval, pANTLR3_BASE_TREE tree) {
+    pANTLR3_COMMON_TOKEN token = tree->getToken(tree);
+    switch (token->type) {
+        case FUN: {
+            pANTLR3_BASE_TREE block = (pANTLR3_BASE_TREE)tree->getChild(tree, 0);
+            vector<string> param;
+            int k = tree->getChildCount(tree);
+            for (int i = 1; i < k; i++) {
+                param.push_back(getText((pANTLR3_BASE_TREE)tree->getChild(tree, i)));
+            }
+            shared_ptr<Function> f = make_shared<Function>(eval, block, param);     
+            return {Type::OK, f};
+        }
+        case FUNCALL: {
+            shared_ptr<Object> func = eval->getValue((pANTLR3_BASE_TREE)tree->getChild(tree, 0));
+            int k = tree->getChildCount(tree);
+            vector<shared_ptr<Object>> params;
+            for (int i = 1; i < k; i++) {
+                params.push_back(eval->run(getChild(tree, i)).value);
+            }
+            FunCallVisitor visitor(params);
+            return {Type::OK, func->accept(&visitor)};
+        }
+    }
+}
+
 
 shared_ptr<Object> getArrayElem(pANTLR3_BASE_TREE tree, ExprTreeEvaluator* eval) {
     shared_ptr<Object> p1 = eval->getValue((pANTLR3_BASE_TREE)tree->getChild(tree, 0));       

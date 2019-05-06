@@ -12,6 +12,7 @@ class DFANode;
 class Edge {
 public:
     Edge(Type, shared_ptr<DFANode>);
+    ~Edge();
     bool check(Status, ExprTreeEvaluator*);
 
     weak_ptr<DFANode> node;
@@ -26,6 +27,7 @@ public:
     void addEdge(Type, shared_ptr<DFANode>);
     pANTLR3_BASE_TREE getTree();
     void reverse();
+    ~DFANode();
 private:
     pANTLR3_BASE_TREE tree;
     shared_ptr<Edge> edge;

@@ -158,4 +158,12 @@ private:
     shared_ptr<Object> obj;
 };
 
+class FunCallVisitor : public Object::IVisitor {
+public:
+    FunCallVisitor(vector<shared_ptr<Object>>& v);
+    virtual shared_ptr<Object> Visit(Function*);
+private:
+    vector<shared_ptr<Object>> v;
+};
+
 #endif

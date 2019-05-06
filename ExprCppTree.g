@@ -43,6 +43,7 @@ CASE: 'case';
 DEFAULT: 'default';
 BREAK: 'break';
 CONTINUE: 'continue';
+RETURN: 'return';
 
 expr1: multExpr ((PLUS^ | MINUS^) multExpr)*
 //    | assignExpr
@@ -64,12 +65,15 @@ defExpr: DEF expr (DOT expr)* -> ^(DEF expr+)
 assignExpr: ID ASSIGN midExpr -> ^(ASSIGN ID midExpr)
         | arrayElemAssign
         ;
+funcExpr: 'function' '(' (ID (DOT ID)*)? ')' block -> ^(FUN block ID*);
+funcCall: ID '(' (expr (DOT expr)*)? ')' -> ^(FUNCALL ID expr*); 
 
 conditionExpr: 
             expr1 ((GT | GEQ | LS | LEQ | OR | AND | EQ | NEQ)^ expr1)*
             ;
 expr: 
             expr1 ((GT | GEQ | LS | LEQ | OR | AND | EQ | NEQ)^ expr1)*
+            | funcExpr
             ;
 
 ifExpr: IF '(' conditionExpr ')' block (ELSE stmt)? -> ^(IF conditionExpr block stmt?);
@@ -85,6 +89,7 @@ atom: INT
     | STRING
     | '('! expr ')'!
     | arrayElem
+    | funcCall
     ;
 
 stmt: //conditionExpr';'!  // tree rewrite syntax
@@ -98,6 +103,7 @@ stmt: //conditionExpr';'!  // tree rewrite syntax
     | switchExpr
     | BREAK';'!
     | CONTINUE';'!
+    | funcCall';'! 
     ;
 
 block: '{' stmt* '}' -> ^(BLOCK stmt*);
@@ -118,4 +124,6 @@ BLOCK:'{}';
 MID: '[]';
 ARRELEM: 'elem[]';
 ARRELEMASSIGN: 'elelm[]assign';
+FUN: 'fun(){}';
+FUNCALL: 'funcall()';
 WS : (' ' | '\t' | '\n' | '\r')+ {$channel = HIDDEN;};

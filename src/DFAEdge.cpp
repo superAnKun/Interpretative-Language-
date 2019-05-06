@@ -5,6 +5,9 @@ DFANode::DFANode(pANTLR3_BASE_TREE node) {
     this->tree = node;
 }
 
+DFANode::~DFANode() {
+}
+
 pANTLR3_BASE_TREE DFANode::getTree() {
     return this->tree;
 }
@@ -43,6 +46,9 @@ void DFANode::reverse() {
 Edge::Edge(Type type, shared_ptr<DFANode> node) {
     this->type = type;
     this->node = node;
+}
+
+Edge::~Edge() {
 }
 
 bool Edge::check(Status status, ExprTreeEvaluator* eval) {
