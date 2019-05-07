@@ -296,10 +296,9 @@ int Function::isZero() {
 
 shared_ptr<Object> Function::runFunc(vector<shared_ptr<Object>>& v, ExprTreeEvaluator* eval) {
     if (v.size() != this->param.size()) return make_shared<Object>();
-    e.clear();
-    e.setNext(eval);
+    map<string, shared_ptr<Object>>& memory = eval->getMap();
     for (int i = 0; i < this->param.size(); i++) {
-        e.setValue(param[i], v[i]);
+        memory[this->param[i]] = v[i];
     }
-    return this->e.run(this->node).value;
+    return eval->run(this->node).value;
 }

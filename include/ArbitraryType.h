@@ -105,7 +105,7 @@ public:
     virtual int isZero();
     shared_ptr<Object> runFunc(vector<shared_ptr<Object>>&, ExprTreeEvaluator*);
 private:
-    ExprTreeEvaluator e;
+//    ExprTreeEvaluator e;
     pANTLR3_BASE_TREE node;
     vector<string> param;
 };

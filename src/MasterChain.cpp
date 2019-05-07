@@ -433,7 +433,8 @@ Status FunctionFactory::FunctionCalculate::getResult(ExprTreeEvaluator* eval, pA
             for (int i = 1; i < k; i++) {
                 params.push_back(eval->run(getChild(tree, i)).value);
             }
-            FunCallVisitor visitor(params, eval);
+            ExprTreeEvaluator e(eval);
+            FunCallVisitor visitor(params, &e);
             return {Type::OK, func->accept(&visitor)};
         }
         case RETURN: {
@@ -441,7 +442,6 @@ Status FunctionFactory::FunctionCalculate::getResult(ExprTreeEvaluator* eval, pA
         }
     }
 }
-
 
 shared_ptr<Object> getArrayElem(pANTLR3_BASE_TREE tree, ExprTreeEvaluator* eval) {
     shared_ptr<Object> p1 = eval->getValue((pANTLR3_BASE_TREE)tree->getChild(tree, 0));       
