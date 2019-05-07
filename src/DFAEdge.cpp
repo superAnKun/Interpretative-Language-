@@ -67,7 +67,7 @@ bool Edge::check(Status status, ExprTreeEvaluator* eval) {
             return !status.value->accept(&visitor)->isZero();
         }
         case Type::DEFAULTL:
-            return true;                     
+            return true;
     }
     if (this->type == status.type) return true;
     return false;

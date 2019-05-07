@@ -99,11 +99,11 @@ private:
 
 class Function : public Object {
 public:
-    Function(ExprTreeEvaluator*, pANTLR3_BASE_TREE, vector<string>);
+    Function(pANTLR3_BASE_TREE, vector<string>);
     virtual string output();
     virtual shared_ptr<Object> accept(Object::IVisitor*);
     virtual int isZero();
-    shared_ptr<Object> runFunc(vector<shared_ptr<Object>>&);
+    shared_ptr<Object> runFunc(vector<shared_ptr<Object>>&, ExprTreeEvaluator*);
 private:
     ExprTreeEvaluator e;
     pANTLR3_BASE_TREE node;

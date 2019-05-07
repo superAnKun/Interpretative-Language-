@@ -1,9 +1,14 @@
 
-a = function (c, d) {
-        print ("hello world a = " + c + " b = " + d);
-    };
 
-c = a(1, 2);
+range = function (c) {
+    if (c <= 1) {
+        return 0;    
+    }
+    print ("c = " + c);
+    return range(c - 1);
+};
+
+c = range(3);
 print (c);
 
 print ("end!!!");

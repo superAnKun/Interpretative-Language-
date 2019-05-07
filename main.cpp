@@ -34,34 +34,34 @@ const char* getText(pANTLR3_BASE_TREE tree);
   
 int main(int argc, char* argv[])
 { 
-  pANTLR3_INPUT_STREAM input;
-  pExprCppTreeLexer lex;
-  pANTLR3_COMMON_TOKEN_STREAM tokens;
-  pExprCppTreeParser parser;
+    pANTLR3_INPUT_STREAM input;
+    pExprCppTreeLexer lex;
+    pANTLR3_COMMON_TOKEN_STREAM tokens;
+    pExprCppTreeParser parser;
+    
+    assert(argc > 1);
+    input = antlr3FileStreamNew((pANTLR3_UINT8)argv[1],ANTLR3_ENC_8BIT);
+    lex = ExprCppTreeLexerNew(input);
+    
+    tokens = antlr3CommonTokenStreamSourceNew(ANTLR3_SIZE_HINT,
+                                              TOKENSOURCE(lex));
+    parser = ExprCppTreeParserNew(tokens);
+    
+    ExprCppTreeParser_prog_return r = parser->prog(parser);
+    
+    pANTLR3_BASE_TREE tree = r.tree;
   
-  assert(argc > 1);
-  input = antlr3FileStreamNew((pANTLR3_UINT8)argv[1],ANTLR3_ENC_8BIT);
-  lex = ExprCppTreeLexerNew(input);
   
-  tokens = antlr3CommonTokenStreamSourceNew(ANTLR3_SIZE_HINT,
-                                            TOKENSOURCE(lex));
-  parser = ExprCppTreeParserNew(tokens);
-  
-  ExprCppTreeParser_prog_return r = parser->prog(parser);
-  
-  pANTLR3_BASE_TREE tree = r.tree;
-
-
-  ExprTreeEvaluator eval;
-  shared_ptr<Object> rr = eval.run(tree).value;
-  cout << "Evaluator result: " << rr->output() << '\n';
-  
-  parser->free(parser);
-  tokens->free(tokens);
-  lex->free(lex);
-  input->close(input);
-  
-  return 0;
+    ExprTreeEvaluator eval;
+    shared_ptr<Object> rr = eval.run(tree).value;
+    cout << "Evaluator result: " << rr->output() << '\n';
+    
+    parser->free(parser);
+    tokens->free(tokens);
+    lex->free(lex);
+    input->close(input);
+    
+    return 0;
 }
  
 Status ExprTreeEvaluator::run(pANTLR3_BASE_TREE tree)
@@ -114,6 +114,23 @@ void ExprTreeEvaluator::setStatus(Status status) {
 
 Status ExprTreeEvaluator::getStatus() {
     return this->status;
+}
+
+void ExprTreeEvaluator::clear() {
+    this->memory.clear();
+}
+
+map<string, shared_ptr<Object>>& ExprTreeEvaluator::getMap() {
+    return this->memory;
+}
+
+void ExprTreeEvaluator::setMap(map<string, shared_ptr<Object>>& map) {
+    this->memory = map;
+}
+
+void ExprTreeEvaluator::setNext(ExprTreeEvaluator* eval) {
+    eval->next = this->next;
+    this->next = eval;
 }
 
 pANTLR3_BASE_TREE getChild(pANTLR3_BASE_TREE tree, unsigned i)

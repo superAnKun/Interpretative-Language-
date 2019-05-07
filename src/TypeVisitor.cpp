@@ -359,9 +359,9 @@ shared_ptr<Object>& ArrayElementSetVisitor::Visit(Array* p) {
  *
  */
 
-FunCallVisitor::FunCallVisitor(vector<shared_ptr<Object>>& v) : v(v) {}
+FunCallVisitor::FunCallVisitor(vector<shared_ptr<Object>>& v, ExprTreeEvaluator* eval) : v(v), e(eval) {}
 
 shared_ptr<Object> FunCallVisitor::Visit(Function* f) {
-    return f->runFunc(this->v);
+    return f->runFunc(this->v, this->e);
 }
 

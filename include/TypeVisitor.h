@@ -160,10 +160,11 @@ private:
 
 class FunCallVisitor : public Object::IVisitor {
 public:
-    FunCallVisitor(vector<shared_ptr<Object>>& v);
+    FunCallVisitor(vector<shared_ptr<Object>>& v, ExprTreeEvaluator* eval);
     virtual shared_ptr<Object> Visit(Function*);
 private:
     vector<shared_ptr<Object>> v;
+    ExprTreeEvaluator* e;
 };
 
 #endif

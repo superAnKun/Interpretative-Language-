@@ -279,7 +279,8 @@ int Array::isZero() {
  *
  */
 
-Function::Function(ExprTreeEvaluator* eval, pANTLR3_BASE_TREE tree, vector<string> s) : e(eval), node(tree), param(s) {}
+Function::Function(pANTLR3_BASE_TREE tree, vector<string> s) :node(tree), param(s) {
+}
 
 string Function::output() {
     return "function!!";
@@ -293,11 +294,12 @@ int Function::isZero() {
     return true;
 }
 
-shared_ptr<Object> Function::runFunc(vector<shared_ptr<Object>>& v) {
+shared_ptr<Object> Function::runFunc(vector<shared_ptr<Object>>& v, ExprTreeEvaluator* eval) {
     if (v.size() != this->param.size()) return make_shared<Object>();
+    e.clear();
+    e.setNext(eval);
     for (int i = 0; i < this->param.size(); i++) {
         e.setValue(param[i], v[i]);
     }
     return this->e.run(this->node).value;
 }
-

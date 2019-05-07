@@ -17,7 +17,7 @@ enum class Type {
     OK,
     CASEL,
     DEFAULTL,
-    RETURN
+    RETURNL
 };
 
 struct Status {
@@ -38,6 +38,10 @@ public:
     void setValue(string&, shared_ptr<Object>);
     void setStatus(Status);
     Status getStatus();
+    void clear();
+    map<string, shared_ptr<Object>>& getMap();
+    void setMap(map<string, shared_ptr<Object>>&);
+    void setNext(ExprTreeEvaluator*);
 };
 
 #endif

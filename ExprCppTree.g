@@ -75,6 +75,7 @@ expr:
             expr1 ((GT | GEQ | LS | LEQ | OR | AND | EQ | NEQ)^ expr1)*
             | funcExpr
             ;
+returnExpr: RETURN^ expr;
 
 ifExpr: IF '(' conditionExpr ')' block (ELSE stmt)? -> ^(IF conditionExpr block stmt?);
 
@@ -104,6 +105,7 @@ stmt: //conditionExpr';'!  // tree rewrite syntax
     | BREAK';'!
     | CONTINUE';'!
     | funcCall';'! 
+    | returnExpr';'!
     ;
 
 block: '{' stmt* '}' -> ^(BLOCK stmt*);
