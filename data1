@@ -1,0 +1,13 @@
+
+gcd = function(a, b) {
+    if (b == 0) {
+        return a;    
+    }
+	return gcd(b, a % b);
+};
+
+ans = 1;
+for (i = 2; i < 20; i = i + 1) {
+	ans = ans * i / gcd(ans, i);
+}
+print(ans);

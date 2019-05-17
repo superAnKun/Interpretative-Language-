@@ -1,13 +1,25 @@
 
-range = function (c) {
-    if (c < 1) {
-        return 0;    
-    }
-    range(c - 1);
-    print (c);
-    return range(c - 1);
+a = function(c, d) {
+    return "hello world";
 };
 
-c = range(3);
-print (c);
+print (a(1, 2));
+
+for (i = 0; i < 5; i = i + 1) {
+    print ("i = " + (i * 2 + 3 * 4 + 5));    
+}
+
+a = 12.3;
+
+b = 123;
+
+print (2 * a);
+
+print (b);
+
+s = "hello world";
+
+d = 'b';
+s[2] = d;
+print (s);
 

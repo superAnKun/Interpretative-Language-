@@ -91,6 +91,8 @@ atom: INT
     | '('! expr ')'!
     | arrayElem
     | funcCall
+    | CHAR
+    | DOUBLE
     ;
 
 stmt: //conditionExpr';'!  // tree rewrite syntax
@@ -118,10 +120,12 @@ prog
         )+
     ;
 
-ID: ('a'..'z'|'A'..'Z')+ ;
+ID: ('a'..'z'|'A'..'Z' | '_')+ ;
 //INT: '-'? '0'..'9'+ ('.' '0'..'9'+)?;
 INT: '-'? '0'..'9'+;
+DOUBLE: '0'..'9'+'.''0' .. '9'+;
 STRING: '\"' .* '\"';
+CHAR: '\'' ('a'..'z' | 'A'..'Z' | '0' .. '9') '\'';
 BLOCK:'{}';
 MID: '[]';
 ARRELEM: 'elem[]';

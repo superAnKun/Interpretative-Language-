@@ -34,14 +34,6 @@ shared_ptr<Object> Object::accept(Object::IVisitor* visitor, String* obj) {
     return nullptr;
 }
 
-shared_ptr<Object> Object::accept(IVisitor* p1, Char* p2) {
-    return nullptr;
-}
-
-shared_ptr<Object> Object::accept(IVisitor* p1, Double* p2) {
-    return nullptr;
-}
-
 string Object::output() {
     return this->s;
 }
@@ -170,7 +162,6 @@ string Integer::output() {
     return buf;
 }
 
-
 shared_ptr<Object> Integer::accept(Object::IVisitor* visitor) {
     return visitor->Visit(this);
 }
@@ -208,89 +199,8 @@ int Integer::isZero() {
 Char::Char(char c) : value(c) {
 }
 
-Char::Char(string s) {
-    this->value = s[0];
-}
-
 string Char::output() {
-    string ret;
-    ret.push_back(this->value);
-    return ret;
-}
-
-shared_ptr<Object> Char::accept(Object::IVisitor* visitor) {
-    return visitor->Visit(this);
-}
-
-shared_ptr<Object> Char::accept(Object::IVisitor* visitor, Integer* obj) {
-    return visitor->Visit(obj, this);
-}
-
-shared_ptr<Object> Char::accept(Object::IVisitor* visitor, String* obj) {
-    return visitor->Visit(obj, this);
-}
-
-shared_ptr<Object> Char::accept(Object::IVisitor* visitor, Char* obj) {
-    return visitor->Visit(obj, this);
-}
-
-shared_ptr<Object> Char::accept(Object::IVisitor* visitor, Double* obj) {
-    return visitor->Visit(obj, this);
-}
-
-char Char::getValue() {
-    return this->value;
-}
-
-int Char::isZero() {
-    return (int)this->value;
-}
-
-/**
- *
- * Double
- *
- */
-
-Double::Double(double v) : value(v) {
-}
-
-Double::Double(string s) {
-    sscanf(s.c_str(), "%lf", &this->value);
-}
-
-string Double::output() {
-    char buf[50];
-    sprintf(buf, "%lf", this->value);
-    return buf;
-}
-
-shared_ptr<Object> Double::accept(Object::IVisitor* visitor) {
-    return visitor->Visit(this);
-}
-
-shared_ptr<Object> Double::accept(Object::IVisitor* visitor, Integer* obj) {
-    return visitor->Visit(obj, this);
-}
-
-shared_ptr<Object> Double::accept(Object::IVisitor* visitor, String* obj) {
-    return visitor->Visit(obj, this);
-}
-
-shared_ptr<Object> Double::accept(Object::IVisitor* visitor, Char* obj) {
-    return visitor->Visit(obj, this);
-}
-
-shared_ptr<Object> Double::accept(Object::IVisitor* visitor, Double* obj) {
-    return visitor->Visit(obj, this);
-}
-
-double Double::getValue() {
-    return this->value;
-}
-
-int Double::isZero() {
-    return this->value;
+    return c;
 }
 
 
@@ -364,10 +274,6 @@ bool String::operator!= (String* s) {
     return this->s != s->s;
 }
 
-char& String::operator[] (int idx) {
-    return this->s[idx];
-}
-
 shared_ptr<Object> String::operator+ (Integer* p) {
     string s = this->s + p->output();
     return make_shared<String>(s);
@@ -380,10 +286,6 @@ shared_ptr<Object> String::operator+ (String* p) {
 
 int String::isZero() {
     return s.length();
-}
-
-string String::getValue() {
-    return this->s;
 }
 
 /**

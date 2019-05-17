@@ -1,43 +1,29 @@
 
-def f[4][1005];
 
-for (i = 0; i < 4; i = i + 1) {
-    for (j = 0; j < 1005; j = j + 1) {
-        f[i][j] = 0;    
-    }    
+
+MAX = 1000;
+def prime[MAX + 5];
+
+for (i = 0; i <= MAX; i = i + 1) {
+    prime[i] = 0;    
 }
 
-
-f[1][0] = 1;
-f[1][1] = 1;
-f[2][0] = 1;
-f[2][1] = 1;
-
-n = 0;
-
-counta = 0;
-countb = 0;
-countc = 0;
-
-while (f[n % 3][0] < 1000) {
-    counta = counta + 1;
-		for (i = 1; i <= f[(n + 2) % 3][0]; i = i + 1) {
-            countb = countb + 1;
-			f[n % 3][i] = f[(n + 1) % 3][i] + f[(n + 2) % 3][i];
-            print("bbbb: " + countb);
-		}
-		f[n % 3][0] = f[(n + 2) % 3][0];
-		for (i = 1; i <= f[n % 3][0]; i = i + 1) {
-            countc = countc + 1;
-            print("cccc: " + countc);
-			if (f[n % 3][i] < 10) {
-                continue;
-            }
-			f[n % 3][i + 1] = f[n % 3][i + 1] + f[n % 3][i] / 10;
-			f[n % 3][i] = f[n % 3][i] % 10;
-			f[n % 3][0] = f[n % 3][0] + (i == f[n % 3][0]); 
-		}
-		n = n + 1;
+prime[1] = 1;
+for (i = 2; i <= MAX; i = i + 1) {
+	if (prime[i] == 0) {
+        prime[0] = prime[0] + 1;
+        prime[prime[0]] = i;
+    }
+	for (j = 1; j <= prime[0]; j = j + 1) {
+		if (prime[j] * i > MAX) {
+            break;
+        }
+		prime[prime[j] * i] = 1;
+		if (i % prime[j]) {
+            break;
+        }
+	}
 }
 
-print (n);
+print(prime[0]);
+print(prime[500]);

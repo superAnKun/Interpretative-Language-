@@ -41,6 +41,8 @@ Status MasterChain::valid(ExprTreeEvaluator* eval, pANTLR3_BASE_TREE tree) {
 bool ExprFactory::test(pANTLR3_COMMON_TOKEN token) {
     switch(token->type) {
     case INT:
+    case DOUBLE:
+    case CHAR:
     case ID:
     case STRING:
     case PLUS:
@@ -72,6 +74,16 @@ Status ExprFactory::ExprCalculate::getResult(ExprTreeEvaluator* eval, pANTLR3_BA
     case INT: {
         const char* s = getText(tree);
         shared_ptr<Integer> p = make_shared<Integer>(s);
+        return {Type::OK, p};
+    }
+    case DOUBLE: {
+        const char* s = getText(tree);
+        shared_ptr<Double> p = make_shared<Double>(s);
+        return {Type::OK, p};
+    }
+    case CHAR: {
+        const char* s = getText(tree);
+        shared_ptr<Char> p = make_shared<Char>(s + 1);
         return {Type::OK, p};
     }
     case ID: {
@@ -216,21 +228,18 @@ Status ConditionExprFactory::ConditionExprCalculate::getResult(ExprTreeEvaluator
         return {Type::OK, p};
     }
     case OR:{       
-      //  int left = eval->run(getChild(tree, 0)).value;
-      //  int right = eval->run(getChild(tree, 1)).value;
-      //  return {Type::OK, left || right};
-        return {Type::OK, nullptr};
+        int left = eval->run(getChild(tree, 0)).value->isZero();
+        int right = eval->run(getChild(tree, 1)).value->isZero();
+        return {Type::OK, make_shared<Integer>(left || right)};
     }
     case AND:{
-      //  int left = eval->run(getChild(tree, 0)).value;
-      //  int right = eval->run(getChild(tree, 1)).value;
-      //  return {Type::OK, left && right};
-        return {Type::OK, nullptr};
+        int left = eval->run(getChild(tree, 0)).value->isZero();
+        int right = eval->run(getChild(tree, 1)).value->isZero();
+        return {Type::OK, make_shared<Integer>(left && right)};
     }
     case NOT:{
-       // int ret = eval->run(getChild(tree, 0)).value;
-       // return {Type::OK, !ret};
-        return {Type::OK, nullptr};
+        int ret = eval->run(getChild(tree, 0)).value->isZero();
+        return {Type::OK, make_shared<Integer>(!ret)};
     }
     default:
         cout << "Unhandled token: #" << tok->type << '\n';
@@ -413,6 +422,7 @@ void FunctionFactory::destory(Calculate* c) {
  * FunctionCalculate
  *
  */
+
 Status FunctionFactory::FunctionCalculate::getResult(ExprTreeEvaluator* eval, pANTLR3_BASE_TREE tree) {
     pANTLR3_COMMON_TOKEN token = tree->getToken(tree);
     switch (token->type) {
